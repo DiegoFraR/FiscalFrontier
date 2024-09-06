@@ -3,31 +3,31 @@
 
 ## Table of Contents
 - [Introduction](#introduction)
-- [Team Members & Roles](#TeamMembers&Roles)
-- [Technology Stack](
+- [Developers](#developers)
+- [Technology Stack](#technology-stack)
 
 ### Introduction
 Fiscal Frontiner is an accounting application designed to keep track of financial transactions. The application does the following:
 * 
 
-### Team Members & Roles 
+### Developers 
 - [Diego Frausto Ramirez](https://github.com/DiegoFraR)
   - Backend Developer
   - Frontend Developer
-- [Chris Kirkwood] ()
+- [Chris Kirkwood](https://github.com/cckirk)
   - Backend Developer
-- [Hong Nguyen] ()
+- [Hong Nguyen](https://github.com/hnguy126)
   - Frontend Developer
-- [Riley Powell] ()
+- [Riley Powell]()
   - Documentation & Video Recorder
 
  ### Technology Stack
 - Backend
-   - C#
-   - .NET Core
-   - EF Migrations
+   - [C#](https://learn.microsoft.com/en-us/dotnet/csharp/)
 - Frontend
-  - Angular
-  - TypeScript
+  - [Angular](https://angular.dev/)
+  - [TypeScript](https://www.typescriptlang.org/)
 - Database
-  - SQL
+  - [Azure SQL Database](https://azure.microsoft.com/en-us/products/azure-sql/database)
+
+### More added at a later Date
