@@ -1,0 +1,6 @@
+@FiscalFrontier.API_HostAddress = http://localhost:5209
+
+GET {{FiscalFrontier.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
