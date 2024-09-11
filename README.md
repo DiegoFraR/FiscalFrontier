@@ -44,3 +44,4 @@ Fiscal Frontiner is an accounting application designed to keep track of financia
 
 - Once there are instrunctions on how to call submit a PR to this repository, we will do this to ensure high quality code is pushed into the repository. Please test any new code you write to ensure it works AND doesn't break any existing features (You can monkey test this for now. Towards the end, Diego will start writing Unit Tests (and E2E Tests with Playwright) to ensure things are working before getting ready to turn in the final product). This will allow fellow group members to check your code to ensure there are no glaring issues before merging it :D. 
  
+- Test For PR Video
