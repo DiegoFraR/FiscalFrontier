@@ -5,11 +5,11 @@
 - [Introduction](#introduction)
 - [Developers](#developers)
 - [Technology Stack](#technology-stack)
-- [Developer Configuration](#developer-configuration-(api))
+- [Developer Configuration](#developer-configuration-api)
+- [Pull Request Workflow](#pull-request-workflow)
 
 ### Introduction
-Fiscal Frontiner is an accounting application designed to keep track of financial transactions. The application does the following:
-* 
+Fiscal Frontiner is an accounting application designed to keep track of financial transactions.
 
 ### Developers 
 - [Diego Frausto Ramirez](https://github.com/DiegoFraR)
@@ -34,14 +34,19 @@ Fiscal Frontiner is an accounting application designed to keep track of financia
 
 ### Developer Configuration (API)
 - To Configure your machine to use this API, you must do the following.
-1. Download the latest version of [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads).
-2. When setting up the localhost SQL Server, ensure the instance of MSSQL is called "MSSQLSERVER01" and the Database name is "FiscalFrontierDb". This will allow the API to connect to the SQL Server hosted on your machine. 
-3. Open a terminal window and navigate to a directory in which you want to place the FiscalFrontier Repository.
-4. ``` git clone https://github.com/DiegoFraR/FiscalFrontier```
-5. Open the FiscalFrontier API in [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
-6. Build the Project to ensure dependencies and NuGet packages are installed.
-7. Run the Project to let the EF Core Migrations run and seed data to be placed into the Database. 
-
-- Once there are instrunctions on how to call submit a PR to this repository, we will do this to ensure high quality code is pushed into the repository. Please test any new code you write to ensure it works AND doesn't break any existing features (You can monkey test this for now. Towards the end, Diego will start writing Unit Tests (and E2E Tests with Playwright) to ensure things are working before getting ready to turn in the final product). This will allow fellow group members to check your code to ensure there are no glaring issues before merging it :D. 
+1. Download the latest version of [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) & [SQL Server Management Studio(SSMS)](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16). 
+2. __When setting up the localhost SQL Server, ensure the instance of MSSQL is called "MSSQLSERVER01" and the Database name is "FiscalFrontierDb". This will allow the API to connect to the SQL Server hosted on your machine.__ 
+3. Use SSMS to connect to the database to ensure it is running effectively. 
+4. Open a terminal window and navigate to a directory in which you want to place the FiscalFrontier Repository.
+5. ``` git clone https://github.com/DiegoFraR/FiscalFrontier```
+6. Open the FiscalFrontier API in [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or [JetBrains Rider](https://www.jetbrains.com/rider/).
+7. Build the Project to ensure dependencies and NuGet packages are installed.
+8. Run Entity Framework Core migrations to ensure your database is up to date.
+``` dotnet ef database update ```
+9. Run the API. If all went smoothly, a new browser window will open up with [Swagger](https://learn.microsoft.com/en-us/aspnet/core/tutorials/web-api-help-pages-using-swagger?view=aspnetcore-8.0). This allows you to test the API without the need for a UI. 
  
-- Modified Test PR Video
+### Pull Request Workflow
+- To add new code into this repository, please use PRs and GitHub desktop to ensure code that is merged into the main branch is of a good quality. 
+1. Follow the steps in [Developer Configuration](#developer-configuration-api).
+2. Open [GitHub Desktop](https://github.com/apps/desktop) and open this repository in it. 
+3. Create a new branch and begin coding in this new branch you create. 
