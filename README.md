@@ -19,8 +19,8 @@ Fiscal Frontiner is an accounting application designed to keep track of financia
   - Backend Developer
 - [Hong Nguyen](https://github.com/hnguy126)
   - Frontend Developer
-- [Riley Powell]()
-  - Documentation & Video Recorder
+- [Riley Powell](https://github.com/Rpowell57)
+  - Documentation, Video Recorder, PR Checks. 
 
  ### Technology Stack
 - Backend
@@ -49,4 +49,19 @@ Fiscal Frontiner is an accounting application designed to keep track of financia
 - To add new code into this repository, please use PRs and GitHub desktop to ensure code that is merged into the main branch is of a good quality. 
 1. Follow the steps in [Developer Configuration](#developer-configuration-api).
 2. Open [GitHub Desktop](https://github.com/apps/desktop) and open this repository in it. 
-3. Create a new branch and begin coding in this new branch you create. 
+3. Create a new branch in GitHub desktop and use the following naming convention:
+* PR-*High-Level-Description-Of-Code*
+* Example: PR-AddedUserSettingsButtonToUI
+4. Once you are ready to submit the PR, commit your branch to GitHub and submit the PR. 
+- For API PRs, request any of the following reviewers:
+* [Diego Frausto Ramirez](https://github.com/DiegoFraR)
+* [Chris Kirkwood](https://github.com/cckirk)
+* [Riley Powell](https://github.com/Rpowell57)
+- For UI PRs, request any of the following reviewers:
+* [Diego Frausto Ramirez](https://github.com/DiegoFraR)
+* [Hong Nguyen](https://github.com/hnguy126)
+* [Riley Powell](https://github.com/Rpowell57)
+
+- Whoever checks the PR, remove any other reviewers from the PR. 
+
+* [Video Explaination of PRs from GitHub Desktop](https://www.youtube.com/watch?v=8x6V5IOuXog)
