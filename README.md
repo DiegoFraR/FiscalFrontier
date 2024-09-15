@@ -44,6 +44,16 @@ Fiscal Frontiner is an accounting application designed to keep track of financia
 8. Run Entity Framework Core migrations to ensure your database is up to date.
 ``` dotnet ef database update ```
 9. Run the API. If all went smoothly, a new browser window will open up with [Swagger](https://learn.microsoft.com/en-us/aspnet/core/tutorials/web-api-help-pages-using-swagger?view=aspnetcore-8.0). This allows you to test the API without the need for a UI. 
+
+### Developer Configuration (UI)
+- To Configure your machine to use the UI associated with the API (FiscalFrontierUI), you must do the following:
+1. Install [NodeJS](https://nodejs.org/en)
+2. We will be using [Angular 16.0.2](https://v16.angular.io/docs). Install this version by running this command in your CLI:
+``` npm install -g @angular/cli@16.0.2```
+3. Verify installation of correct version by running: 
+``` ng version```
+4. Once the API is running (see [Developer Configuration (API)](#developer-configuration-api)), run the UI by nagivating to the folder with the UI project and running:
+``` ng serve --open ```
  
 ### Pull Request Workflow
 - To add new code into this repository, please use PRs and GitHub desktop to ensure code that is merged into the main branch is of a good quality. 
