@@ -15,8 +15,17 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("FiscalFrontierConnectionString"))
     .EnableSensitiveDataLogging();
 });
+builder.Services.AddScoped<DataInitializer>();
+
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var dataInitializer = services.GetRequiredService<DataInitializer>();
+    await dataInitializer.InitializeAsync();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

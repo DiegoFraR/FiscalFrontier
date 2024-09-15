@@ -18,9 +18,9 @@ namespace FiscalFrontier.API.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Role>().HasData(
-                new Role { Id = 1, roleName = "Administrator" },
-                new Role { Id = 2, roleName = "Manager" },
-                new Role { Id = 3, roleName = "Accountant" }
+                new Role { RoleId = 1, RoleName = "Administrator" },
+                new Role { RoleId = 2, RoleName = "Manager" },
+                new Role { RoleId = 3, RoleName = "Accountant" }
                 );
         }
     }

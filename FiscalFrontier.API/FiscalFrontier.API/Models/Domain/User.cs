@@ -6,23 +6,28 @@ namespace FiscalFrontier.API.Models.Domain
     public class User
     {
         [Key]
-        public Guid Id { get; set; }
+        public Guid UserId { get; set; } = Guid.NewGuid();
 
-        [Required, StringLength(50)]
-        public string userName { get; set; }
-
+        [Required, StringLength(100)]
+        public string UserName { get; set; }
+        //Need to set password criteria later. 
         [Required, StringLength(255)]
-        public string passwordHash { get; set; }
+        public string Password { get; set; }
 
-        [Required,StringLength(255)]
-        public string email { get; set; }
-
-        public string firstName { get; set; }
-        public string lastName { get; set; }
+        [Required,StringLength(255), EmailAddress]
+        public string Email { get; set; }
+        [Required]
+        public string FirstName { get; set; }
+        [Required]
+        public string LastName { get; set; }
+        [Required]
         public DateTime CreatedDate { get; set; }
-        public DateTime? PasswordExpirationDate { get; set; }
+        [Required]
+        public DateTime PasswordExpirationDate { get; set; }
+        [ForeignKey("Role")]
+        public int RoleId { get; set; }
 
-        [ForeignKey("RoleId")]
+
         public Role Role { get; set; }
     }
 }

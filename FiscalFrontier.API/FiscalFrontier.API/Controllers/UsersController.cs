@@ -22,21 +22,19 @@ namespace FiscalFrontier.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCategory(CreateUserRequestDTO request)
         {
-            var userRole = await dbContext.Roles
-                .FirstOrDefaultAsync(r => r.roleName == "Accountant");
-            var createdUserName = request.firstName[0] + request.lastName;
+            var lastTwoDigitsOfYear = DateTime.Now.Year % 100;
+            var createdUserName = request.firstName[0] + request.lastName + DateTime.Now.Day + lastTwoDigitsOfYear;
             // Map DTO to Domain Model
             var user = new User
             {
-                Id = Guid.NewGuid(),
-                userName = createdUserName,
-                passwordHash = request.password,
-                email = request.email,
-                firstName = request.firstName,
-                lastName = request.lastName,
+                UserName = createdUserName,
+                Password = request.password,
+                Email = request.email,
+                FirstName = request.firstName,
+                LastName = request.lastName,
                 CreatedDate = DateTime.Now,
                 PasswordExpirationDate = DateTime.Now.AddDays(60),
-                Role = userRole,
+                RoleId = 3
             };
 
             await dbContext.Users.AddAsync(user);
@@ -45,7 +43,7 @@ namespace FiscalFrontier.API.Controllers
             // Domain Model to DTO
             var userDTO = new UserDTO
             {
-                userName = user.userName
+                userName = user.UserName
             };
 
             return Ok(userDTO);
