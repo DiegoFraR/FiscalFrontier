@@ -35,15 +35,15 @@ Fiscal Frontiner is an accounting application designed to keep track of financia
 ### Developer Configuration (API)
 - To Configure your machine to use this API, you must do the following.
 1. Download the latest version of [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) & [SQL Server Management Studio(SSMS)](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16). 
-2. __When setting up the localhost SQL Server, ensure the instance of MSSQL is called "MSSQLSERVER01" and the Database name is "FiscalFrontierDb". This will allow the API to connect to the SQL Server hosted on your machine.__ 
-3. Use SSMS to connect to the database to ensure it is running effectively. 
-4. Open a terminal window and navigate to a directory in which you want to place the FiscalFrontier Repository.
+2. __When setting up the localhost SQL Server, ensure the instance of MSSQL is called "MSSQLSERVER01" and the Database name is "FiscalFrontierDb". This will allow the API to connect to the SQL Server hosted on your machine.__ (You may need to download two instances of MSSQL to get the 01 server).
+3. Use SSMS to connect to the database to ensure it is running effectively. (ENSURE your database is set to MSSQLSERVER01, Depending on what you save your file too will change the front name. You may have DESKTOP-"NAME" or your machines name or localhost).
+4. Open a terminal window and navigate to a directory in which you want to place the FiscalFrontier Repository. (Ensure you copy a specific folder path in the CMD or terminal. You'll use cd "folder path").
 5. ``` git clone https://github.com/DiegoFraR/FiscalFrontier```
 6. Open the FiscalFrontier API in [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or [JetBrains Rider](https://www.jetbrains.com/rider/).
-7. Build the Project to ensure dependencies and NuGet packages are installed.
-8. Run Entity Framework Core migrations to ensure your database is up to date.
+7. Build the Project to ensure dependencies and NuGet packages are installed. (NuGet Packages can be reach from the tools menu.)
+8. Run Entity Framework Core migrations to ensure your database is up to date. (tools -> NuGet Packages -> Package Manager Console -> PM> Update-Database).
 ``` dotnet ef database update ```
-9. Run the API. If all went smoothly, a new browser window will open up with [Swagger](https://learn.microsoft.com/en-us/aspnet/core/tutorials/web-api-help-pages-using-swagger?view=aspnetcore-8.0). This allows you to test the API without the need for a UI. 
+9. Run the API. If all went smoothly, a new browser window will open up with [Swagger](https://learn.microsoft.com/en-us/aspnet/core/tutorials/web-api-help-pages-using-swagger?view=aspnetcore-8.0). This allows you to test the API without the need for a UI. (If youre having an issue with the localhost go to chrome://flags/ and find the Allow invalid certificates for resources loaded from localhost. Enable this, and then restart the browers and re-run the API from Microsoft visual studios).
  
 ### Pull Request Workflow
 - To add new code into this repository, please use PRs and GitHub desktop to ensure code that is merged into the main branch is of a good quality. 
