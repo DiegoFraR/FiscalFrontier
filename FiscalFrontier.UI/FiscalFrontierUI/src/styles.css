@@ -11,12 +11,13 @@
     text-decoration: none;
     list-style: none;
 }
-body{
+body,html{
     background: url("");
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat:no-repeat;
     background-attachment: fixed;
-    overflow: hidden;
+    overflow-y: hidden;
+
 }
 .wrapper{
     display: flex;
@@ -36,10 +37,12 @@ body{
     background: linear-gradient(rgba(39,39,39, 0.6), transparent);
     z-index: 100;
 }
-.nav-logo p{
-    color: rgb(247, 247, 247);
-    font-size: 25px;
-    font-weight: 600;
+.nav-logo img{
+    position: absolute;
+    top:10px;
+    left: 40px;
+    width: 180px;
+    height: 100px;
 }
 .nav-menu ul{
     display: flex;
@@ -91,6 +94,7 @@ body{
     height: 800px;
     overflow: hidden;
     z-index: 2;
+
 }
 .login-container{
     position: absolute;
@@ -107,7 +111,19 @@ body{
     display: flex;
     flex-direction: column;
     transition: .5s ease-in-out;
+    max-height: 100%;
 }
+.sign-up{
+    position: absolute;
+    right: -520px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    transition: .5s ease-in-out;
+    max-height: 100%;
+    opacity: 0;
+}
+
 .top span{
     color: #fff;
     font-size: small;
@@ -119,6 +135,15 @@ body{
     font-weight: 500;
     color: #fff;
     margin-left: 5px;
+}
+.bottom span a{
+    font-weight: 500;
+    color: #fff;
+    margin-left: 5px;
+    font-size: 14px;
+    display: flex;
+    justify-content: right;
+
 }
 header{
     color: #fff;
@@ -241,7 +266,7 @@ p{
         width: 100%;
         height: 500px;
     }
-    .register-container, .login-container{
+    .register-container, .login-container, .sign-up{
         width: 100%;
         padding: 0 20px;
     }
@@ -249,4 +274,82 @@ p{
         flex-direction: column;
         gap: 0;
     }
+}
+
+/*==================End of Login-reg page===================*/
+.dropdown{
+    min-width: 15rem;
+    position: relative;
+    margin: 2rem;
+}
+.dropdown * {
+    box-sizing: border-box;
+}
+.select {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    background: transparent;
+    color: #fff;
+    height: 50px;
+    width: 100%;
+    padding: 0 10px 0 45px;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.select-clicked{
+    border: 2px solid;
+    box-shadow: 0 0 0.8rem;
+}
+.select:hover{
+    background: rgba(51, 49, 49, 0.2);
+}
+.caret{
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid white;
+    transition: 0.3s;
+}
+.caret-rotate{
+    transform: rotate(180deg);
+}
+.option{
+    list-style: none;
+    padding: 0.2 0.5rem;
+    background: rgb(119, 117, 117);
+    border:  1px solid;
+    box-shadow: 0 0.5rem 1rem;
+    border-radius: 0.5rem;
+    color: white ;
+    position: absolute;
+    top:3rem;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    opacity: 0;
+    display: none;
+    transition: 0.2s;
+    z-index: 1;
+}
+.option li{
+    padding: 0.7rem 0.5rem;
+    margin:0.3rem 0;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+.option li:hover{
+    background: rgba(51, 49, 49, 0.2);
+}
+.active{
+    background: rgba(51, 49, 49, 0.2);
+}
+.option-open{
+    display: block;
+    opacity: 1;
 }

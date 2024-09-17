@@ -12,14 +12,7 @@
  <div class="wrapper">
     <nav class="nav">
         <div class="nav-logo">
-            <p>Fiscal Frontier</p><img src="">
-        </div>
-        <div class="nav-menu" id="navMenu">
-            <ul>
-                <li><a href="homepage.html" class="link active">Home</a></li>
-                <li><a href="#" class="link">Services</a></li>
-                <li><a href="#" class="link">About</a></li>
-            </ul>
+             <img src="./logo.png" alt="Fiscal Frontier" >
         </div>
         <div class="nav-button">
             <button class="btn white-btn" id="loginBtn" onclick="login()">Sign In</button>
@@ -46,7 +39,9 @@
                 <i class="bx bx-lock-alt"></i>
             </div>
             <div class="input-box">
+                <a href="dashboard.html">
                 <input type="submit" class="submit" value="Sign In">
+                </a>
             </div>
             <div class="two-col">
                 <div class="one">
@@ -110,24 +105,66 @@
                            id="inputCountry" 
                            placeholder="Country"required>
                 </div>
-            </div><br>          
-            <div class="input-box">
-                <input type="email" class="input-field" id="email"placeholder="Enter An Email"required>
-                <i class='bx bxs-envelope'></i>
+            </div> 
+            <div class="bottom">
+              <span ><a href="#" onclick="signup()">Continue ></a></span>
             </div>
-            <div class="input-box">
-                <input type="text" class="input-field" id="user"placeholder="Username"required>
-                <i class="bx bx-user"></i>
+        </div>      
+<!----------------------------form continue----------------------------->
+        <div class="sign-up" id ="signup">
+        <div class="input-box">
+            <input type="email" class="input-field" id="email"placeholder="Enter An Email"required>
+            <i class='bx bxs-envelope'></i>
+        </div>
+        <div class="input-box">
+            <input type="text" class="input-field" id="user"placeholder="Username"required>
+            <i class="bx bx-user"></i>
+        </div>
+        <div class="input-box">
+            <input type="password" class="input-field" id="pw" placeholder="Password"required>
+            <i class="bx bx-lock-alt"></i>
+        </div>
+        <div class="dropdown">
+            <div class="two-forms">
+            <div class="select">
+                <span class="selected">Select</span>
+                <div class="caret"></div>    
             </div>
+                <ul class="option">
+                    <li class="active"> </li>
+                    <li>Question 1:</li>
+                    <li>Question 2:</li>
+                    <li>Question 3:</li>
+                    <li>Question 4:</li>
+                </ul>
             <div class="input-box">
-                <input type="password" class="input-field" id="pw" placeholder="Password"required>
-                <i class="bx bx-lock-alt"></i>
+                 <input type="text" class="input-field" placeholder="Answer" required>
             </div>
-            <div class="input-box">
-                <input type="submit" class="submit" value="Submit Application">
             </div>
         </div>
+    <div class="dropdown">
+        <div class="two-forms">
+        <div class="select">
+            <span class="selected">Select</span>
+            <div class="caret"></div>    
+        </div>
+            <ul class="option">
+                <li class="active"> </li>
+                <li>Question 1:</li>
+                <li>Question 2:</li>
+                <li>Question 3:</li>
+                <li>Question 4:</li>
+            </ul>
+        <div class="input-box">
+             <input type="text" class="input-field" placeholder="Answer" required>
+        </div>
+        </div>
     </div>
+        <div class="input-box">
+            <input type="submit" class="submit" value="Submit">
+        </div>
+    </div>
+</div>
 </div>   
 <script>
    
@@ -146,6 +183,7 @@
     var b = document.getElementById("registerBtn");
     var x = document.getElementById("login");
     var y = document.getElementById("register");
+    var c =document.getElementById("signup")
     function login() {
         x.style.left = "4px";
         y.style.right = "-520px";
@@ -153,6 +191,7 @@
         b.className = "btn";
         x.style.opacity = 1;
         y.style.opacity = 0;
+        c.style.opacity=0;
     }
     function register() {
         x.style.left = "-510px";
@@ -161,7 +200,44 @@
         b.className += " white-btn";
         x.style.opacity = 0;
         y.style.opacity = 1;
+        c.style.opacity=0;
     }
+    function signup() {
+        y.style.opacity = 0;
+        c.style.right = "5px";
+   
+        c.style.opacity = 1;
+        y.style.right = "-520px";
+    
+    }
+</script>/
+<script>
+    const dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(dropdown=>{
+        const select =dropdown.querySelector('.select');
+        const caret =dropdown.querySelector('.caret');
+        const option =dropdown.querySelector('.option');
+        const options =dropdown.querySelectorAll('.option li');
+        const selected =dropdown.querySelector('.selected');
+        
+        select.addEventListener('click',() => {
+            select.classList.toggle('select-clicked');
+            caret.classList.toggle('caret-rotate');
+            option.classList.toggle('option-open');
+        });
+        options.forEach(option=>{
+            option.addEventListener('click',()=>{
+                selected.innerText =option.innerText;
+                select.classList.remove('select-clicked');
+                caret.classList.remove('caret-rotate');
+                option.classList.remove('option-open');
+                options.forEach(option=>{
+                    option.classList.remove('active');
+                });
+                option.classList.add('active');
+            });
+        });
+    });
 </script>
 </body>
 </html>
