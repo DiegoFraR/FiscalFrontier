@@ -44,6 +44,15 @@ Fiscal Frontiner is an accounting application designed to keep track of financia
 8. Run Entity Framework Core migrations to ensure your database is up to date. (tools -> NuGet Packages -> Package Manager Console -> PM> Update-Database).
 ``` dotnet ef database update ```
 9. Run the API. If all went smoothly, a new browser window will open up with [Swagger](https://learn.microsoft.com/en-us/aspnet/core/tutorials/web-api-help-pages-using-swagger?view=aspnetcore-8.0). This allows you to test the API without the need for a UI. (If youre having an issue with the localhost go to chrome://flags/ and find the Allow invalid certificates for resources loaded from localhost. Enable this, and then restart the browers and re-run the API from Microsoft visual studios).
+
+### Developer Configuration (UI)
+- To Configure your machine to use this UI, you must do the following.
+1. Run the API (see [Developer Configuration (API)](#developer-configuration-api)).
+2. Download [NodeJS](https://nodejs.org/en)
+3. Download Angular 16.0.2 onto your machine. (If you have an existing version of angular already, uninstall it and download the correct version).
+``` npm i @angular/cli@16.0.2 ```
+4. Using [Visual Studio Code](https://code.visualstudio.com/), open the UI component of the project. 
+5. In the terminal window in VS Code, type ``` ng serve --open ``` to launch the UI. 
  
 ### Pull Request Workflow
 - To add new code into this repository, please use PRs and GitHub desktop to ensure code that is merged into the main branch is of a good quality. 
