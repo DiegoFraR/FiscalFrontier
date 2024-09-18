@@ -4,6 +4,7 @@ using FiscalFrontier.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FiscalFrontier.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240918005839_UpdatedUserClass&AddedSecurityQuestions")]
+    partial class UpdatedUserClassAddedSecurityQuestions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,7 +40,7 @@ namespace FiscalFrontier.API.Migrations
 
                     b.HasKey("roleId");
 
-                    b.ToTable("Roles", (string)null);
+                    b.ToTable("Roles");
 
                     b.HasData(
                         new
@@ -71,7 +74,7 @@ namespace FiscalFrontier.API.Migrations
 
                     b.HasKey("securityQuestionId");
 
-                    b.ToTable("SecurityQuestions", (string)null);
+                    b.ToTable("SecurityQuestions");
 
                     b.HasData(
                         new
@@ -145,7 +148,7 @@ namespace FiscalFrontier.API.Migrations
 
                     b.HasIndex("roleId");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("FiscalFrontier.API.Models.Domain.UserSecurityQuestion", b =>
@@ -172,7 +175,7 @@ namespace FiscalFrontier.API.Migrations
 
                     b.HasIndex("userId");
 
-                    b.ToTable("UserSecurityQuestions", (string)null);
+                    b.ToTable("UserSecurityQuestions");
                 });
 
             modelBuilder.Entity("FiscalFrontier.API.Models.Domain.User", b =>

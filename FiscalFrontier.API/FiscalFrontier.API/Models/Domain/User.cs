@@ -6,28 +6,41 @@ namespace FiscalFrontier.API.Models.Domain
     public class User
     {
         [Key]
-        public Guid UserId { get; set; } = Guid.NewGuid();
+        public Guid userId { get; set; } = Guid.NewGuid();
 
         [Required, StringLength(100)]
-        public string UserName { get; set; }
+        public required string username { get; set; }
+
         //Need to set password criteria later. 
         [Required, StringLength(255)]
-        public string Password { get; set; }
+        public required string password { get; set; }
 
         [Required,StringLength(255), EmailAddress]
-        public string Email { get; set; }
+        public required string email { get; set; }
+
         [Required]
-        public string FirstName { get; set; }
+        public required string firstName { get; set; }
+
         [Required]
-        public string LastName { get; set; }
+        public required string lastName { get; set; }
+
         [Required]
-        public DateTime CreatedDate { get; set; }
+        public required string address { get; set; }
+
         [Required]
-        public DateTime PasswordExpirationDate { get; set; }
+        public DateTime dateOfBirth { get; set; }
+
+        [Required]
+        public DateTime createdDate { get; set; }
+
+        [Required]
+        public DateTime passwordExpirationDate { get; set; }
+
         [ForeignKey("Role")]
-        public int RoleId { get; set; }
+        public int roleId { get; set; }
 
+        public Role role { get; set; }
 
-        public Role Role { get; set; }
+        public ICollection<UserSecurityQuestion> securityQuestions { get; set; } = new List<UserSecurityQuestion>();
     }
 }

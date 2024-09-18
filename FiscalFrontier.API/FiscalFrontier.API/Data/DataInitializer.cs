@@ -17,92 +17,203 @@ namespace FiscalFrontier.API.Data
         {
             await _context.Database.EnsureCreatedAsync();
 
+            await InitializeRolesAsync(cancellationToken);
+
             if (_context.Users.Any())
             {
                 return;
             }
             else
             {
-                    var users = new List<User>
+                var users = new List<User>
                 {
                     new User
                     {
-                        UserId = Guid.NewGuid(),
-                        UserName = "dFrausto0924",
-                        Password = "TestPassword",
-                        Email = "dfraust4@students.kennesaw.edu",
-                        FirstName = "Diego",
-                        LastName = "Frausto",
-                        CreatedDate = DateTime.UtcNow,
-                        PasswordExpirationDate = DateTime.UtcNow.AddMonths(3),
-                        RoleId = 1
+                        userId = Guid.NewGuid(),
+                        username = "dFrausto0924",
+                        password = "TestPassword",
+                        email = "dfraust4@students.kennesaw.edu",
+                        firstName = "Diego",
+                        lastName = "Frausto",
+                        address = "1100 South Marietta Pkwy SE, Marietta, GA 30060",
+                        createdDate = DateTime.UtcNow,
+                        dateOfBirth = new DateTime(2003, 8, 30),
+                        passwordExpirationDate = DateTime.UtcNow.AddMonths(3),
+                        roleId = 1
                     },
                     new User
                     {
-                        UserId = Guid.NewGuid(),
-                        UserName = "cKirkwood0924",
-                        Password = "PasswordTest",
-                        Email = "ckirkwoo@students.kennesaw.edu",
-                        FirstName = "Chris",
-                        LastName = "Kirkwood",
-                        CreatedDate = DateTime.UtcNow,
-                        PasswordExpirationDate = DateTime.UtcNow.AddMonths(3),
-                        RoleId = 1
+                        userId = Guid.NewGuid(),
+                        username = "cKirkwood0924",
+                        password = "PasswordTest",
+                        email = "ckirkwoo@students.kennesaw.edu",
+                        firstName = "Chris",
+                        lastName = "Kirkwood",
+                        address =  "1100 South Marietta Pkwy SE, Marietta, GA 30060",
+                        createdDate = DateTime.UtcNow,
+                        dateOfBirth = new DateTime(2002, 10, 22),
+                        passwordExpirationDate = DateTime.UtcNow.AddMonths(3),
+                        roleId = 1
                     },
                     new User
                     {
-                        UserId = Guid.NewGuid(),
-                        UserName = "rPowell0924",
-                        Password = "TestPassword",
-                        Email = "rpowel57@students.kennesaw.edu",
-                        FirstName = "Riley",
-                        LastName = "Powell",
-                        CreatedDate = DateTime.UtcNow,
-                        PasswordExpirationDate = DateTime.UtcNow.AddMonths(3),
-                        RoleId = 1
+                        userId = Guid.NewGuid(),
+                        username = "rPowell0924",
+                        password = "TestPassword",
+                        email = "rpowel57@students.kennesaw.edu",
+                        firstName = "Riley",
+                        lastName = "Powell",
+                        address =  "1100 South Marietta Pkwy SE, Marietta, GA 30060",
+                        createdDate = DateTime.UtcNow,
+                        dateOfBirth = new DateTime(2001, 11, 23),
+                        passwordExpirationDate = DateTime.UtcNow.AddMonths(3),
+                        roleId = 1
                     },
                     new User
                     {
-                        UserId = Guid.NewGuid(),
-                        UserName = "hNguyen0924",
-                        Password = "passwordTest",
-                        Email = "hnguy126@students.kennesaw.edu",
-                        FirstName = "Hong",
-                        LastName = "Nguyen",
-                        CreatedDate = DateTime.UtcNow,
-                        PasswordExpirationDate = DateTime.UtcNow.AddMonths(3),
-                        RoleId = 1
+                        userId = Guid.NewGuid(),
+                        username = "hNguyen0924",
+                        password = "passwordTest",
+                        email = "hnguy126@students.kennesaw.edu",
+                        firstName = "Hong",
+                        lastName = "Nguyen",
+                        address =  "1100 South Marietta Pkwy SE, Marietta, GA 30060",
+                        createdDate = DateTime.UtcNow,
+                        dateOfBirth = new DateTime(2001, 5, 23),
+                        passwordExpirationDate = DateTime.UtcNow.AddMonths(3),
+                        roleId = 1
                     },
                     new User
                     {
-                        UserId = Guid.NewGuid(),
-                        UserName = "mAccount0924",
-                        Password = "ManagerPassword",
-                        Email = "manager@students.kennesaw.edu",
-                        FirstName = "Manager",
-                        LastName = "Account",
-                        CreatedDate = DateTime.UtcNow,
-                        PasswordExpirationDate = DateTime.UtcNow.AddMonths(3),
-                        RoleId = 2
+                        userId = Guid.NewGuid(),
+                        username = "mAccount0924",
+                        password = "ManagerPassword",
+                        email = "manager@students.kennesaw.edu",
+                        firstName = "Manager",
+                        lastName = "Account",
+                        address =  "1100 South Marietta Pkwy SE, Marietta, GA 30060",
+                        createdDate = DateTime.UtcNow,
+                        dateOfBirth = new DateTime(2024, 9, 17),
+                        passwordExpirationDate = DateTime.UtcNow.AddMonths(3),
+                        roleId = 2
                     },
                     new User
                     {
-                        UserId = Guid.NewGuid(),
-                        UserName = "aAccount0924",
-                        Password = "AccountantPassword",
-                        Email = "accountant@students.kennesaw.edu",
-                        FirstName = "Accountant",
-                        LastName = "Account",
-                        CreatedDate = DateTime.UtcNow,
-                        PasswordExpirationDate = DateTime.UtcNow.AddMonths(3),
-                        RoleId = 3
+                        userId = Guid.NewGuid(),
+                        username = "aAccount0924",
+                        password = "AccountantPassword",
+                        email = "accountant@students.kennesaw.edu",
+                        firstName = "Accountant",
+                        lastName = "Account",
+                        address =  "1100 South Marietta Pkwy SE, Marietta, GA 30060",
+                        createdDate = DateTime.UtcNow,
+                        dateOfBirth = new DateTime(2024, 9, 17),
+                        passwordExpirationDate = DateTime.UtcNow.AddMonths(3),
+                        roleId = 3
                     }
                 };
 
                     _context.Users.AddRange(users);
                     await _context.SaveChangesAsync(cancellationToken);
+
+                //Creating Security Question for Generated Users
+                var userIdList = users.Select(u => u.userId).ToList();
+                var securityQuestions = new List<UserSecurityQuestion>
+                {
+                    new UserSecurityQuestion
+                    {
+                        userId = userIdList[0],
+                        securityQuestionId = 1,
+                        answer="Answer for Diego Security Question 1"
+                    },
+                    new UserSecurityQuestion
+                    {
+                        userId = userIdList[0],
+                        securityQuestionId = 2,
+                        answer="Answer for Diego Security Question 2"
+                    },
+                    new UserSecurityQuestion
+                    {
+                        userId = userIdList[1],
+                        securityQuestionId = 3,
+                        answer="Answer for Chris Security Question 3"
+                    },
+                    new UserSecurityQuestion
+                    {
+                        userId = userIdList[1],
+                        securityQuestionId = 4,
+                        answer="Answer for Chris Security Question 4"
+                    },
+                    new UserSecurityQuestion
+                    {
+                        userId = userIdList[2],
+                        securityQuestionId = 1,
+                        answer="Answer for Riley Security Question 1"
+                    },
+                    new UserSecurityQuestion
+                    {
+                        userId = userIdList[2],
+                        securityQuestionId = 2,
+                        answer="Answer for Riley Security Question 2"
+                    },
+                    new UserSecurityQuestion
+                    {
+                        userId = userIdList[3],
+                        securityQuestionId = 3,
+                        answer="Answer for Hong Security Question 3"
+                    },
+                    new UserSecurityQuestion
+                    {
+                        userId = userIdList[3],
+                        securityQuestionId = 4,
+                        answer="Answer for Hong Security Question 4"
+                    },
+                    new UserSecurityQuestion
+                    {
+                        userId = userIdList[4],
+                        securityQuestionId = 1,
+                        answer="Answer for Manager Security Question 1"
+                    },
+                    new UserSecurityQuestion
+                    {
+                        userId = userIdList[4],
+                        securityQuestionId = 2,
+                        answer="Answer for Manager Security Question 2"
+                    },
+                    new UserSecurityQuestion
+                    {
+                        userId = userIdList[5],
+                        securityQuestionId = 3,
+                        answer="Answer for Accountant Security Question 3"
+                    },
+                    new UserSecurityQuestion
+                    {
+                        userId = userIdList[5],
+                        securityQuestionId = 4,
+                        answer="Answer for Accountant Security Question 4"
+                    }
+                };
+
+                await _context.UserSecurityQuestions.AddRangeAsync(securityQuestions);
+                await _context.SaveChangesAsync(cancellationToken);
+
             }
         }
 
+        public async Task InitializeRolesAsync(CancellationToken cancellationToken = default)
+        {
+            if (!_context.Roles.Any())
+            {
+                var roles = new List<Role>
+                {
+                    new Role { roleName = "Administrator" },
+                    new Role { roleName = "Manager" },
+                    new Role { roleName = "Accountant" }
+                };
+
+                await _context.Roles.AddRangeAsync(roles);
+                await _context.SaveChangesAsync(cancellationToken);
+            }
+        }
     }
 }

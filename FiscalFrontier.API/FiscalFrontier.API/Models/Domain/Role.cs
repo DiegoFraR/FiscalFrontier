@@ -6,11 +6,12 @@ namespace FiscalFrontier.API.Models.Domain
     public class Role
     {
         [Key]
-        public int RoleId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int roleId { get; set; }
 
         [Required, StringLength(50)]
-        public string RoleName { get; set; }
+        public string roleName { get; set; }
 
-        public ICollection<User> Users { get; set; }
+        public ICollection<User> users { get; set; }
     }
 }

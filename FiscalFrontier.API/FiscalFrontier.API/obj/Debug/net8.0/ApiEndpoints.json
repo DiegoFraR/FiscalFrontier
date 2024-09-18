@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "FiscalFrontier.API.Controllers.UsersController",
-    "Method": "CreateCategory",
+    "Method": "CreateUserRequest",
     "RelativePath": "api/Users",
     "HttpMethod": "POST",
     "IsController": true,
