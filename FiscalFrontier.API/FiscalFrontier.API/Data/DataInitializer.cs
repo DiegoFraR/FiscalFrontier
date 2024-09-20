@@ -19,6 +19,15 @@ namespace FiscalFrontier.API.Data
 
             await InitializeRolesAsync(cancellationToken);
 
+            var usersDelete = await _context.Users.ToListAsync();
+
+            var securityQuestionsDelete = await _context.UserSecurityQuestions.ToListAsync();
+
+            _context.Users.RemoveRange(usersDelete);
+            _context.UserSecurityQuestions.RemoveRange(securityQuestionsDelete);
+
+            await _context.SaveChangesAsync(cancellationToken);
+
             if (_context.Users.Any())
             {
                 return;
@@ -39,7 +48,8 @@ namespace FiscalFrontier.API.Data
                         createdDate = DateTime.UtcNow,
                         dateOfBirth = new DateTime(2003, 8, 30),
                         passwordExpirationDate = DateTime.UtcNow.AddMonths(3),
-                        roleId = 1
+                        roleId = 1,
+                        isActive = true
                     },
                     new User
                     {
@@ -53,7 +63,8 @@ namespace FiscalFrontier.API.Data
                         createdDate = DateTime.UtcNow,
                         dateOfBirth = new DateTime(2002, 10, 22),
                         passwordExpirationDate = DateTime.UtcNow.AddMonths(3),
-                        roleId = 1
+                        roleId = 1,
+                        isActive = true
                     },
                     new User
                     {
@@ -67,7 +78,8 @@ namespace FiscalFrontier.API.Data
                         createdDate = DateTime.UtcNow,
                         dateOfBirth = new DateTime(2001, 11, 23),
                         passwordExpirationDate = DateTime.UtcNow.AddMonths(3),
-                        roleId = 1
+                        roleId = 1,
+                        isActive = true
                     },
                     new User
                     {
@@ -81,7 +93,8 @@ namespace FiscalFrontier.API.Data
                         createdDate = DateTime.UtcNow,
                         dateOfBirth = new DateTime(2001, 5, 23),
                         passwordExpirationDate = DateTime.UtcNow.AddMonths(3),
-                        roleId = 1
+                        roleId = 1,
+                        isActive = true
                     },
                     new User
                     {
@@ -95,7 +108,8 @@ namespace FiscalFrontier.API.Data
                         createdDate = DateTime.UtcNow,
                         dateOfBirth = new DateTime(2024, 9, 17),
                         passwordExpirationDate = DateTime.UtcNow.AddMonths(3),
-                        roleId = 2
+                        roleId = 2,
+                        isActive = true
                     },
                     new User
                     {
@@ -109,7 +123,8 @@ namespace FiscalFrontier.API.Data
                         createdDate = DateTime.UtcNow,
                         dateOfBirth = new DateTime(2024, 9, 17),
                         passwordExpirationDate = DateTime.UtcNow.AddMonths(3),
-                        roleId = 3
+                        roleId = 3,
+                        isActive = true
                     }
                 };
 

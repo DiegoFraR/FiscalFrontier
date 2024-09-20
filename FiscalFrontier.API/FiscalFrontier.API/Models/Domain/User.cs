@@ -41,6 +41,9 @@ namespace FiscalFrontier.API.Models.Domain
 
         public Role role { get; set; }
 
+        [Required]
+        public required Boolean isActive { get; set; }
+
         public ICollection<UserSecurityQuestion> securityQuestions { get; set; } = new List<UserSecurityQuestion>();
     }
 }

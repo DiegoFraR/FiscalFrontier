@@ -18,7 +18,7 @@ namespace FiscalFrontier.API.Controllers
             this.dbContext = dbContext;
         }
 
-
+        //Creates Users.
         [HttpPost]
         public async Task<IActionResult> CreateUserRequest(CreateUserRequestDTO request)
         {
@@ -37,7 +37,7 @@ namespace FiscalFrontier.API.Controllers
                 createdDate = DateTime.Now,
                 passwordExpirationDate = DateTime.Now.AddDays(60),
                 roleId = 3,
-
+                isActive = true
             };
 
             await dbContext.Users.AddAsync(user);
@@ -69,6 +69,24 @@ namespace FiscalFrontier.API.Controllers
             };
 
             return Ok(userDTO);
+        }
+        
+        //Returns all the users in the database. 
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ShowUserDetailsDTO>>> GetUsers()
+        {
+            var users = await dbContext.Users.ToListAsync();
+
+            var userDtos = users.Select(user => new ShowUserDetailsDTO
+            {
+                username = user.username,
+                email = user.email,
+                firstName = user.firstName,
+                lastName = user.lastName,
+                roleId = user.roleId
+            }).ToList();
+
+            return Ok(userDtos);
         }
     }
 }
