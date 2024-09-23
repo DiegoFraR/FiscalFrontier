@@ -50,7 +50,7 @@ Fiscal Frontiner is an accounting application designed to keep track of financia
 1. Run the API (see [Developer Configuration (API)](#developer-configuration-api)).
 2. Download [NodeJS](https://nodejs.org/en)
 3. Download Angular 16.0.2 onto your machine. (If you have an existing version of angular already, uninstall it and download the correct version).
-``` npm i @angular/cli@16.0.2 ``` (if this doesnt work use npm install -g @angular/cli@16.0.2)
+``` npm i @angular/cli@16.0.2 ``` (if this doesnt work use ``` npm install -g @angular/cli@16.0.2 ```)
 4. Using [Visual Studio Code](https://code.visualstudio.com/), open the UI component of the project. 
 5. In the terminal window in VS Code, type ``` ng serve --open ``` to launch the UI. 
  
