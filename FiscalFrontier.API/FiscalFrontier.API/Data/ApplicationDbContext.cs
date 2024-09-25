@@ -14,6 +14,7 @@ namespace FiscalFrontier.API.Data
         public DbSet<Role> Roles { get; set; }
         public DbSet<SecurityQuestions> SecurityQuestions { get; set; }
         public DbSet<UserSecurityQuestion> UserSecurityQuestions { get; set; }
+        public DbSet<UserCreationRequest> UserCreationRequests { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

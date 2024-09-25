@@ -1,4 +1,6 @@
 using FiscalFrontier.API.Data;
+using FiscalFrontier.API.Models.Domain;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

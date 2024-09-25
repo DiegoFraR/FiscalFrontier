@@ -4,6 +4,7 @@ using FiscalFrontier.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FiscalFrontier.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240925203613_AddedUserCreationRequestModel")]
+    partial class AddedUserCreationRequestModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -153,147 +156,94 @@ namespace FiscalFrontier.API.Migrations
                     b.HasData(
                         new
                         {
-                            userId = new Guid("3202aecf-edea-41bf-a784-631fd6f0320e"),
+                            userId = new Guid("ef3f97a5-4268-4ff4-a2c0-6acad09cb0fe"),
                             address = "1100 South Marietta Pkwy SE, Marietta, GA 30060",
-                            createdDate = new DateTime(2024, 9, 25, 20, 40, 13, 122, DateTimeKind.Utc).AddTicks(3508),
+                            createdDate = new DateTime(2024, 9, 25, 20, 36, 13, 663, DateTimeKind.Utc).AddTicks(1604),
                             dateOfBirth = new DateTime(2003, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             email = "dfraust4@students.kennesaw.edu",
                             firstName = "Diego",
                             isActive = true,
                             lastName = "Frausto",
                             password = "TestPassword",
-                            passwordExpirationDate = new DateTime(2024, 12, 25, 20, 40, 13, 122, DateTimeKind.Utc).AddTicks(3514),
+                            passwordExpirationDate = new DateTime(2024, 12, 25, 20, 36, 13, 663, DateTimeKind.Utc).AddTicks(1610),
                             roleId = 1,
                             username = "dFrausto0924"
                         },
                         new
                         {
-                            userId = new Guid("c93bc577-2124-47cb-abbe-5c047b1aac5c"),
+                            userId = new Guid("34ba1361-adf9-461a-b85b-7aa71c73c758"),
                             address = "1100 South Marietta Pkwy SE, Marietta, GA 30060",
-                            createdDate = new DateTime(2024, 9, 25, 20, 40, 13, 122, DateTimeKind.Utc).AddTicks(3526),
+                            createdDate = new DateTime(2024, 9, 25, 20, 36, 13, 663, DateTimeKind.Utc).AddTicks(1622),
                             dateOfBirth = new DateTime(2002, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             email = "ckirkwoo@students.kennesaw.edu",
                             firstName = "Chris",
                             isActive = true,
                             lastName = "Kirkwood",
                             password = "PasswordTest",
-                            passwordExpirationDate = new DateTime(2024, 12, 25, 20, 40, 13, 122, DateTimeKind.Utc).AddTicks(3527),
+                            passwordExpirationDate = new DateTime(2024, 12, 25, 20, 36, 13, 663, DateTimeKind.Utc).AddTicks(1622),
                             roleId = 1,
                             username = "cKirkwood0924"
                         },
                         new
                         {
-                            userId = new Guid("c83b828c-31cb-43c3-a67f-051ea1cd41d3"),
+                            userId = new Guid("b83e6a5b-c8c3-4f69-8730-abfdc3657331"),
                             address = "1100 South Marietta Pkwy SE, Marietta, GA 30060",
-                            createdDate = new DateTime(2024, 9, 25, 20, 40, 13, 122, DateTimeKind.Utc).AddTicks(3540),
+                            createdDate = new DateTime(2024, 9, 25, 20, 36, 13, 663, DateTimeKind.Utc).AddTicks(1624),
                             dateOfBirth = new DateTime(2001, 11, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             email = "rpowel57@students.kennesaw.edu",
                             firstName = "Riley",
                             isActive = true,
                             lastName = "Powell",
                             password = "TestPassword",
-                            passwordExpirationDate = new DateTime(2024, 12, 25, 20, 40, 13, 122, DateTimeKind.Utc).AddTicks(3540),
+                            passwordExpirationDate = new DateTime(2024, 12, 25, 20, 36, 13, 663, DateTimeKind.Utc).AddTicks(1624),
                             roleId = 1,
                             username = "rPowell0924"
                         },
                         new
                         {
-                            userId = new Guid("73379e82-f63c-43c1-aa59-780ca136e953"),
+                            userId = new Guid("a285b20f-7e8f-4a81-8642-2b778dd09ccd"),
                             address = "1100 South Marietta Pkwy SE, Marietta, GA 30060",
-                            createdDate = new DateTime(2024, 9, 25, 20, 40, 13, 122, DateTimeKind.Utc).AddTicks(3542),
+                            createdDate = new DateTime(2024, 9, 25, 20, 36, 13, 663, DateTimeKind.Utc).AddTicks(1634),
                             dateOfBirth = new DateTime(2001, 5, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             email = "hnguy126@students.kennesaw.edu",
                             firstName = "Hong",
                             isActive = true,
                             lastName = "Nguyen",
                             password = "passwordTest",
-                            passwordExpirationDate = new DateTime(2024, 12, 25, 20, 40, 13, 122, DateTimeKind.Utc).AddTicks(3542),
+                            passwordExpirationDate = new DateTime(2024, 12, 25, 20, 36, 13, 663, DateTimeKind.Utc).AddTicks(1635),
                             roleId = 1,
                             username = "hNguyen0924"
                         },
                         new
                         {
-                            userId = new Guid("58a09024-66ab-4c80-b567-1df45afdfb8b"),
+                            userId = new Guid("55aaf9dc-9e11-4057-88bc-8424005c5cf3"),
                             address = "1100 South Marietta Pkwy SE, Marietta, GA 30060",
-                            createdDate = new DateTime(2024, 9, 25, 20, 40, 13, 122, DateTimeKind.Utc).AddTicks(3544),
+                            createdDate = new DateTime(2024, 9, 25, 20, 36, 13, 663, DateTimeKind.Utc).AddTicks(1637),
                             dateOfBirth = new DateTime(2024, 9, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             email = "manager@students.kennesaw.edu",
                             firstName = "Manager",
                             isActive = true,
                             lastName = "Account",
                             password = "ManagerPassword",
-                            passwordExpirationDate = new DateTime(2024, 12, 25, 20, 40, 13, 122, DateTimeKind.Utc).AddTicks(3545),
+                            passwordExpirationDate = new DateTime(2024, 12, 25, 20, 36, 13, 663, DateTimeKind.Utc).AddTicks(1638),
                             roleId = 2,
                             username = "mAccount0924"
                         },
                         new
                         {
-                            userId = new Guid("44ffb2db-7a91-4cd1-940a-21ec94c8400c"),
+                            userId = new Guid("9545ce91-4d23-45fe-ad6d-d7294d08f282"),
                             address = "1100 South Marietta Pkwy SE, Marietta, GA 30060",
-                            createdDate = new DateTime(2024, 9, 25, 20, 40, 13, 122, DateTimeKind.Utc).AddTicks(3547),
+                            createdDate = new DateTime(2024, 9, 25, 20, 36, 13, 663, DateTimeKind.Utc).AddTicks(1640),
                             dateOfBirth = new DateTime(2024, 9, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             email = "accountant@students.kennesaw.edu",
                             firstName = "Accountant",
                             isActive = true,
                             lastName = "Account",
                             password = "AccountantPassword",
-                            passwordExpirationDate = new DateTime(2024, 12, 25, 20, 40, 13, 122, DateTimeKind.Utc).AddTicks(3547),
+                            passwordExpirationDate = new DateTime(2024, 12, 25, 20, 36, 13, 663, DateTimeKind.Utc).AddTicks(1640),
                             roleId = 3,
                             username = "aAccount0924"
                         });
-                });
-
-            modelBuilder.Entity("FiscalFrontier.API.Models.Domain.UserCreationRequest", b =>
-                {
-                    b.Property<int>("userCreationRequestId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("userCreationRequestId"));
-
-                    b.Property<string>("address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("dateOfBirth")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("firstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("isApproved")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("lastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("securityQuestion1Answer")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("securityQuestion1Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("securityQuestion2Answer")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("securityQuestion2Id")
-                        .HasColumnType("int");
-
-                    b.HasKey("userCreationRequestId");
-
-                    b.ToTable("UserCreationRequests");
                 });
 
             modelBuilder.Entity("FiscalFrontier.API.Models.Domain.UserSecurityQuestion", b =>

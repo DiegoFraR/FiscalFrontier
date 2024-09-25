@@ -135,3 +135,9 @@ C:\Users\dfrau\Documents\GitKraken\FiscalFrontier\FiscalFrontier.API\FiscalFront
 C:\Users\dfrau\Documents\GitKraken\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\obj\Debug\net8.0\FiscalFrontier.API.pdb
 C:\Users\dfrau\Documents\GitKraken\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\obj\Debug\net8.0\FiscalFrontier.API.genruntimeconfig.cache
 C:\Users\dfrau\Documents\GitKraken\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\obj\Debug\net8.0\ref\FiscalFrontier.API.dll
+C:\Users\dfrau\Documents\GitKraken\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\dfrau\Documents\GitKraken\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\dfrau\Documents\GitKraken\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\dfrau\Documents\GitKraken\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\dfrau\Documents\GitKraken\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\dfrau\Documents\GitKraken\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
