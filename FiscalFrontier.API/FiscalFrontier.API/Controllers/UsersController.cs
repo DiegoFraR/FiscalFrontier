@@ -1,6 +1,8 @@
 ﻿using FiscalFrontier.API.Data;
 using FiscalFrontier.API.Models.Domain;
 using FiscalFrontier.API.Models.DTO;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,16 +14,20 @@ namespace FiscalFrontier.API.Controllers
     public class UsersController : ControllerBase
     {
         private readonly ApplicationDbContext dbContext;
+        private readonly AuthDbContext authDbContext;
+        private readonly UserManager<User> userManager;
 
-        public UsersController(ApplicationDbContext dbContext) 
+        public UsersController(ApplicationDbContext dbContext, AuthDbContext authDbContext, UserManager<User> userManager) 
         {
             this.dbContext = dbContext;
+            this.authDbContext = authDbContext;
+            this.userManager = userManager;
         }
 
-        //Creates User Request.
-        [HttpPost("create")]
-        
-        public async Task<IActionResult> CreateUserRequest(CreateUserRequestDTO request)
+        //Creates a request to generate a new user (MUST BE ACCEPTED BY ADMIN LATER).
+        [HttpPost]
+        [Route("create")]
+        public async Task<IActionResult> CreateUserRequest([FromBody] CreateUserRequestDTO request)
         {
             var userCreationRequest = new UserCreationRequest
             {
@@ -44,148 +50,207 @@ namespace FiscalFrontier.API.Controllers
             return Ok(new { Message = "User Creation Request Submitted for Approval." });
         }
 
-        //Approve User Creation Request
-        [HttpPost("approve/{requestId}")]
-        public async Task<IActionResult> ApproveUserRequest(int requestId)
-        {
-            var userCreationRequest = await dbContext.UserCreationRequests.FindAsync(requestId);
+        //POST: {apibaseurl}/api/users/register/{id}
+        //Approves User Creation.
+        [HttpPost]
+        [Route("register/{id}")]
+        [Authorize(Roles = "Administrator")]
 
-            if (userCreationRequest == null)
+        public async Task<IActionResult> ApproveUserRegistration(int id)
+        {
+            var request = await dbContext.UserCreationRequests.FindAsync(id);
+
+            if (request == null)
             {
-                return NotFound("Request Not Found.");
+                return NotFound("Request For Registration Not Found!");
             }
 
-            if (!userCreationRequest.isApproved) {
-                var lastTwoDigitsOfYear = DateTime.Now.Year % 100;
-                var createdUserName = userCreationRequest.firstName[0] + userCreationRequest.lastName + DateTime.Now.Day + lastTwoDigitsOfYear;
+            var generatedUserName = generateUserName(request.firstName, request.lastName);
+            //Create Identity User Object
+            var user = new User
+            {
+                Id = Guid.NewGuid().ToString(),
+                UserName = generatedUserName,
+                Email = request.email.Trim(),
+                firstName = request.firstName,
+                lastName = request.lastName,
+                address = request.address,
+                isActive = true,
+                dateOfBirth = request.dateOfBirth,
+                createdDate = DateTime.Now,
+                passwordExpirationDate = DateTime.Now.AddMonths(3),
+            };
 
-                var user = new User
+            //Create User
+            var identityResult = await userManager.CreateAsync(user, request.password);
+
+            if (identityResult.Succeeded)
+            {
+                // Add Accountant Role to User
+                identityResult = await userManager.AddToRoleAsync(user, "Accountant");
+
+                if (identityResult.Succeeded)
                 {
-                    username = createdUserName,
-                    password = userCreationRequest.password,
-                    email = userCreationRequest.email,
-                    firstName = userCreationRequest.firstName,
-                    lastName = userCreationRequest.lastName,
-                    address = userCreationRequest.address,
-                    dateOfBirth = userCreationRequest.dateOfBirth,
-                    createdDate = DateTime.Now,
-                    passwordExpirationDate = DateTime.Now.AddDays(60),
-                    roleId = 3,
-                    isActive = true
-                };
+                    dbContext.UserCreationRequests.Remove(request);
+                    await dbContext.SaveChangesAsync();
 
-                await dbContext.Users.AddAsync(user);
-                await dbContext.SaveChangesAsync();
+                    //AddUserSecurityQuestions(user, request);
 
-                var securityQuestions = new List<UserSecurityQuestion>()
+                    return Ok("User Created Successfully");
+                }
+                else
                 {
-                    new UserSecurityQuestion
+                    if (identityResult.Errors.Any())
                     {
-                        userId = user.userId,
-                        securityQuestionId = userCreationRequest.securityQuestion1Id,
-                        answer = userCreationRequest.securityQuestion1Answer
-                    },
-                    new UserSecurityQuestion
-                    {
-                        userId = user.userId,
-                        securityQuestionId = userCreationRequest.securityQuestion2Id,
-                        answer = userCreationRequest.securityQuestion2Answer
+                        foreach (var error in identityResult.Errors)
+                        {
+                            ModelState.AddModelError("", error.Description);
+                        }
                     }
-                };
-
-                await dbContext.UserSecurityQuestions.AddRangeAsync(securityQuestions);
-                await dbContext.SaveChangesAsync();
-
-                var userDTO = new UserDTO
-                {
-                    userName = user.username
-                };
-
-                //Remove Request Entry from CreateUserRequest Table
-                dbContext.UserCreationRequests.Remove(userCreationRequest);
-                await dbContext.SaveChangesAsync();
-
-                return Ok(userDTO);
+                }
             }
-
-            return BadRequest("This request has already been processed.");
-        }
-
-        //Delete (Deny) User Creation Request
-        [HttpDelete("deny/{requestId}")]
-        public async Task<IActionResult> DeleteUserRequest(int requestId)
-        {
-            var userCreationRequest = await dbContext.UserCreationRequests.FindAsync(requestId);
-
-            if(userCreationRequest == null)
+            else
             {
-                return NotFound("Request Not Found in DB.");
+                if (identityResult.Errors.Any())
+                {
+                    foreach (var error in identityResult.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
             }
 
-            dbContext.UserCreationRequests.Remove(userCreationRequest);
-            await dbContext.SaveChangesAsync();
-
-            return Ok(new { Message = "User Creation Request has been deleted" });
+            return ValidationProblem(ModelState);
         }
 
-        //Deletes a User from the DB
-        [HttpDelete("{userId}")]
-        public async Task<IActionResult> DeleteUser(Guid userId) {
-            var user = await dbContext.Users.FindAsync(userId);
+        // DELETE: {apibaseurl}/api/users/register/{id}
+        //Denies a User Registration Request
+        [HttpDelete]
+        [Route("register/{id}")]
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> DenyUserRegistration(int id)
+        {
+            var request = await dbContext.UserCreationRequests.FindAsync(id);
 
-            if (user == null) {
-                return NotFound("User Not Found!");
+            if (request == null)
+            {
+                return NotFound("User Request Not Found.");
             }
 
-            dbContext.Users.Remove(user);
+            dbContext.UserCreationRequests.Remove(request);
             await dbContext.SaveChangesAsync();
 
-            return Ok(new { Message = "User Deleted Successfully!" });
+            return Ok(new { Message = "User Creation Request Denied." });
         }
-        
+
+
+        //PUT: {apibaseurl}/api/users/modify/{id}
+        //Modifies Existing Users.
+        [HttpPut]
+        [Route("modify/{id}")]
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> ModifyUsers(string id, [FromBody] UpdateUserRequestDTO request)
+        {
+            var user = await userManager.FindByIdAsync(id);
+
+            if (user == null)
+            {
+                return NotFound("User Not Found");
+            }
+
+            user.Email = request.email.Trim();
+            user.firstName = request.firstName.Trim();
+            user.lastName = request.lastName.Trim();
+            user.address = request.address.Trim();
+            user.isActive = request.isActive;
+
+            var result = await userManager.UpdateAsync(user);
+
+            if (!result.Succeeded)
+            {
+                return BadRequest("Error Occured");
+            }
+
+            return Ok(new { Message = "User has been Updated" });
+        }
+
+        //GET: {apibaseurl}/api/users
         //Returns all the users in the database. 
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public async Task<ActionResult<IEnumerable<ShowUserDetailsDTO>>> GetUsers()
         {
-            var users = await dbContext.Users.ToListAsync();
+            var users = await authDbContext.Users.Cast<User>().ToListAsync();
 
             var userDtos = users.Select(user => new ShowUserDetailsDTO
             {
-                username = user.username,
-                email = user.email,
+                username = user.UserName,
+                email = user.Email,
                 firstName = user.firstName,
                 lastName = user.lastName,
-                roleId = user.roleId
+                address = user.address,
+                isActive = user.isActive,
+
             }).ToList();
 
             return Ok(userDtos);
         }
 
-        //Modify Existing User
-        [HttpPut]
-        [Route("{id:Guid}")]
-        public async Task<IActionResult> UpdateUserById(Guid id, UpdateUserRequestDTO request)
+        //DELETE: {apibaseurl}/api/users/delete/{id}
+        //Deletes a User from the DB
+        [HttpDelete]
+        [Route("delete/{id}")]
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> DeleteUser(string id)
         {
+            var user = await userManager.FindByIdAsync(id);
 
-            var existingUser = await dbContext.FindAsync<User>(id);
-
-            if (existingUser == null) {
-                return NotFound("User not found.");
-            }
-            else
+            if (user is null)
             {
-                existingUser.username = request.username;
-                existingUser.email = request.email;
-                existingUser.firstName = request.firstName;
-                existingUser.lastName = request.lastName;
-                existingUser.address = request.address;
-                existingUser.dateOfBirth = request.dateOfBirth;
-                existingUser.roleId = request.roleId;
-                existingUser.isActive = request.isActive;
-                await dbContext.SaveChangesAsync();
+                return NotFound("User Not Found.");
             }
 
-            return NoContent();
+            var result = await userManager.DeleteAsync(user);
+
+            if (result.Errors.Any())
+            {
+                return BadRequest(result.Errors);
+            }
+
+            return Ok(new { Message = "User Deleted" });
+
         }
+
+
+        //Helper Methods (Makes code look cleaner)
+        private string generateUserName(string firstName, string lastName)
+        {
+            var Year = DateTime.Now.Year & 100;
+            var createdUserName = firstName[0] + lastName + DateTime.Now.Month + Year;
+            return createdUserName;
+        }
+
+        /*
+        private async void AddUserSecurityQuestions(IdentityUser user, UserCreationRequest request)
+        {
+            var securityQuestions = new List<UserSecurityQuestion>
+            {
+                new UserSecurityQuestion
+                {
+                    securityQuestionId = request.securityQuestion1Id,
+                    answer = request.securityQuestion1Answer,
+                    userId = user.Id
+                },
+                new UserSecurityQuestion
+                {
+                    securityQuestionId = request.securityQuestion2Id,
+                    answer = request.securityQuestion2Answer,
+                    userId = user.Id,
+                }
+            };
+
+            await dbContext.UserSecurityQuestions.AddRangeAsync(securityQuestions);
+            await dbContext.SaveChangesAsync();
+        }*/
     }
 }

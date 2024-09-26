@@ -13,7 +13,9 @@ namespace FiscalFrontier.API.Models.DTO
         public string firstName { get; set; }
 
         public string lastName { get; set; }
-        public int roleId { get; set; }
 
+        public string address { get; set; }
+
+        public Boolean isActive { get; set; }
     }
 }

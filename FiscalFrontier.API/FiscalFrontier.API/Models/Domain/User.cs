@@ -4,21 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FiscalFrontier.API.Models.Domain
 {
-    public class User
+    public class User : IdentityUser
     {
-        [Key]
-        public Guid userId { get; set; } = Guid.NewGuid();
-
-        [Required, StringLength(100)]
-        public required string username { get; set; }
-
-        //Need to set password criteria later. 
-        [Required, StringLength(255)]
-        public required string password { get; set; }
-
-        [Required,StringLength(255), EmailAddress]
-        public required string email { get; set; }
-
         [Required]
         public required string firstName { get; set; }
 
@@ -36,11 +23,6 @@ namespace FiscalFrontier.API.Models.Domain
 
         [Required]
         public DateTime passwordExpirationDate { get; set; }
-
-        [ForeignKey("Role")]
-        public int roleId { get; set; }
-
-        public Role role { get; set; }
 
         [Required]
         public required Boolean isActive { get; set; }

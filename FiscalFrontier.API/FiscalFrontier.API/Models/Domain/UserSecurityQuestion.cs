@@ -10,7 +10,7 @@ namespace FiscalFrontier.API.Models.Domain
         public int userSecurityQuestionId { get; set; }
 
         [ForeignKey("User")]
-        public Guid userId { get; set; }
+        public required string userId { get; set; }
 
         public User user { get; set; }
 
