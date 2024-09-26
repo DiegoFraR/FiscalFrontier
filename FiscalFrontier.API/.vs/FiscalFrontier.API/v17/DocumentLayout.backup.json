@@ -1,73 +1,73 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\",
+  "WorkspaceRootPath": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\dfrau\\documents\\gitkraken\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\dfrau\\documents\\gitkraken\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\rpowe\\documents\\github\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\dfrau\\documents\\gitkraken\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\models\\domain\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\models\\domain\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\dfrau\\documents\\gitkraken\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\data\\datainitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\data\\datainitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\dfrau\\documents\\gitkraken\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\dfrau\\documents\\gitkraken\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\models\\dto\\loginmodeldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\models\\dto\\loginmodeldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\dfrau\\documents\\gitkraken\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\models\\domain\\usersecurityquestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\models\\domain\\usersecurityquestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\dfrau\\documents\\gitkraken\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\models\\domain\\usercreationrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\models\\domain\\usercreationrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\dfrau\\documents\\gitkraken\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\models\\dto\\createuserrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\models\\dto\\createuserrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\dfrau\\documents\\gitkraken\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\models\\dto\\showuserdetailsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\models\\dto\\showuserdetailsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\dfrau\\documents\\gitkraken\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\models\\dto\\updateuserrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\models\\dto\\updateuserrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\dfrau\\documents\\gitkraken\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\rpowe\\documents\\github\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\dfrau\\documents\\gitkraken\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\fiscalfrontier.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\rpowe\\documents\\github\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\rpowe\\documents\\github\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\models\\domain\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\models\\domain\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\rpowe\\documents\\github\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\data\\datainitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\data\\datainitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\rpowe\\documents\\github\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\rpowe\\documents\\github\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\models\\dto\\loginmodeldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\models\\dto\\loginmodeldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\rpowe\\documents\\github\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\models\\domain\\usersecurityquestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\models\\domain\\usersecurityquestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\rpowe\\documents\\github\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\models\\domain\\usercreationrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\models\\domain\\usercreationrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\rpowe\\documents\\github\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\models\\dto\\createuserrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\models\\dto\\createuserrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\rpowe\\documents\\github\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\models\\dto\\showuserdetailsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\models\\dto\\showuserdetailsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\rpowe\\documents\\github\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\models\\dto\\updateuserrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\models\\dto\\updateuserrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\rpowe\\documents\\github\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\fiscalfrontier.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
       "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\fiscalfrontier.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\dfrau\\documents\\gitkraken\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\models\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\rpowe\\documents\\github\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\models\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\models\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\dfrau\\documents\\gitkraken\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\rpowe\\documents\\github\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\dfrau\\documents\\gitkraken\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\models\\domain\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\rpowe\\documents\\github\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\models\\domain\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\models\\domain\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\dfrau\\documents\\gitkraken\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\models\\domain\\securityquestions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|c:\\users\\rpowe\\documents\\github\\fiscalfrontier\\fiscalfrontier.api\\fiscalfrontier.api\\models\\domain\\securityquestions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{115D9573-1306-4731-9E33-29F50E2B6BE4}|FiscalFrontier.API\\FiscalFrontier.API.csproj|solutionrelative:fiscalfrontier.api\\models\\domain\\securityquestions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -78,7 +78,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -86,224 +86,208 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "LoginModelDTO.cs",
-              "DocumentMoniker": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\DTO\\LoginModelDTO.cs",
-              "RelativeDocumentMoniker": "FiscalFrontier.API\\Models\\DTO\\LoginModelDTO.cs",
-              "ToolTip": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\DTO\\LoginModelDTO.cs",
-              "RelativeToolTip": "FiscalFrontier.API\\Models\\DTO\\LoginModelDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T22:04:07.95Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "FiscalFrontier.API\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "FiscalFrontier.API\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAAJEAAAAAAAAAAAAcwEoAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-10T00:00:08.9Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UserSecurityQuestion.cs",
-              "DocumentMoniker": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\Domain\\UserSecurityQuestion.cs",
-              "RelativeDocumentMoniker": "FiscalFrontier.API\\Models\\Domain\\UserSecurityQuestion.cs",
-              "ToolTip": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\Domain\\UserSecurityQuestion.cs",
-              "RelativeToolTip": "FiscalFrontier.API\\Models\\Domain\\UserSecurityQuestion.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T00:26:57.823Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "SecurityQuestions.cs",
-              "DocumentMoniker": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\Domain\\SecurityQuestions.cs",
-              "RelativeDocumentMoniker": "FiscalFrontier.API\\Models\\Domain\\SecurityQuestions.cs",
-              "ToolTip": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\Domain\\SecurityQuestions.cs",
-              "RelativeToolTip": "FiscalFrontier.API\\Models\\Domain\\SecurityQuestions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T00:09:58.798Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Program.cs",
-              "RelativeDocumentMoniker": "FiscalFrontier.API\\Program.cs",
-              "ToolTip": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Program.cs",
-              "RelativeToolTip": "FiscalFrontier.API\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAuAAAAAAAAAA==",
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "FiscalFrontier.API\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "FiscalFrontier.API\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwDEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T23:50:10.093Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "FiscalFrontier.API\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "FiscalFrontier.API\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T00:08:27.047Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "UpdateUserRequestDTO.cs",
-              "DocumentMoniker": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\DTO\\UpdateUserRequestDTO.cs",
-              "RelativeDocumentMoniker": "FiscalFrontier.API\\Models\\DTO\\UpdateUserRequestDTO.cs",
-              "ToolTip": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\DTO\\UpdateUserRequestDTO.cs",
-              "RelativeToolTip": "FiscalFrontier.API\\Models\\DTO\\UpdateUserRequestDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T20:08:07.317Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\Domain\\User.cs",
-              "RelativeDocumentMoniker": "FiscalFrontier.API\\Models\\Domain\\User.cs",
-              "ToolTip": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\Domain\\User.cs",
-              "RelativeToolTip": "FiscalFrontier.API\\Models\\Domain\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-09T23:34:37.818Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Role.cs",
-              "DocumentMoniker": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\Domain\\Role.cs",
-              "RelativeDocumentMoniker": "FiscalFrontier.API\\Models\\Domain\\Role.cs",
-              "ToolTip": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\Domain\\Role.cs",
-              "RelativeToolTip": "FiscalFrontier.API\\Models\\Domain\\Role.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T23:29:33.116Z",
+              "WhenOpened": "2024-09-26T00:50:03.347Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "UserCreationRequest.cs",
-              "DocumentMoniker": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\Domain\\UserCreationRequest.cs",
-              "RelativeDocumentMoniker": "FiscalFrontier.API\\Models\\Domain\\UserCreationRequest.cs",
-              "ToolTip": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\Domain\\UserCreationRequest.cs",
-              "RelativeToolTip": "FiscalFrontier.API\\Models\\Domain\\UserCreationRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
+              "Title": "UserSecurityQuestion.cs",
+              "DocumentMoniker": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\Domain\\UserSecurityQuestion.cs",
+              "RelativeDocumentMoniker": "FiscalFrontier.API\\Models\\Domain\\UserSecurityQuestion.cs",
+              "ToolTip": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\Domain\\UserSecurityQuestion.cs",
+              "RelativeToolTip": "FiscalFrontier.API\\Models\\Domain\\UserSecurityQuestion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T20:24:36.931Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-26T00:50:03.349Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ShowUserDetailsDTO.cs",
-              "DocumentMoniker": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\DTO\\ShowUserDetailsDTO.cs",
-              "RelativeDocumentMoniker": "FiscalFrontier.API\\Models\\DTO\\ShowUserDetailsDTO.cs",
-              "ToolTip": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\DTO\\ShowUserDetailsDTO.cs",
-              "RelativeToolTip": "FiscalFrontier.API\\Models\\DTO\\ShowUserDetailsDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAVAAAAAAAAAA==",
+              "DocumentIndex": 16,
+              "Title": "SecurityQuestions.cs",
+              "DocumentMoniker": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\Domain\\SecurityQuestions.cs",
+              "RelativeDocumentMoniker": "FiscalFrontier.API\\Models\\Domain\\SecurityQuestions.cs",
+              "ToolTip": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\Domain\\SecurityQuestions.cs",
+              "RelativeToolTip": "FiscalFrontier.API\\Models\\Domain\\SecurityQuestions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-20T00:42:02.102Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-26T00:50:03.351Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "CreateUserRequestDTO.cs",
-              "DocumentMoniker": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\DTO\\CreateUserRequestDTO.cs",
-              "RelativeDocumentMoniker": "FiscalFrontier.API\\Models\\DTO\\CreateUserRequestDTO.cs",
-              "ToolTip": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\DTO\\CreateUserRequestDTO.cs",
-              "RelativeToolTip": "FiscalFrontier.API\\Models\\DTO\\CreateUserRequestDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAIAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Program.cs",
+              "RelativeDocumentMoniker": "FiscalFrontier.API\\Program.cs",
+              "ToolTip": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Program.cs",
+              "RelativeToolTip": "FiscalFrontier.API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-10T00:13:59.836Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-26T00:50:03.353Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DataInitializer.cs",
-              "DocumentMoniker": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Data\\DataInitializer.cs",
-              "RelativeDocumentMoniker": "FiscalFrontier.API\\Data\\DataInitializer.cs",
-              "ToolTip": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Data\\DataInitializer.cs",
-              "RelativeToolTip": "FiscalFrontier.API\\Data\\DataInitializer.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAmwBUAAAAMAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "FiscalFrontier.API\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "FiscalFrontier.API\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T01:09:23.781Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-26T00:50:03.355Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
+              "Title": "UpdateUserRequestDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\DTO\\UpdateUserRequestDTO.cs",
+              "RelativeDocumentMoniker": "FiscalFrontier.API\\Models\\DTO\\UpdateUserRequestDTO.cs",
+              "ToolTip": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\DTO\\UpdateUserRequestDTO.cs",
+              "RelativeToolTip": "FiscalFrontier.API\\Models\\DTO\\UpdateUserRequestDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-26T00:50:03.357Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\Domain\\User.cs",
+              "RelativeDocumentMoniker": "FiscalFrontier.API\\Models\\Domain\\User.cs",
+              "ToolTip": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\Domain\\User.cs",
+              "RelativeToolTip": "FiscalFrontier.API\\Models\\Domain\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-26T00:50:03.359Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Role.cs",
+              "DocumentMoniker": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\Domain\\Role.cs",
+              "RelativeDocumentMoniker": "FiscalFrontier.API\\Models\\Domain\\Role.cs",
+              "ToolTip": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\Domain\\Role.cs",
+              "RelativeToolTip": "FiscalFrontier.API\\Models\\Domain\\Role.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-26T00:50:03.361Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserCreationRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\Domain\\UserCreationRequest.cs",
+              "RelativeDocumentMoniker": "FiscalFrontier.API\\Models\\Domain\\UserCreationRequest.cs",
+              "ToolTip": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\Domain\\UserCreationRequest.cs",
+              "RelativeToolTip": "FiscalFrontier.API\\Models\\Domain\\UserCreationRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-26T00:50:03.363Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ShowUserDetailsDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\DTO\\ShowUserDetailsDTO.cs",
+              "RelativeDocumentMoniker": "FiscalFrontier.API\\Models\\DTO\\ShowUserDetailsDTO.cs",
+              "ToolTip": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\DTO\\ShowUserDetailsDTO.cs",
+              "RelativeToolTip": "FiscalFrontier.API\\Models\\DTO\\ShowUserDetailsDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-26T00:50:03.365Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CreateUserRequestDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\DTO\\CreateUserRequestDTO.cs",
+              "RelativeDocumentMoniker": "FiscalFrontier.API\\Models\\DTO\\CreateUserRequestDTO.cs",
+              "ToolTip": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\DTO\\CreateUserRequestDTO.cs",
+              "RelativeToolTip": "FiscalFrontier.API\\Models\\DTO\\CreateUserRequestDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-26T00:50:03.367Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\appsettings.json",
               "RelativeDocumentMoniker": "FiscalFrontier.API\\appsettings.json",
-              "ToolTip": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\appsettings.json",
               "RelativeToolTip": "FiscalFrontier.API\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-09-18T19:29:00.863Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-26T00:50:03.371Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LoginModelDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\DTO\\LoginModelDTO.cs",
+              "RelativeDocumentMoniker": "FiscalFrontier.API\\Models\\DTO\\LoginModelDTO.cs",
+              "ToolTip": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\DTO\\LoginModelDTO.cs",
+              "RelativeToolTip": "FiscalFrontier.API\\Models\\DTO\\LoginModelDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-26T00:50:03.322Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DataInitializer.cs",
+              "DocumentMoniker": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Data\\DataInitializer.cs",
+              "RelativeDocumentMoniker": "FiscalFrontier.API\\Data\\DataInitializer.cs",
+              "ToolTip": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Data\\DataInitializer.cs",
+              "RelativeToolTip": "FiscalFrontier.API\\Data\\DataInitializer.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAmwBUAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-26T00:50:03.369Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
               "Title": "FiscalFrontier.API.http",
-              "DocumentMoniker": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\FiscalFrontier.API.http",
+              "DocumentMoniker": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\FiscalFrontier.API.http",
               "RelativeDocumentMoniker": "FiscalFrontier.API\\FiscalFrontier.API.http",
-              "ToolTip": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\FiscalFrontier.API.http",
+              "ToolTip": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\FiscalFrontier.API.http",
               "RelativeToolTip": "FiscalFrontier.API\\FiscalFrontier.API.http",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2024-09-18T19:29:11.557Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-26T00:50:03.374Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
               "Title": "UserDTO.cs",
-              "DocumentMoniker": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\DTO\\UserDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\DTO\\UserDTO.cs",
               "RelativeDocumentMoniker": "FiscalFrontier.API\\Models\\DTO\\UserDTO.cs",
-              "ToolTip": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\DTO\\UserDTO.cs",
+              "ToolTip": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\DTO\\UserDTO.cs",
               "RelativeToolTip": "FiscalFrontier.API\\Models\\DTO\\UserDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-20T00:42:05.563Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-26T00:50:03.376Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 14,
               "Title": "appsettings.Development.json",
-              "DocumentMoniker": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\appsettings.Development.json",
               "RelativeDocumentMoniker": "FiscalFrontier.API\\appsettings.Development.json",
-              "ToolTip": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\Rpowe\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\appsettings.Development.json",
               "RelativeToolTip": "FiscalFrontier.API\\appsettings.Development.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-09-18T19:29:13.354Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-26T00:50:03.377Z"
             }
           ]
         }
