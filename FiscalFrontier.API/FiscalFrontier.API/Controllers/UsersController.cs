@@ -187,6 +187,27 @@ namespace FiscalFrontier.API.Controllers
             return Ok(new { Message = "User has been Updated" });
         }
 
+        //GET: {apibaseurl}/api/users/{id}
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<IActionResult> GetUserById(string id)
+        {
+            var user = await userManager.FindByIdAsync(id);
+
+            var userDto = new ShowUserDetailsDTO
+            {
+                userId = user.Id,
+                username = user.UserName,
+                email = user.Email,
+                firstName = user.firstName,
+                lastName = user.lastName,
+                address = user.address,
+                isActive = user.isActive,
+            };
+
+            return Ok(userDto);
+        }
+
         //GET: {apibaseurl}/api/users
         //Returns all the users in the database. 
         [HttpGet]
@@ -197,6 +218,7 @@ namespace FiscalFrontier.API.Controllers
 
             var userDtos = users.Select(user => new ShowUserDetailsDTO
             {
+                userId = user.Id,
                 username = user.UserName,
                 email = user.Email,
                 firstName = user.firstName,

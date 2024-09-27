@@ -6,6 +6,7 @@ namespace FiscalFrontier.API.Models.DTO
 {
     public class ShowUserDetailsDTO
     {
+        public string userId { get; set; }
         public string username { get; set; }
 
         public string email { get; set; }
