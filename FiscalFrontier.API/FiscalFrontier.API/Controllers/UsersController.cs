@@ -53,9 +53,8 @@ namespace FiscalFrontier.API.Controllers
         //POST: {apibaseurl}/api/users/register/{id}
         //Approves User Creation.
         [HttpPost]
-        [Route("register/{id}")]
-        [Authorize(Roles = "Administrator")]
-
+        [Route("register")]
+        //[Authorize(Roles = "Administrator")]
         public async Task<IActionResult> ApproveUserRegistration(int id)
         {
             var request = await dbContext.UserCreationRequests.FindAsync(id);
@@ -94,9 +93,13 @@ namespace FiscalFrontier.API.Controllers
                     dbContext.UserCreationRequests.Remove(request);
                     await dbContext.SaveChangesAsync();
 
+                    var userDto = new UserDTO
+                    {
+                        userName = user.UserName
+                    };
                     //AddUserSecurityQuestions(user, request);
 
-                    return Ok("User Created Successfully");
+                    return Ok(userDto);
                 }
                 else
                 {
@@ -123,11 +126,21 @@ namespace FiscalFrontier.API.Controllers
             return ValidationProblem(ModelState);
         }
 
+        [HttpGet]
+        [Route("userRegistrationRequests")]
+        //[Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> GetCreateUserRequests()
+        {
+            var createUserRequests = await dbContext.UserCreationRequests.ToListAsync();
+
+            return Ok(createUserRequests);
+        }
+
         // DELETE: {apibaseurl}/api/users/register/{id}
         //Denies a User Registration Request
         [HttpDelete]
         [Route("register/{id}")]
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DenyUserRegistration(int id)
         {
             var request = await dbContext.UserCreationRequests.FindAsync(id);
@@ -148,7 +161,7 @@ namespace FiscalFrontier.API.Controllers
         //Modifies Existing Users.
         [HttpPut]
         [Route("modify/{id}")]
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
         public async Task<IActionResult> ModifyUsers(string id, [FromBody] UpdateUserRequestDTO request)
         {
             var user = await userManager.FindByIdAsync(id);
@@ -177,7 +190,7 @@ namespace FiscalFrontier.API.Controllers
         //GET: {apibaseurl}/api/users
         //Returns all the users in the database. 
         [HttpGet]
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
         public async Task<ActionResult<IEnumerable<ShowUserDetailsDTO>>> GetUsers()
         {
             var users = await authDbContext.Users.Cast<User>().ToListAsync();
@@ -200,7 +213,7 @@ namespace FiscalFrontier.API.Controllers
         //Deletes a User from the DB
         [HttpDelete]
         [Route("delete/{id}")]
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteUser(string id)
         {
             var user = await userManager.FindByIdAsync(id);
