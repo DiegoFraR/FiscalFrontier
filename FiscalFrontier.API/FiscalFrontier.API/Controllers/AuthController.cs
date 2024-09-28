@@ -44,7 +44,8 @@ namespace FiscalFrontier.API.Controllers
 
                     var response = new LoginResponseDTO()
                     {
-                        username = request.email,
+                        email = request.email,
+                        username = identityUser.UserName,
                         roles = roles.ToList(),
                         token = jwtToken
                     };
