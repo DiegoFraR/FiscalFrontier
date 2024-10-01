@@ -286,3 +286,6 @@ C:\Users\dfrau\Documents\GitKraken\FiscalFrontier\FiscalFrontier.API\FiscalFront
 C:\Users\dfrau\Documents\GitKraken\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\obj\Debug\net8.0\ref\FiscalFrontier.API.dll
 C:\Users\dfrau\Documents\GitKraken\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\dfrau\Documents\GitKraken\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\bin\Debug\net8.0\Microsoft.Bcl.TimeProvider.dll
+C:\Users\dfrau\Documents\GitKraken\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\dfrau\Documents\GitKraken\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\bin\Debug\net8.0\SendGrid.dll
+C:\Users\dfrau\Documents\GitKraken\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\bin\Debug\net8.0\StarkbankEcdsa.dll

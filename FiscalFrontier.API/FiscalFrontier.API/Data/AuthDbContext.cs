@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration.UserSecrets;
 
 namespace FiscalFrontier.API.Data
 {
@@ -12,6 +11,9 @@ namespace FiscalFrontier.API.Data
         {
 
         }
+
+        public DbSet<UserSecurityQuestion> UserSecurityQuestions { get; set; }
+        public DbSet<SecurityQuestions> SecurityQuestions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

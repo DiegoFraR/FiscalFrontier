@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace FiscalFrontier.API.Controllers
 {
@@ -16,12 +18,14 @@ namespace FiscalFrontier.API.Controllers
         private readonly ApplicationDbContext dbContext;
         private readonly AuthDbContext authDbContext;
         private readonly UserManager<User> userManager;
+        private readonly IConfiguration configuration;
 
-        public UsersController(ApplicationDbContext dbContext, AuthDbContext authDbContext, UserManager<User> userManager) 
+        public UsersController(ApplicationDbContext dbContext, AuthDbContext authDbContext, UserManager<User> userManager, IConfiguration configuration) 
         {
             this.dbContext = dbContext;
             this.authDbContext = authDbContext;
             this.userManager = userManager;
+            this.configuration = configuration;
         }
 
         //Creates a request to generate a new user (MUST BE ACCEPTED BY ADMIN LATER).
@@ -53,7 +57,7 @@ namespace FiscalFrontier.API.Controllers
         //POST: {apibaseurl}/api/users/register/{id}
         //Approves User Creation.
         [HttpPost]
-        [Route("register")]
+        [Route("register/{id}")]
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> ApproveUserRegistration(int id)
         {
@@ -63,6 +67,8 @@ namespace FiscalFrontier.API.Controllers
             {
                 return NotFound("Request For Registration Not Found!");
             }
+
+            
 
             var generatedUserName = generateUserName(request.firstName, request.lastName);
             //Create Identity User Object
@@ -79,6 +85,8 @@ namespace FiscalFrontier.API.Controllers
                 createdDate = DateTime.Now,
                 passwordExpirationDate = DateTime.Now.AddMonths(3),
             };
+
+            
 
             //Create User
             var identityResult = await userManager.CreateAsync(user, request.password);
@@ -97,9 +105,14 @@ namespace FiscalFrontier.API.Controllers
                     {
                         userName = user.UserName
                     };
-                    //AddUserSecurityQuestions(user, request);
+
+                    //Creates the User Security Questions
+                    await CreateUserSecurityQuestions(user, request);
+
+                    sendUserEmailVerification(user.firstName, user.lastName, user.Email, true);
 
                     return Ok(userDto);
+                    
                 }
                 else
                 {
@@ -150,6 +163,8 @@ namespace FiscalFrontier.API.Controllers
                 return NotFound("User Request Not Found.");
             }
 
+            
+            sendUserEmailVerification(request.firstName, request.lastName,request.email, false);
             dbContext.UserCreationRequests.Remove(request);
             await dbContext.SaveChangesAsync();
 
@@ -261,32 +276,70 @@ namespace FiscalFrontier.API.Controllers
         //Helper Methods (Makes code look cleaner)
         private string generateUserName(string firstName, string lastName)
         {
-            var Year = DateTime.Now.Year & 100;
+            var Year = DateTime.Now.Year % 100;
             var createdUserName = firstName[0] + lastName + DateTime.Now.Month + Year;
-            return createdUserName;
+
+            var username = createdUserName.Replace(" ", "");
+            return username;
         }
 
-        /*
-        private async void AddUserSecurityQuestions(IdentityUser user, UserCreationRequest request)
+        
+        private async Task<IActionResult> CreateUserSecurityQuestions(IdentityUser user, UserCreationRequest request)
         {
-            var securityQuestions = new List<UserSecurityQuestion>
+            var userSecurityQuestions = new List<UserSecurityQuestion>
             {
                 new UserSecurityQuestion
                 {
                     securityQuestionId = request.securityQuestion1Id,
-                    answer = request.securityQuestion1Answer,
-                    userId = user.Id
+                    userId = user.Id,
+                    answer = request.securityQuestion1Answer
                 },
                 new UserSecurityQuestion
                 {
                     securityQuestionId = request.securityQuestion2Id,
-                    answer = request.securityQuestion2Answer,
                     userId = user.Id,
+                    answer = request.securityQuestion2Answer
                 }
             };
 
-            await dbContext.UserSecurityQuestions.AddRangeAsync(securityQuestions);
-            await dbContext.SaveChangesAsync();
-        }*/
+            try
+            {
+                await authDbContext.UserSecurityQuestions.AddRangeAsync(userSecurityQuestions);
+                await authDbContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occured processing the request.");
+            }
+            
+            return NoContent();
+        }
+
+
+        private async void sendUserEmailVerification(string firstName, string lastName, string email, Boolean verified)
+        {
+            var sendGrid = "";
+            var client = new SendGridClient(sendGrid);
+            var from = new EmailAddress("fiscalfrontier4713@gmail.com", "Fiscal Frontier");
+            var subject = "";
+            var plainTextContent = "";
+            var htmlContent = "";
+            if(verified == false)
+            {
+                subject = "User Registration Denied";
+                plainTextContent = "Your request for registration to the Fiscal Frontier Application has been denied.";
+                htmlContent = "If you believe this is incorrect, please send an email to <strong>fiscalfrontier4713@gmail.com</strong>.";
+            }
+            else
+            {
+                subject = "User Registration Accepted";
+                plainTextContent = "Your request for registration to the Fiscal Frontier Application has been approved.";
+                htmlContent = "If you did not register for this service, please send an email to <strong>fiscalfrontier4713@gmail.com</strong> to stop receiving emails.";
+            }
+            var to = new EmailAddress(email, firstName + " " + lastName);
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+            var response = await client.SendEmailAsync(msg);
+        }
+
     }
 }

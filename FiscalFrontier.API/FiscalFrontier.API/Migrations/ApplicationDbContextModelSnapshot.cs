@@ -36,7 +36,7 @@ namespace FiscalFrontier.API.Migrations
 
                     b.HasKey("securityQuestionId");
 
-                    b.ToTable("SecurityQuestions");
+                    b.ToTable("SecurityQuestions", (string)null);
 
                     b.HasData(
                         new
@@ -134,7 +134,7 @@ namespace FiscalFrontier.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("FiscalFrontier.API.Models.Domain.UserCreationRequest", b =>
@@ -187,7 +187,7 @@ namespace FiscalFrontier.API.Migrations
 
                     b.HasKey("userCreationRequestId");
 
-                    b.ToTable("UserCreationRequests");
+                    b.ToTable("UserCreationRequests", (string)null);
                 });
 
             modelBuilder.Entity("FiscalFrontier.API.Models.Domain.UserSecurityQuestion", b =>
@@ -215,7 +215,7 @@ namespace FiscalFrontier.API.Migrations
 
                     b.HasIndex("userId");
 
-                    b.ToTable("UserSecurityQuestions");
+                    b.ToTable("UserSecurityQuestions", (string)null);
                 });
 
             modelBuilder.Entity("FiscalFrontier.API.Models.Domain.UserSecurityQuestion", b =>

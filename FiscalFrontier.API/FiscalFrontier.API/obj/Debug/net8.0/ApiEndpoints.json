@@ -1,6 +1,16 @@
 [
   {
     "ContainingType": "FiscalFrontier.API.Controllers.AuthController",
+    "Method": "GetSecurityQuestions",
+    "RelativePath": "api/Auth",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "api/Auth/login",
     "HttpMethod": "POST",
@@ -107,7 +117,7 @@
   {
     "ContainingType": "FiscalFrontier.API.Controllers.UsersController",
     "Method": "ApproveUserRegistration",
-    "RelativePath": "api/Users/register",
+    "RelativePath": "api/Users/register/{id}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -115,7 +125,7 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

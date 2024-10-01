@@ -4,6 +4,7 @@ using FiscalFrontier.API.Models.DTO;
 using FiscalFrontier.API.Repositories.Interface;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FiscalFrontier.API.Controllers
 {
@@ -14,12 +15,14 @@ namespace FiscalFrontier.API.Controllers
         private readonly UserManager<User> userManager;
         private readonly ApplicationDbContext dbContext;
         private readonly ITokenRepository tokenRepository;
+        private readonly AuthDbContext authDbContext;
 
-        public AuthController(UserManager<User> userManager, ApplicationDbContext dbContext, ITokenRepository tokenRepository)
+        public AuthController(UserManager<User> userManager, ApplicationDbContext dbContext, ITokenRepository tokenRepository, AuthDbContext authDbContext)
         {
             this.userManager = userManager;
             this.dbContext = dbContext;
             this.tokenRepository = tokenRepository;
+            this.authDbContext = authDbContext;
         }
 
         // POST: {apibaseurl}/api/auth/login
@@ -56,6 +59,14 @@ namespace FiscalFrontier.API.Controllers
             ModelState.AddModelError("", "Email or Password is Incorrect.");
 
             return ValidationProblem(ModelState);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetSecurityQuestions()
+        {
+            var securityQuestions = await authDbContext.SecurityQuestions.ToListAsync();
+
+            return Ok(securityQuestions);
         }
     }
 }

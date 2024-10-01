@@ -4,6 +4,7 @@ using FiscalFrontier.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FiscalFrontier.API.Migrations.AuthDb
 {
     [DbContext(typeof(AuthDbContext))]
-    partial class AuthDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241001213137_AddedUserSecurityQuestionsDbSetToAuthDb")]
+    partial class AddedUserSecurityQuestionsDbSetToAuthDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -280,32 +283,32 @@ namespace FiscalFrontier.API.Migrations.AuthDb
                     b.HasData(
                         new
                         {
-                            UserId = "214289ac-6983-4c0f-a226-2b59f85da302",
+                            UserId = "88621266-4f74-469e-9b07-4f3d9e1190b8",
                             RoleId = "18ba9546-05ff-44a7-b1e3-ba79f546f06b"
                         },
                         new
                         {
-                            UserId = "214289ac-6983-4c0f-a226-2b59f85da302",
+                            UserId = "88621266-4f74-469e-9b07-4f3d9e1190b8",
                             RoleId = "ee8190d1-63cd-4c9c-bea4-2d4252de752b"
                         },
                         new
                         {
-                            UserId = "214289ac-6983-4c0f-a226-2b59f85da302",
+                            UserId = "88621266-4f74-469e-9b07-4f3d9e1190b8",
                             RoleId = "8d6430ec-2c87-4ca9-bc3a-b5025a41d8c9"
                         },
                         new
                         {
-                            UserId = "c698a3d7-25f4-4b2d-b40d-e38520a38f5c",
+                            UserId = "efef4286-fa1a-49ae-96f1-6bf50e7cce07",
                             RoleId = "ee8190d1-63cd-4c9c-bea4-2d4252de752b"
                         },
                         new
                         {
-                            UserId = "c698a3d7-25f4-4b2d-b40d-e38520a38f5c",
+                            UserId = "efef4286-fa1a-49ae-96f1-6bf50e7cce07",
                             RoleId = "8d6430ec-2c87-4ca9-bc3a-b5025a41d8c9"
                         },
                         new
                         {
-                            UserId = "9764d926-ef60-451e-8ad6-13fc4a9b51a6",
+                            UserId = "1db47540-e787-4fa6-aa4f-5c24444019df",
                             RoleId = "ee8190d1-63cd-4c9c-bea4-2d4252de752b"
                         });
                 });
@@ -362,69 +365,69 @@ namespace FiscalFrontier.API.Migrations.AuthDb
                     b.HasData(
                         new
                         {
-                            Id = "214289ac-6983-4c0f-a226-2b59f85da302",
+                            Id = "88621266-4f74-469e-9b07-4f3d9e1190b8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "498e956c-707e-4aa5-92fd-ced6903bdab9",
+                            ConcurrencyStamp = "34dc587f-39d5-4e10-89f2-b8ce23fffce4",
                             Email = "adminAccount@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMINACCOUNT@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAedejwnxicXLK3ilAhmza7hJP7aB+6TrkTGee+AqxXpIwSGU3Py83JpMjDUYF5XGg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBkZRMP5LPTABrpjYcdwHSnBs1qmc2YvE/iSVx83M+s4bOKL9fYK1eNoO0XNvs5eOQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8eb231ac-c236-4622-aab3-22b903b69598",
+                            SecurityStamp = "273d7035-1d60-4548-a1b6-41beab245617",
                             TwoFactorEnabled = false,
                             UserName = "AAccount0924",
                             address = "1100 South Marietta Pkwy SE, Marietta, GA 30060",
-                            createdDate = new DateTime(2024, 10, 1, 21, 50, 7, 94, DateTimeKind.Utc).AddTicks(6124),
+                            createdDate = new DateTime(2024, 10, 1, 21, 31, 37, 1, DateTimeKind.Utc).AddTicks(2334),
                             dateOfBirth = new DateTime(2003, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             firstName = "Admin",
                             isActive = true,
                             lastName = "SAccount",
-                            passwordExpirationDate = new DateTime(2025, 1, 1, 21, 50, 7, 94, DateTimeKind.Utc).AddTicks(6130)
+                            passwordExpirationDate = new DateTime(2025, 1, 1, 21, 31, 37, 1, DateTimeKind.Utc).AddTicks(2338)
                         },
                         new
                         {
-                            Id = "c698a3d7-25f4-4b2d-b40d-e38520a38f5c",
+                            Id = "efef4286-fa1a-49ae-96f1-6bf50e7cce07",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "38219c31-21fa-4f56-a622-a545d2113928",
+                            ConcurrencyStamp = "e882309e-1a57-4b08-9f0d-6e8820460deb",
                             Email = "managerAccount@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "MANAGERACCOUNT@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBRWKXD7k0JUOnjVprnGYsQVRBJfHBFdlJOkuB67Mj6nblQMC1aa92mvlv9JulBnzA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIwk0R6wbDcr0uUefn5AsSOZ9qIMDFTx+8SegaiuAOLNSZRrh91dO+S82ux/xWDp4w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "dfd2e817-a38b-468d-b356-c01fc8fb3337",
+                            SecurityStamp = "ac255e6c-b5d8-407c-b2de-a5e7ab889d37",
                             TwoFactorEnabled = false,
                             UserName = "MAccount0924",
                             address = "1100 South Marietta Pkwy SE, Marietta, GA 30060",
-                            createdDate = new DateTime(2024, 10, 1, 21, 50, 7, 94, DateTimeKind.Utc).AddTicks(6142),
+                            createdDate = new DateTime(2024, 10, 1, 21, 31, 37, 1, DateTimeKind.Utc).AddTicks(2353),
                             dateOfBirth = new DateTime(2003, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             firstName = "Manager",
                             isActive = true,
                             lastName = "Account",
-                            passwordExpirationDate = new DateTime(2025, 1, 1, 21, 50, 7, 94, DateTimeKind.Utc).AddTicks(6142)
+                            passwordExpirationDate = new DateTime(2025, 1, 1, 21, 31, 37, 1, DateTimeKind.Utc).AddTicks(2353)
                         },
                         new
                         {
-                            Id = "9764d926-ef60-451e-8ad6-13fc4a9b51a6",
+                            Id = "1db47540-e787-4fa6-aa4f-5c24444019df",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0be58c9e-659c-462a-870c-300b75843500",
+                            ConcurrencyStamp = "3cc086d8-aa36-42d9-b703-e21d4bebfd58",
                             Email = "accountantAccount@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ACCOUNTANTACCOUNT@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHF7WT+jMP85GiwyT5KtIgjBtINd51Zq4j9Q0aOQ6bagZKVfdnnGJbt3utptuP2pjQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKpEEmcYHDQ4LXkh5+OAQc6y9EPwZXXB7pPlc1qK+ralt65xsfMPzJ2BOXKtpd7Xwg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5bd761c5-0974-44c8-802e-b14d97f1879d",
+                            SecurityStamp = "2e24bf6b-1ad6-4444-8257-a6e990003c9f",
                             TwoFactorEnabled = false,
                             UserName = "AAccount0824",
                             address = "1100 South Marietta Pkwy SE, Marietta, GA 30060",
-                            createdDate = new DateTime(2024, 10, 1, 21, 50, 7, 94, DateTimeKind.Utc).AddTicks(6150),
+                            createdDate = new DateTime(2024, 10, 1, 21, 31, 37, 1, DateTimeKind.Utc).AddTicks(2360),
                             dateOfBirth = new DateTime(2003, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             firstName = "Accountant",
                             isActive = true,
                             lastName = "Account",
-                            passwordExpirationDate = new DateTime(2025, 1, 1, 21, 50, 7, 94, DateTimeKind.Utc).AddTicks(6150)
+                            passwordExpirationDate = new DateTime(2025, 1, 1, 21, 31, 37, 1, DateTimeKind.Utc).AddTicks(2360)
                         });
                 });
 

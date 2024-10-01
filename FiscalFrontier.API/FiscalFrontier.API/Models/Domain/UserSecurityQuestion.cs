@@ -8,16 +8,13 @@ namespace FiscalFrontier.API.Models.Domain
     {
         [Key]
         public int userSecurityQuestionId { get; set; }
-
-        [ForeignKey("User")]
         public required string userId { get; set; }
 
         public User user { get; set; }
 
-        [ForeignKey("SecurityQuestions")]
-        public int securityQuestionId { get; set; }
+        public SecurityQuestions? securityQuestion {  get; set; }
 
-        public SecurityQuestions? securityQuestion { get; set; }
+        public int securityQuestionId { get; set; }
 
         [Required, NotNull]
         public required string answer { get; set; }
