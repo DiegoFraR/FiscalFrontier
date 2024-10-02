@@ -263,6 +263,14 @@ namespace FiscalFrontier.API.Controllers
 
             var result = await userManager.DeleteAsync(user);
 
+            var userSecurityQuestions = await authDbContext.UserSecurityQuestions.FindAsync(id);
+            
+            if(userSecurityQuestions is not null)
+            {
+                authDbContext.UserSecurityQuestions.RemoveRange(userSecurityQuestions);
+                await authDbContext.SaveChangesAsync();
+            }
+
             if (result.Errors.Any())
             {
                 return BadRequest(result.Errors);
@@ -309,7 +317,7 @@ namespace FiscalFrontier.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "An error occured processing the request.");
+                return StatusCode(500, ex.Message);
             }
             
             return NoContent();
@@ -324,7 +332,7 @@ namespace FiscalFrontier.API.Controllers
             var subject = "";
             var plainTextContent = "";
             var htmlContent = "";
-            if(verified == false)
+            if (verified == false)
             {
                 subject = "User Registration Denied";
                 plainTextContent = "Your request for registration to the Fiscal Frontier Application has been denied.";
