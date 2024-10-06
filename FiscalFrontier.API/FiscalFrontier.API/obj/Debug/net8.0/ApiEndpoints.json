@@ -157,6 +157,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
+    "Method": "CreateChartOfAccount",
+    "RelativePath": "create/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "FiscalFrontier.API.Models.DTO.CreateChartOfAccountDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FiscalFrontier.API.Controllers.AuthController",
     "Method": "GetUserSecurityQuestions",
     "RelativePath": "userSecurityQuestions/{email}",
