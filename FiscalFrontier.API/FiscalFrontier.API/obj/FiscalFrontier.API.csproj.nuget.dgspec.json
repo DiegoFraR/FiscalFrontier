@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dfrau\\OneDrive\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\FiscalFrontier.API.csproj": {}
+    "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\FiscalFrontier.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dfrau\\OneDrive\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\FiscalFrontier.API.csproj": {
+    "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\FiscalFrontier.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dfrau\\OneDrive\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\FiscalFrontier.API.csproj",
+        "projectUniqueName": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\FiscalFrontier.API.csproj",
         "projectName": "FiscalFrontier.API",
-        "projectPath": "C:\\Users\\dfrau\\OneDrive\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\FiscalFrontier.API.csproj",
+        "projectPath": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\FiscalFrontier.API.csproj",
         "packagesPath": "C:\\Users\\dfrau\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dfrau\\OneDrive\\Documents\\GitHub\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\obj\\",
+        "outputPath": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

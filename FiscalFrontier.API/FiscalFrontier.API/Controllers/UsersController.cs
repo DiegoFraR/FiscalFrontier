@@ -109,7 +109,7 @@ namespace FiscalFrontier.API.Controllers
                     //Creates the User Security Questions
                     await CreateUserSecurityQuestions(user, request);
 
-                    sendUserEmailVerification(user.firstName, user.lastName, user.Email, true);
+                    //sendUserEmailVerification(user.firstName, user.lastName, user.Email, true);
 
                     return Ok(userDto);
                     
@@ -164,7 +164,7 @@ namespace FiscalFrontier.API.Controllers
             }
 
             
-            sendUserEmailVerification(request.firstName, request.lastName,request.email, false);
+            //sendUserEmailVerification(request.firstName, request.lastName,request.email, false);
             dbContext.UserCreationRequests.Remove(request);
             await dbContext.SaveChangesAsync();
 

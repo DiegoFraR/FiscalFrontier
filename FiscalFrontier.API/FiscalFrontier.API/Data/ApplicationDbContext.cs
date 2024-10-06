@@ -3,40 +3,40 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FiscalFrontier.API.Data
 {
-    public class ApplicationDbContext: DbContext
+    public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) 
-        { 
-        
-        }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        {
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<SecurityQuestions> SecurityQuestions { get; set; }
-        public DbSet<UserSecurityQuestion> UserSecurityQuestions { get; set; }
+        }
         public DbSet<UserCreationRequest> UserCreationRequests { get; set; }
+        public DbSet<ChartOfAccount> ChartOfAccounts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<ChartOfAccount>()
+                .HasIndex(a => a.accountNumber)
+                .IsUnique();
 
-            modelBuilder.Entity<SecurityQuestions>().HasData(
-                new SecurityQuestions { securityQuestionId = 1, securityQuestion= "What was the first exam you failed?" },
-                new SecurityQuestions { securityQuestionId = 2, securityQuestion = "What was your Mother/Father's first car brand?" },
-                new SecurityQuestions { securityQuestionId = 3, securityQuestion = "What was the name of your siblings favorite stuffed animal?" },
-                new SecurityQuestions { securityQuestionId = 4, securityQuestion = "In what city was your Grandmother or Grandfather born?" }
-                );
+            modelBuilder.Entity<ChartOfAccount>()
+                .HasIndex(a => a.accountName)
+                .IsUnique();
 
-            modelBuilder.Entity<UserSecurityQuestion>()
-                .HasOne(u => u.user)
-                .WithMany(u => u.securityQuestions)
-                .HasForeignKey(u => u.userId);
+            modelBuilder.Entity<ChartOfAccount>()
+                .Property(a => a.accountInitialBalance)
+                .HasColumnType("decimal(18,2)");
 
-            modelBuilder.Entity<UserSecurityQuestion>()
-                .HasOne(s => s.securityQuestion)
-                .WithMany()
-                .HasForeignKey(s => s.securityQuestionId);
-            
+            modelBuilder.Entity<ChartOfAccount>()
+                .Property(a => a.accountDebit)
+                .HasColumnType("decimal(18,2)");
 
+            modelBuilder.Entity<ChartOfAccount>()
+                .Property(a => a.accountCredit)
+                .HasColumnType("decimal(18,2)");
+
+            modelBuilder.Entity<ChartOfAccount>()
+                .Property(a => a.accountBalance)
+                .HasColumnType("decimal(18,2)");
         }
     }
 }
