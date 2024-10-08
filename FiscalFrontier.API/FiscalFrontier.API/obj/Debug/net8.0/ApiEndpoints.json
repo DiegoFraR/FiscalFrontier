@@ -26,6 +26,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
+    "Method": "GetCreateChartOfAccountById",
+    "RelativePath": "api/ChartOfAccount/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "FiscalFrontier.API.Models.Domain.ChartOfAccount",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FiscalFrontier.API.Controllers.UsersController",
     "Method": "GetUsers",
     "RelativePath": "api/Users",
@@ -159,7 +180,7 @@
   {
     "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
     "Method": "CreateChartOfAccount",
-    "RelativePath": "create/{userId}",
+    "RelativePath": "get/{userId}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
