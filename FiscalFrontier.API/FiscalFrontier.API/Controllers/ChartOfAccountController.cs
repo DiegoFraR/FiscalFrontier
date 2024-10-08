@@ -21,7 +21,7 @@ namespace FiscalFrontier.API.Controllers
 
         //Creates a Chart Of Account 
         [HttpPost]
-        [Route("/get/{userId}")]
+        [Route("/create/{userId}")]
         public async Task<IActionResult> CreateChartOfAccount([FromBody] CreateChartOfAccountDto request, Guid userId)
         {
             var chartOfAccountCreationRequest = new ChartOfAccount
