@@ -68,5 +68,36 @@ namespace FiscalFrontier.API.Controllers
 
             return Ok(securityQuestions);
         }
+
+        [HttpGet]
+        [Route("/userSecurityQuestions/{email}")]
+        public async Task <ActionResult<UserSecurityQuestionDto>> GetUserSecurityQuestions(string email)
+        {
+            var user = await userManager.FindByEmailAsync(email);
+
+            if (user is null)
+            {
+                return NotFound("User Not Found!");
+            }
+            
+            var userId = user.Id;
+
+            var userSecurityQuestions = await authDbContext.UserSecurityQuestions
+                .Where(u => u.userId == userId)
+                .Include(u => u.securityQuestion)
+                .Select(u => new UserSecurityQuestionDto
+                {
+                    securityQuestionChosen = u.securityQuestion.securityQuestion
+                })
+                .ToListAsync();
+
+            if(userSecurityQuestions.Count == 0)
+            {
+                return NotFound("User Security Questions not found. Please contact our support team @ fiscalfrontier4713@gmail.com");
+            }
+
+            return Ok(userSecurityQuestions);
+                
+        }
     }
 }

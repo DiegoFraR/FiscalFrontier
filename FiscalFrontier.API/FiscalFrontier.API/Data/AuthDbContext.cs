@@ -19,6 +19,15 @@ namespace FiscalFrontier.API.Data
         {
             base.OnModelCreating(builder);
 
+            //Seeding Security Questions
+            builder.Entity<SecurityQuestions>().HasData(
+                new SecurityQuestions { securityQuestionId = 1, securityQuestion = "What was the first exam you failed?" },
+                new SecurityQuestions { securityQuestionId = 2, securityQuestion = "What was your Mother/Father's first car brand?" },
+                new SecurityQuestions { securityQuestionId = 3, securityQuestion = "What was the name of your siblings favorite stuffed animal?" },
+                new SecurityQuestions { securityQuestionId = 4, securityQuestion = "In what city was your Grandmother or Grandfather born?" }
+                );
+
+            //Seeding Roles
             var adminRoleId = "18ba9546-05ff-44a7-b1e3-ba79f546f06b";
             var managerRoleId = "ee8190d1-63cd-4c9c-bea4-2d4252de752b";
             var accountantRoleId = "8d6430ec-2c87-4ca9-bc3a-b5025a41d8c9";
@@ -51,7 +60,7 @@ namespace FiscalFrontier.API.Data
             // Seed the Roles
             builder.Entity<IdentityRole>().HasData(roles);
 
-
+            //Seeding 3 Users (One Admin, One Manager, One Accountant)
             // Create Admin User
             var admin = new User()
             {
@@ -158,6 +167,50 @@ namespace FiscalFrontier.API.Data
             builder.Entity<IdentityUserRole<string>>().HasData(adminRoles);
             builder.Entity<IdentityUserRole<string>>().HasData(managerRoles);
             builder.Entity<IdentityUserRole<string>>().HasData(accountantRole);
+
+            builder.Entity<UserSecurityQuestion>().HasData(
+                new UserSecurityQuestion
+                {
+                    userSecurityQuestionId = 1,
+                    userId = admin.Id,
+                    securityQuestionId = 1,
+                    answer = "Accounting 101"
+                },
+                new UserSecurityQuestion
+                {
+                    userSecurityQuestionId = 2,
+                    userId = admin.Id,
+                    securityQuestionId = 2,
+                    answer = "Porsche"
+                },
+                new UserSecurityQuestion
+                {
+                    userSecurityQuestionId = 3,
+                    userId = manager.Id,
+                    securityQuestionId = 3,
+                    answer = "Clifford the Big Red Dog"
+                },
+                new UserSecurityQuestion
+                {
+                    userSecurityQuestionId = 4,
+                    userId = manager.Id,
+                    securityQuestionId = 4,
+                    answer = "Marietta, Georgia"
+                },
+                new UserSecurityQuestion
+                {
+                    userSecurityQuestionId = 5,
+                    userId = accountant.Id,
+                    securityQuestionId = 1,
+                    answer = "Nissan"
+                },
+                new UserSecurityQuestion
+                {
+                    userSecurityQuestionId = 6,
+                    userId = admin.Id,
+                    securityQuestionId = 4,
+                    answer = "Atlanta, Georgia"
+                });
         }
     }
 }

@@ -217,6 +217,17 @@ namespace FiscalFrontier.API.Migrations.AuthDb
                 });
 
             migrationBuilder.InsertData(
+                table: "SecurityQuestions",
+                columns: new[] { "securityQuestionId", "securityQuestion" },
+                values: new object[,]
+                {
+                    {1, "What was the first exam you failed?" },
+                    {2, "What was your Mother/Father's first car brand?" },
+                    {3, "What was the name of your siblings favorite stuffed animal?" },
+                    {4, "In what city was your Grandmother or Grandfather born?" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "address", "createdDate", "dateOfBirth", "firstName", "isActive", "lastName", "passwordExpirationDate" },
                 values: new object[,]
