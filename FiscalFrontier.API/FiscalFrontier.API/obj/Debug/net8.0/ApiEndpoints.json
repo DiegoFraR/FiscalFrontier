@@ -26,6 +26,69 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
+    "Method": "GetChartOfAccounts",
+    "RelativePath": "api/ChartOfAccount",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
+    "Method": "GetAccountById",
+    "RelativePath": "api/ChartOfAccount/{accountId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
+    "Method": "GetAccountChangeHistory",
+    "RelativePath": "api/ChartOfAccount/{accountId}/changes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
+    "Method": "ModifyChartOfAccount",
+    "RelativePath": "api/ChartOfAccount/modify/{accountId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "FiscalFrontier.API.Models.DTO.UpdateChartOfAccountDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FiscalFrontier.API.Controllers.UsersController",
     "Method": "GetUsers",
     "RelativePath": "api/Users",
