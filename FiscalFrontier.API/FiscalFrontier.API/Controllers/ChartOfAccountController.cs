@@ -12,11 +12,9 @@ namespace FiscalFrontier.API.Controllers
     public class ChartOfAccountController : ControllerBase
     {
         private readonly ApplicationDbContext dbContext;
-        private readonly UserManager<User> userManager;
         public ChartOfAccountController(ApplicationDbContext dbContext, UserManager<User> userManager)
         {
             this.dbContext = dbContext;
-            this.userManager = userManager;
         }
 
         //Creates a Chart Of Account 
@@ -52,12 +50,9 @@ namespace FiscalFrontier.API.Controllers
 
         //Creates a Chart Of Account 
         [HttpGet]
-        [Route("{userId}")]
-        [Authorize(Roles = "Accountant,Manager")]
+        [Route("{accountId}")]
         public async Task<IActionResult> GetCreateChartOfAccountById([FromBody] ChartOfAccount request, Guid userId)
         {
-            var id = userId.ToString();
-            var user = await userManager.FindByIdAsync(id);
 
             var chartOfAccountGetRequest = new ChartOfAccount
             {
