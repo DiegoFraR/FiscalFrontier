@@ -15,7 +15,7 @@ namespace FiscalFrontier.API.Models.Domain
         [Required]
         [AccountNumberValidation]
         [StringLength (20)]
-        public required string accountNumber { get; set; }
+        public required int accountNumber { get; set; }
 
         [Required]
         public required string accountDescription { get; set; }
@@ -61,5 +61,8 @@ namespace FiscalFrontier.API.Models.Domain
 
         [Required]
         public string? accountComment { get; set; }
+
+        [Required]
+        public required Boolean accountActive { get; set; } 
     }
 }

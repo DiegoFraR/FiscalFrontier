@@ -11,6 +11,7 @@ namespace FiscalFrontier.API.Data
         }
         public DbSet<UserCreationRequest> UserCreationRequests { get; set; }
         public DbSet<ChartOfAccount> ChartOfAccounts { get; set; }
+        public DbSet<AccountUpdateHistory> AccountUpdatesHistories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
