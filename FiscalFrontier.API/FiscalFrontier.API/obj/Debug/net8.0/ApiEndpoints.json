@@ -27,10 +27,6 @@
   },
   {
     "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
-<<<<<<< HEAD
-    "Method": "GetCreateChartOfAccountById",
-    "RelativePath": "api/ChartOfAccount/{userId}",
-=======
     "Method": "GetChartOfAccounts",
     "RelativePath": "api/ChartOfAccount",
     "HttpMethod": "GET",
@@ -43,21 +39,11 @@
     "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
     "Method": "GetAccountById",
     "RelativePath": "api/ChartOfAccount/{accountId}",
->>>>>>> ea95ad4dbf4fb7773341a6c5b09362ae4ef75c37
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-<<<<<<< HEAD
-        "Name": "request",
-        "Type": "FiscalFrontier.API.Models.Domain.ChartOfAccount",
-        "IsRequired": true
-      },
-      {
-        "Name": "userId",
-        "Type": "System.Guid",
-=======
         "Name": "accountId",
         "Type": "System.Int32",
         "IsRequired": true
@@ -97,7 +83,6 @@
       {
         "Name": "request",
         "Type": "FiscalFrontier.API.Models.DTO.UpdateChartOfAccountDto",
->>>>>>> ea95ad4dbf4fb7773341a6c5b09362ae4ef75c37
         "IsRequired": true
       }
     ],
@@ -237,7 +222,7 @@
   {
     "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
     "Method": "CreateChartOfAccount",
-    "RelativePath": "get/{userId}",
+    "RelativePath": "create/{userId}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,

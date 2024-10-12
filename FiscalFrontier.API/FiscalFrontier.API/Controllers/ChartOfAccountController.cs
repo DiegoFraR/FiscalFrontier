@@ -1,12 +1,7 @@
 ﻿using FiscalFrontier.API.Data;
 using FiscalFrontier.API.Models.Domain;
 using FiscalFrontier.API.Models.DTO;
-<<<<<<< HEAD
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-=======
 using FiscalFrontier.API.Services.Interfaces;
->>>>>>> ea95ad4dbf4fb7773341a6c5b09362ae4ef75c37
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,13 +12,9 @@ namespace FiscalFrontier.API.Controllers
     public class ChartOfAccountController : ControllerBase
     {
         private readonly ApplicationDbContext dbContext;
-<<<<<<< HEAD
-        public ChartOfAccountController(ApplicationDbContext dbContext, UserManager<User> userManager)
-=======
         private readonly IAccountNumberGenerator accountNumberGenerator;
 
-        public ChartOfAccountController(ApplicationDbContext dbContext, IAccountNumberGenerator accountNumberGenerator)
->>>>>>> ea95ad4dbf4fb7773341a6c5b09362ae4ef75c37
+        public ChartOfAccountController(ApplicationDbContext dbContext, IAccountNumberGenerator accountNumberGenerator, ChartOfAccount c)
         {
             this.dbContext = dbContext;
             this.accountNumberGenerator = accountNumberGenerator;
@@ -35,8 +26,8 @@ namespace FiscalFrontier.API.Controllers
         //[Authorize(Roles = "Administrator")]
         public async Task<IActionResult> CreateChartOfAccount([FromBody] CreateChartOfAccountDto request, Guid userId)
         {
-            
-            if(await dbContext.ChartOfAccounts.AnyAsync(a => a.accountName == request.accountName))
+
+            if (await dbContext.ChartOfAccounts.AnyAsync(a => a.accountName == request.accountName))
             {
                 return new BadRequestObjectResult("An account with this name already exists!");
             }
@@ -65,7 +56,7 @@ namespace FiscalFrontier.API.Controllers
 
             await dbContext.SaveChangesAsync();
 
-            return Ok(new { Message = "Created Chart Of Account " + chartOfAccountCreationRequest.accountName});
+            return Ok(new { Message = "Created Chart Of Account " + chartOfAccountCreationRequest.accountName });
         }
 
         //Update a Chart of Account
@@ -78,20 +69,20 @@ namespace FiscalFrontier.API.Controllers
 
             var changes = new List<string>();
 
-            if (chartOfAccount == null) 
+            if (chartOfAccount == null)
             {
                 return NotFound($"Account with ID {accountId} not found.");
 
             }
 
-            if(request.accountName != null && !await dbContext.ChartOfAccounts.AnyAsync(a => a.accountName == request.accountName))
+            if (request.accountName != null && !await dbContext.ChartOfAccounts.AnyAsync(a => a.accountName == request.accountName))
             {
                 changes.Add($"Changed Account Name from {chartOfAccount.accountName} to {request.accountName}.");
                 chartOfAccount.accountName = request.accountName.Trim();
             }
-            
 
-            if (request.accountDescription != null && (request.accountDescription != chartOfAccount.accountDescription)) 
+
+            if (request.accountDescription != null && (request.accountDescription != chartOfAccount.accountDescription))
             {
                 changes.Add($"Changed Account Description from {chartOfAccount.accountDescription} to {request.accountDescription}.");
                 chartOfAccount.accountDescription = request.accountDescription.Trim();
@@ -99,12 +90,46 @@ namespace FiscalFrontier.API.Controllers
 
             if (request.accountCategory != null && (request.accountCategory != chartOfAccount.accountCategory))
             {
+                switch (true)
+                {
+                    // Asset Accounts: Debit Normal, Balance = Debits - Credits > 0
+                    case true when chartOfAccount.accountDebit > chartOfAccount.accountCredit && chartOfAccount.accountBalance > 0:
+                        chartOfAccount.accountCategory = "Asset";
+                        break;
+
+                    // Expense Accounts: Debit Normal, Balance = Debits - Credits > 0
+                    case true when chartOfAccount.accountDebit > chartOfAccount.accountCredit && chartOfAccount.accountBalance > 0:
+                        chartOfAccount.accountCategory = "Expense";
+                        break;
+
+                    // Liability Accounts: Credit Normal, Balance = Credits - Debits > 0
+                    case true when chartOfAccount.accountCredit > chartOfAccount.accountDebit && chartOfAccount.accountBalance > 0:
+                        chartOfAccount.accountCategory = "Liability";
+                        break;
+
+                    // Equity Accounts: Credit Normal, Balance = Credits - Debits > 0
+                    case true when chartOfAccount.accountCredit > chartOfAccount.accountDebit && chartOfAccount.accountBalance > 0:
+                        chartOfAccount.accountCategory = "Equity";
+                        break;
+
+                    // Revenue Accounts: Credit Normal, Balance = Credits - Debits > 0
+                    case true when chartOfAccount.accountCredit > chartOfAccount.accountDebit && chartOfAccount.accountBalance > 0:
+                        chartOfAccount.accountCategory = "Revenue";
+                        break;
+
+                    // Contra-Asset or Unusual Categories: Handle as needed
+                    case true when chartOfAccount.accountBalance < 0:
+                        break;
+
+                    default:
+                        throw new Exception("Unable to determine account category based on provided values.");
+                }
                 var normalSide = chartOfAccount.accountNormalSide;
                 var accountNumber = chartOfAccount.accountNumber;
                 changes.Add($"Changed Account Category from {chartOfAccount.accountCategory} to {request.accountCategory}.");
                 chartOfAccount.accountCategory = request.accountCategory;
                 chartOfAccount.accountNormalSide = setNormalSide(chartOfAccount.accountCategory);
-                if(chartOfAccount.accountNormalSide != normalSide)
+                if (chartOfAccount.accountNormalSide != normalSide)
                 {
                     changes.Add($"Changed Account Normal Side from {normalSide} to {chartOfAccount.accountNormalSide}");
                 }
@@ -113,7 +138,7 @@ namespace FiscalFrontier.API.Controllers
                 changes.Add($"Changed Account Number from {accountNumber} to {chartOfAccount.accountNumber}");
             }
 
-            if((chartOfAccount.accountBalance == 0) && (chartOfAccount.accountActive != request.accountActive))
+            if ((chartOfAccount.accountBalance == 0) && (chartOfAccount.accountActive != request.accountActive))
             {
                 changes.Add($"Changed Account Active Status from {chartOfAccount.accountActive} to {request.accountActive}.");
                 chartOfAccount.accountActive = request.accountActive;
@@ -160,7 +185,7 @@ namespace FiscalFrontier.API.Controllers
         {
             var chartOfAccount = await dbContext.ChartOfAccounts.FindAsync(accountId);
 
-            if (chartOfAccount == null) 
+            if (chartOfAccount == null)
             {
                 return NotFound("Account Not Found!");
             }
@@ -195,7 +220,7 @@ namespace FiscalFrontier.API.Controllers
             var updates = await dbContext.AccountUpdatesHistories
                 .Where(u => u.accountId == accountId)
                 .ToListAsync();
-            if(updates == null)
+            if (updates == null)
             {
                 return NotFound($"No Updates have been made to Account {accountId}");
             }
@@ -215,7 +240,7 @@ namespace FiscalFrontier.API.Controllers
         //Sets the Normal Side based on the Account Category
         private string setNormalSide(string accountCategory)
         {
-            switch(accountCategory)
+            switch (accountCategory)
             {
                 case "Asset":
                     return "Debit";
@@ -232,8 +257,40 @@ namespace FiscalFrontier.API.Controllers
             }
         }
 
+        /*private Task<IActionResult> setAccountCategory(string accountCategory, ChartOfAccount chartOfAccount) 
+        {
+            switch (true)
+            {
+                // Asset Accounts: Debit Normal, Balance = Debits - Credits > 0
+                case true when chartOfAccount.accountDebit > chartOfAccount.accountCredit && chartOfAccount.accountBalance > 0:
+                    return setNormalSide("Asset");
+
+                // Expense Accounts: Debit Normal, Balance = Debits - Credits > 0
+                case true when chartOfAccount.accountDebit > chartOfAccount.accountCredit && chartOfAccount.accountBalance > 0:
+                    return "Expense";
+
+                // Liability Accounts: Credit Normal, Balance = Credits - Debits > 0
+                case true when chartOfAccount.accountCredit > chartOfAccount.accountDebit && chartOfAccount.accountBalance > 0:
+                    return "Liability";
+
+                // Equity Accounts: Credit Normal, Balance = Credits - Debits > 0
+                case true when chartOfAccount.accountCredit > chartOfAccount.accountDebit && chartOfAccount.accountBalance > 0:
+                    return "Equity";
+
+                // Revenue Accounts: Credit Normal, Balance = Credits - Debits > 0
+                case true when chartOfAccount.accountCredit > chartOfAccount.accountDebit && chartOfAccount.accountBalance > 0:
+                    return "Revenue";
+
+                // Contra-Asset or Unusual Categories: Handle as needed
+                case true when chartOfAccount.accountBalance < 0:
+                    return "Contra-Asset or Unusual Category";
+
+                default:
+                    throw new Exception("Unable to determine account category based on provided values.");
+            }
+        }*/
         //Creates a Chart Of Account 
-        [HttpGet]
+        /*[HttpGet]
         [Route("{accountId}")]
         public async Task<IActionResult> GetCreateChartOfAccountById([FromBody] ChartOfAccount request, Guid userId)
         {
@@ -259,6 +316,6 @@ namespace FiscalFrontier.API.Controllers
 
             return Ok(chartOfAccountGetRequest);
 
-        }
+        }*/
     }
 }
