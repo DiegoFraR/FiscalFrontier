@@ -1,18 +1,12 @@
 [
   {
     "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
-    "Method": "ActivateAccount",
-    "RelativePath": "Activate/{accountId}",
-    "HttpMethod": "PUT",
+    "Method": "GetAccountChangeHistories",
+    "RelativePath": "AllChanges",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "accountId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -69,7 +63,7 @@
   },
   {
     "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
-    "Method": "GetAccountChangeHistory",
+    "Method": "GetAccountChangeHistoryById",
     "RelativePath": "api/ChartOfAccount/{accountId}/changes",
     "HttpMethod": "GET",
     "IsController": true,
@@ -85,8 +79,8 @@
   },
   {
     "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
-    "Method": "ModifyChartOfAccount",
-    "RelativePath": "api/ChartOfAccount/modify/{accountId}",
+    "Method": "ActivateAccount",
+    "RelativePath": "api/ChartOfAccount/Activate/{accountId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -95,7 +89,34 @@
         "Name": "accountId",
         "Type": "System.Int32",
         "IsRequired": true
-      },
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
+    "Method": "DeactivateAccount",
+    "RelativePath": "api/ChartOfAccount/DeActivate/{accountId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
+    "Method": "ModifyChartOfAccount",
+    "RelativePath": "api/ChartOfAccount/modify",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
         "Name": "request",
         "Type": "FiscalFrontier.API.Models.DTO.UpdateChartOfAccountDto",
@@ -246,22 +267,6 @@
       {
         "Name": "request",
         "Type": "FiscalFrontier.API.Models.DTO.CreateChartOfAccountDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
-    "Method": "DeactivateAccount",
-    "RelativePath": "DeActivate/{accountId}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "accountId",
-        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

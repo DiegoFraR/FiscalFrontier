@@ -32,19 +32,19 @@ namespace FiscalFrontier.API.Controllers
                 return new BadRequestObjectResult("An account with this name already exists!");
             }
 
+            var normalSide = setNormalSide(request.accountCategory);
+
             var chartOfAccountCreationRequest = new ChartOfAccount
             {
                 accountName = request.accountName,
                 accountNumber = accountNumberGenerator.GenerateAccountNumber(request.accountCategory),
                 accountDescription = request.accountDescription,
                 accountNormalSide = setNormalSide(request.accountCategory),
-
                 accountCategory = request.accountCategory,
-
                 accountSubcategory = request.accountSubcategory,
                 accountInitialBalance = request.accountInitialBalance,
-                accountDebit = request.accountDebit,
-                accountCredit = request.accountCredit,
+                accountDebit = setDebitValue(request.accountDebit, normalSide),
+                accountCredit = setCreditValue(request.accountCredit, normalSide),
                 accountBalance = request.accountInitialBalance,
                 accountDateTimeAdded = DateTime.Now,
                 accountUserId = convertStringIdToGuidId(request.userId),
@@ -63,48 +63,112 @@ namespace FiscalFrontier.API.Controllers
 
         //Update a Chart of Account
         [HttpPut]
-        [Route("modify/{accountId}")]
+        [Route("modify")]
         //[Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> ModifyChartOfAccount(int accountId, [FromBody] UpdateChartOfAccountDto request)
+        public async Task<IActionResult> ModifyChartOfAccount( [FromBody] UpdateChartOfAccountDto request)
         {
-            var chartOfAccount = await dbContext.ChartOfAccounts.FindAsync(accountId);
+            var chartOfAccount = await dbContext.ChartOfAccounts.FindAsync(request.accountId);
 
             var changes = new List<string>();
 
             if (chartOfAccount == null) 
             {
-                return NotFound($"Account with ID {accountId} not found.");
+                return NotFound($"Account with ID {request.accountId} not found.");
 
             }
 
             if(request.accountName != null && !await dbContext.ChartOfAccounts.AnyAsync(a => a.accountName == request.accountName))
             {
-                changes.Add($"Changed Account Name from {chartOfAccount.accountName} to {request.accountName}.");
+                changes.Add($"Changed Account Name from \"{chartOfAccount.accountName}\" to \"{request.accountName}\".");
                 chartOfAccount.accountName = request.accountName.Trim();
+                
             }
             
 
             if (request.accountDescription != null && (request.accountDescription != chartOfAccount.accountDescription)) 
             {
-                changes.Add($"Changed Account Description from {chartOfAccount.accountDescription} to {request.accountDescription}.");
+                changes.Add($"Changed Account Description from \"{chartOfAccount.accountDescription}\" to \"{request.accountDescription}\".");
                 chartOfAccount.accountDescription = request.accountDescription.Trim();
+            }
+
+            if(request.accountOrder != 0 && (request.accountOrder != chartOfAccount.accountOrder)){
+
+                changes.Add($"Changed Account Order from {chartOfAccount.accountOrder} to {request.accountOrder}.");
+                chartOfAccount.accountOrder = request.accountOrder;
             }
 
             if (request.accountCategory != null && (request.accountCategory != chartOfAccount.accountCategory))
             {
-                var normalSide = chartOfAccount.accountNormalSide;
+                //Variables that are changed
                 var accountNumber = chartOfAccount.accountNumber;
-                changes.Add($"Changed Account Category from {chartOfAccount.accountCategory} to {request.accountCategory}.");
+                var accountCategory = chartOfAccount.accountCategory;
+                var normalSide = chartOfAccount.accountNormalSide;
+                var debit = chartOfAccount.accountDebit;
+                var credit = chartOfAccount.accountCredit;
+                var accountBalance = chartOfAccount.accountBalance;
+
+                //Changes
+                chartOfAccount.accountNumber = accountNumberGenerator.GenerateAccountNumber(request.accountCategory);
                 chartOfAccount.accountCategory = request.accountCategory;
-                chartOfAccount.accountNormalSide = setNormalSide(chartOfAccount.accountCategory);
+                chartOfAccount.accountNormalSide = setNormalSide(request.accountCategory);
                 if(chartOfAccount.accountNormalSide != normalSide)
                 {
-                    changes.Add($"Changed Account Normal Side from {normalSide} to {chartOfAccount.accountNormalSide}");
-                }
-                chartOfAccount.accountNumber = accountNumberGenerator.GenerateAccountNumber(request.accountCategory);
+                    chartOfAccount.accountNormalSide = setNormalSide(request.accountCategory);
+                    chartOfAccount.accountCredit = setCreditValue(chartOfAccount.accountCredit ,chartOfAccount.accountNormalSide);
+                    chartOfAccount.accountDebit = setDebitValue(chartOfAccount.accountDebit, chartOfAccount.accountNormalSide);
+                    chartOfAccount.accountBalance = chartOfAccount.accountDebit + chartOfAccount.accountCredit;
 
-                changes.Add($"Changed Account Number from {accountNumber} to {chartOfAccount.accountNumber}");
+                    //Beginning of Logs
+                    changes.Add($"Changed Account Normal Side from \"{normalSide}\" to \"{chartOfAccount.accountNormalSide}\" due to changes in the Account Category.");
+                    changes.Add($"Changed Account Credit from {credit} to {chartOfAccount.accountCredit} due to changes in the Account Category.");
+                    changes.Add($"Changed Account Debit from {debit} to {chartOfAccount.accountDebit} due to changes in the Account Category.");
+                    changes.Add($"Changed Account Balance from {accountBalance} to {chartOfAccount.accountBalance} due to changes in the Account Category.");
+                }
+
+                //Logs
+                changes.Add($"Changed Account Number from {accountNumber} to {chartOfAccount.accountNumber}.");
+                changes.Add($"Changed Account Category from \"{chartOfAccount.accountCategory}\" to \"{request.accountCategory}\".");
             }
+
+            if (request.accountStatement != null && request.accountStatement != chartOfAccount.accountStatement) 
+            {
+                changes.Add($"Changed Account Statement from \"{chartOfAccount.accountStatement}\" to \"{request.accountStatement}\".");
+                chartOfAccount.accountStatement = request.accountStatement;
+            }
+
+            if (request.accountDebit != 0)
+            {
+                switch(chartOfAccount.accountNormalSide)
+                {
+                    case "Debit":
+                        chartOfAccount.accountDebit += request.accountDebit;
+                        break;
+                    case "Credit": 
+                        chartOfAccount.accountDebit -= request.accountDebit;
+                        break;
+                }
+
+                chartOfAccount.accountBalance += chartOfAccount.accountDebit;
+                changes.Add($"Added {request.accountDebit} to the Debit of {chartOfAccount.accountName} resulting in a Debit total of {chartOfAccount.accountDebit} & a Total Account Balance of {chartOfAccount.accountBalance}.");
+
+            }
+
+            if (request.accountCredit != 0)
+            {
+                switch (chartOfAccount.accountNormalSide)
+                {
+                    case "Debit":
+                        chartOfAccount.accountCredit -= request.accountCredit;
+                        break;
+                    case "Credit":
+                        chartOfAccount.accountCredit += request.accountCredit;
+                        break;
+                }
+                chartOfAccount.accountBalance += chartOfAccount.accountCredit;
+                changes.Add($"Added {request.accountCredit} to the Credit of {chartOfAccount.accountName} resulting in a Credit total of {chartOfAccount.accountCredit} & a Total Account Balance of {chartOfAccount.accountBalance}.");
+            }
+
+            
 
             if (changes.Count > 0)
             {
@@ -118,6 +182,7 @@ namespace FiscalFrontier.API.Controllers
                 dbContext.AccountUpdatesHistories.Add(updateHistory);
             }
 
+            await dbContext.SaveChangesAsync();
 
             return Ok(new { Message = "Account has been updated!" });
         }
@@ -177,7 +242,7 @@ namespace FiscalFrontier.API.Controllers
 
         [HttpGet]
         [Route("{accountId}/changes")]
-        public async Task<IActionResult> GetAccountChangeHistory(int accountId)
+        public async Task<IActionResult> GetAccountChangeHistoryById(int accountId)
         {
             var updates = await dbContext.AccountUpdatesHistories
                 .Where(u => u.accountId == accountId)
@@ -189,6 +254,8 @@ namespace FiscalFrontier.API.Controllers
 
             var updatesDTO = updates.Select(u => new AccountUpdateHistoryDTO
             {
+                accountUpdateHistoryId = u.accountUpdateHistoryId,
+                accountId = u.accountId,
                 changes = u.changes,
                 updateDate = u.updateDate
             });
@@ -196,8 +263,24 @@ namespace FiscalFrontier.API.Controllers
             return Ok(updatesDTO);
         }
 
+        [HttpGet]
+        [Route("/AllChanges")]
+        public async Task<IActionResult> GetAccountChangeHistories()
+        {
+            var updates = await dbContext.AccountUpdatesHistories.ToListAsync();
+
+            var updatesDTO = updates.Select(u => new AccountUpdateHistoryDTO
+            {
+                accountUpdateHistoryId=u.accountUpdateHistoryId,
+                accountId= u.accountId,
+                changes = u.changes,
+                updateDate = u.updateDate
+            });
+            return Ok(updatesDTO);
+        }
+
         [HttpPut]
-        [Route("/DeActivate/{accountId}")]
+        [Route("/api/ChartOfAccount/DeActivate/{accountId}")]
         public async Task<IActionResult> DeactivateAccount(int accountId)
         {
             var chartOfAccount = await dbContext.ChartOfAccounts.FindAsync(accountId);
@@ -218,7 +301,7 @@ namespace FiscalFrontier.API.Controllers
         }
 
         [HttpPut]
-        [Route("/Activate/{accountId}")]
+        [Route("/api/ChartOfAccount/Activate/{accountId}")]
         public async Task<IActionResult> ActivateAccount(int accountId)
         {
             var chartOfAccount = await dbContext.ChartOfAccounts.FindAsync(accountId);
@@ -254,6 +337,33 @@ namespace FiscalFrontier.API.Controllers
                     return "Credit";
                 default:
                     throw new Exception("Account Category Invalid!");
+            }
+        }
+
+        private decimal setDebitValue(decimal value, string accountNormalSide)
+        {
+            switch (accountNormalSide)
+            {
+                case "Debit": 
+                    return Math.Abs(value);
+                case "Credit":
+                    return value < 0 ? value : -value;
+                default:
+                    throw new Exception("Invalid Account Normal Side");
+
+            }
+        }
+
+        private decimal setCreditValue(decimal value, string accountNormalSide)
+        {
+            switch (accountNormalSide)
+            {
+                case "Credit":
+                    return Math.Abs(value);
+                case "Debit":
+                    return value < 0 ? value : -value;
+                default:
+                    throw new Exception("Invalid Account Normal Side");
             }
         }
 
