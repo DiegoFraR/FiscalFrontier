@@ -49,6 +49,7 @@ namespace FiscalFrontier.API.Controllers
                     {
                         email = request.email,
                         username = identityUser.UserName,
+                        userId = identityUser.Id,
                         roles = roles.ToList(),
                         token = jwtToken
                     };
