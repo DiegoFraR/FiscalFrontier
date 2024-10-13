@@ -90,40 +90,16 @@ namespace FiscalFrontier.API.Controllers
 
             if (request.accountCategory != null && (request.accountCategory != chartOfAccount.accountCategory))
             {
-                switch (true)
-                {
-                    // Asset Accounts: Debit Normal, Balance = Debits - Credits > 0
-                    case true when chartOfAccount.accountDebit > chartOfAccount.accountCredit && chartOfAccount.accountBalance > 0:
-                        chartOfAccount.accountCategory = "Asset";
-                        break;
 
-                    // Expense Accounts: Debit Normal, Balance = Debits - Credits > 0
-                    case true when chartOfAccount.accountDebit > chartOfAccount.accountCredit && chartOfAccount.accountBalance > 0:
-                        chartOfAccount.accountCategory = "Expense";
-                        break;
+                //Change Values
+                var accountCredit = chartOfAccount.accountCredit;
+                var accountDebit = chartOfAccount.accountDebit;
 
-                    // Liability Accounts: Credit Normal, Balance = Credits - Debits > 0
-                    case true when chartOfAccount.accountCredit > chartOfAccount.accountDebit && chartOfAccount.accountBalance > 0:
-                        chartOfAccount.accountCategory = "Liability";
-                        break;
+                //modify changes
+                chartOfAccount.accountDebit = setDebitValue(chartOfAccount.accountDebit, chartOfAccount.accountNormalSide);
+                chartOfAccount.accountCredit = setCreditValue(chartOfAccount.accountCredit, chartOfAccount.accountNormalSide);
+                //Log info
 
-                    // Equity Accounts: Credit Normal, Balance = Credits - Debits > 0
-                    case true when chartOfAccount.accountCredit > chartOfAccount.accountDebit && chartOfAccount.accountBalance > 0:
-                        chartOfAccount.accountCategory = "Equity";
-                        break;
-
-                    // Revenue Accounts: Credit Normal, Balance = Credits - Debits > 0
-                    case true when chartOfAccount.accountCredit > chartOfAccount.accountDebit && chartOfAccount.accountBalance > 0:
-                        chartOfAccount.accountCategory = "Revenue";
-                        break;
-
-                    // Contra-Asset or Unusual Categories: Handle as needed
-                    case true when chartOfAccount.accountBalance < 0:
-                        break;
-
-                    default:
-                        throw new Exception("Unable to determine account category based on provided values.");
-                }
                 var normalSide = chartOfAccount.accountNormalSide;
                 var accountNumber = chartOfAccount.accountNumber;
                 changes.Add($"Changed Account Category from {chartOfAccount.accountCategory} to {request.accountCategory}.");
@@ -257,6 +233,31 @@ namespace FiscalFrontier.API.Controllers
             }
         }
 
+        private decimal setDebitValue(decimal value, string accountNormalSide)
+        {
+            switch (accountNormalSide)
+            {
+                case "Debit":
+                    return Math.Abs(value);
+                case "Credit":
+                    return value < 0 ? value : -value;
+                default:
+                    throw new Exception("Invalid Account Normal Side");
+            }
+        }
+
+        private decimal setCreditValue(decimal value, string accountNormalSide)
+        {
+            switch (accountNormalSide)
+            {
+                case "Credit":
+                    return Math.Abs(value);
+                case "Debit":
+                    return value < 0 ? value : -value;
+                default:
+                    throw new Exception("Invalid Account Normal Side");
+            }
+        }
         /*private Task<IActionResult> setAccountCategory(string accountCategory, ChartOfAccount chartOfAccount) 
         {
             switch (true)
