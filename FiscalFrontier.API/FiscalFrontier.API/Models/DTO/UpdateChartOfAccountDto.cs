@@ -7,6 +7,7 @@
         public string? accountCategory { get; set; }
         public string? accountSubcategory { get; set; }
         public string? accountComment { get; set; }
-        public Boolean accountActive { get; set; }
+        public decimal accountCredit { get; set; }
+        public decimal accountDebit { get; set; }
     }
 }

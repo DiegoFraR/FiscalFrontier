@@ -2,6 +2,8 @@ using FiscalFrontier.API.Data;
 using FiscalFrontier.API.Models.Domain;
 using FiscalFrontier.API.Repositories.Implementation;
 using FiscalFrontier.API.Repositories.Interface;
+using FiscalFrontier.API.Services.Implementation;
+using FiscalFrontier.API.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -30,6 +32,7 @@ builder.Services.AddDbContext<AuthDbContext>(options =>
 });
 
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
+builder.Services.AddScoped<IAccountNumberGenerator, AccountNumberGenerator>();
 
 builder.Services.AddIdentityCore<User>()
     .AddRoles<IdentityRole>()

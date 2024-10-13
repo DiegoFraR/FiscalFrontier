@@ -40,5 +40,8 @@ namespace FiscalFrontier.API.Models.DTO
 
         [Required]
         public string? accountComment { get; set; }
+
+        public string? userId { get; set; }
     }
+
 }

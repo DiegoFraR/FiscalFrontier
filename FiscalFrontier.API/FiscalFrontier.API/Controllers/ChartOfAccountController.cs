@@ -22,9 +22,9 @@ namespace FiscalFrontier.API.Controllers
 
         //Creates a Chart Of Account 
         [HttpPost]
-        [Route("/create/{userId}")]
+        [Route("/create")]
         //[Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> CreateChartOfAccount([FromBody] CreateChartOfAccountDto request, Guid userId)
+        public async Task<IActionResult> CreateChartOfAccount([FromBody] CreateChartOfAccountDto request)
         {
             
             if(await dbContext.ChartOfAccounts.AnyAsync(a => a.accountName == request.accountName))
@@ -38,14 +38,16 @@ namespace FiscalFrontier.API.Controllers
                 accountNumber = accountNumberGenerator.GenerateAccountNumber(request.accountCategory),
                 accountDescription = request.accountDescription,
                 accountNormalSide = setNormalSide(request.accountCategory),
+
                 accountCategory = request.accountCategory,
+
                 accountSubcategory = request.accountSubcategory,
                 accountInitialBalance = request.accountInitialBalance,
                 accountDebit = request.accountDebit,
                 accountCredit = request.accountCredit,
-                accountBalance = request.accountInitialBalance - request.accountDebit - request.accountCredit,
+                accountBalance = request.accountInitialBalance,
                 accountDateTimeAdded = DateTime.Now,
-                accountUserId = userId,
+                accountUserId = convertStringIdToGuidId(request.userId),
                 accountOrder = request.accountOrder,
                 accountStatement = request.accountStatement,
                 accountComment = request.accountComment,
@@ -104,12 +106,6 @@ namespace FiscalFrontier.API.Controllers
                 changes.Add($"Changed Account Number from {accountNumber} to {chartOfAccount.accountNumber}");
             }
 
-            if((chartOfAccount.accountBalance == 0) && (chartOfAccount.accountActive != request.accountActive))
-            {
-                changes.Add($"Changed Account Active Status from {chartOfAccount.accountActive} to {request.accountActive}.");
-                chartOfAccount.accountActive = request.accountActive;
-            }
-
             if (changes.Count > 0)
             {
                 var updateHistory = new AccountUpdateHistory
@@ -142,7 +138,7 @@ namespace FiscalFrontier.API.Controllers
                 accountActive = account.accountActive
             }).ToList();
 
-            return Ok(chartOfAccountDtos);
+            return Ok(chartOfAccounts);
         }
 
         [HttpGet]
@@ -200,6 +196,44 @@ namespace FiscalFrontier.API.Controllers
             return Ok(updatesDTO);
         }
 
+        [HttpPut]
+        [Route("/DeActivate/{accountId}")]
+        public async Task<IActionResult> DeactivateAccount(int accountId)
+        {
+            var chartOfAccount = await dbContext.ChartOfAccounts.FindAsync(accountId);
+
+            if (chartOfAccount == null) 
+            {
+                return NotFound("Account Not Found!");
+            }
+
+            if(chartOfAccount.accountBalance == 0)
+            {
+                chartOfAccount.accountActive = false;
+                await dbContext.SaveChangesAsync();
+                return Ok(new { message = "Account was DeActivated!" });
+            }
+
+            return BadRequest("Account Balance must be 0 to DeActivate an Account!");
+        }
+
+        [HttpPut]
+        [Route("/Activate/{accountId}")]
+        public async Task<IActionResult> ActivateAccount(int accountId)
+        {
+            var chartOfAccount = await dbContext.ChartOfAccounts.FindAsync(accountId);
+
+            if (chartOfAccount == null)
+            {
+                return NotFound("Account Not Found!");
+            }
+
+            chartOfAccount.accountActive = true;
+            await dbContext.SaveChangesAsync();
+            return Ok(new { message = "Account is Active!" });
+        }
+
+
 
         //Helper Methods
 
@@ -221,6 +255,11 @@ namespace FiscalFrontier.API.Controllers
                 default:
                     throw new Exception("Account Category Invalid!");
             }
+        }
+
+        private Guid convertStringIdToGuidId(string userId)
+        {
+            return Guid.Parse(userId);
         }
     }
 }

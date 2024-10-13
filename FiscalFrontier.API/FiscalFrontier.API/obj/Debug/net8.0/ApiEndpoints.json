@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
+    "Method": "ActivateAccount",
+    "RelativePath": "Activate/{accountId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FiscalFrontier.API.Controllers.AuthController",
     "Method": "GetSecurityQuestions",
     "RelativePath": "api/Auth",
@@ -222,7 +238,7 @@
   {
     "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
     "Method": "CreateChartOfAccount",
-    "RelativePath": "create/{userId}",
+    "RelativePath": "create",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -231,10 +247,21 @@
         "Name": "request",
         "Type": "FiscalFrontier.API.Models.DTO.CreateChartOfAccountDto",
         "IsRequired": true
-      },
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
+    "Method": "DeactivateAccount",
+    "RelativePath": "DeActivate/{accountId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
-        "Name": "userId",
-        "Type": "System.Guid",
+        "Name": "accountId",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
