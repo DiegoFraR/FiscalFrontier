@@ -246,6 +246,19 @@ namespace FiscalFrontier.API.Controllers
         {
             var updates = await dbContext.AccountUpdatesHistories
                 .Where(u => u.accountId == accountId)
+                .Select(u => new
+                {
+                    u.accountUpdateHistoryId,
+                    u.changes,
+                    u.updateDate,
+                    AccountDetails = dbContext.ChartOfAccounts
+                    .Where(c => c.accountId == accountId)
+                    .Select(c => new
+                    {
+                        c.accountName,
+                        c.accountNumber,
+                    }).FirstOrDefault()
+                })
                 .ToListAsync();
             if(updates == null)
             {
@@ -255,8 +268,9 @@ namespace FiscalFrontier.API.Controllers
             var updatesDTO = updates.Select(u => new AccountUpdateHistoryDTO
             {
                 accountUpdateHistoryId = u.accountUpdateHistoryId,
-                accountId = u.accountId,
                 changes = u.changes,
+                accountName = u.AccountDetails.accountName,
+                accountNumber = u.AccountDetails.accountNumber,
                 updateDate = u.updateDate
             });
 
@@ -267,12 +281,28 @@ namespace FiscalFrontier.API.Controllers
         [Route("/AllChanges")]
         public async Task<IActionResult> GetAccountChangeHistories()
         {
-            var updates = await dbContext.AccountUpdatesHistories.ToListAsync();
+
+            var updates = await dbContext.AccountUpdatesHistories
+                .Join(
+                    dbContext.ChartOfAccounts,
+                    accountUpdate => accountUpdate.accountId,
+                    chartOfAccount => chartOfAccount.accountId,
+                    (accountUpdate, chartOfAccount) => new
+                    {
+                        accountUpdate.accountUpdateHistoryId,
+                        accountName = chartOfAccount.accountName,
+                        accountNumber = chartOfAccount.accountNumber,
+                        accountUpdate.changes,
+                        accountUpdate.updateDate
+                    }
+                )
+                .ToListAsync();
 
             var updatesDTO = updates.Select(u => new AccountUpdateHistoryDTO
             {
-                accountUpdateHistoryId=u.accountUpdateHistoryId,
-                accountId= u.accountId,
+                accountUpdateHistoryId = u.accountUpdateHistoryId,
+                accountName = u.accountName,
+                accountNumber = u.accountNumber,
                 changes = u.changes,
                 updateDate = u.updateDate
             });

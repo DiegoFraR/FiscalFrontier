@@ -48,7 +48,7 @@
               "RelativeDocumentMoniker": "FiscalFrontier.API\\Models\\DTO\\AccountUpdateHistoryDTO.cs",
               "ToolTip": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Models\\DTO\\AccountUpdateHistoryDTO.cs",
               "RelativeToolTip": "FiscalFrontier.API\\Models\\DTO\\AccountUpdateHistoryDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-13T06:01:08.697Z",
               "EditorCaption": ""
@@ -63,8 +63,7 @@
               "RelativeToolTip": "FiscalFrontier.API\\Models\\DTO\\UserDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-13T06:01:06.014Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-13T06:01:06.014Z"
             },
             {
               "$type": "Document",
@@ -76,8 +75,7 @@
               "RelativeToolTip": "FiscalFrontier.API\\Migrations\\20241010223903_AddedAccountUpdateHistoryObject.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-13T05:47:37.732Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-13T05:47:37.732Z"
             },
             {
               "$type": "Document",
@@ -89,8 +87,7 @@
               "RelativeToolTip": "FiscalFrontier.API\\Models\\Domain\\AccountUpdateHistory.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-13T05:47:34.072Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-13T05:47:34.072Z"
             },
             {
               "$type": "Document",
@@ -100,7 +97,7 @@
               "RelativeDocumentMoniker": "FiscalFrontier.API\\Controllers\\ChartOfAccountController.cs",
               "ToolTip": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\Controllers\\ChartOfAccountController.cs",
               "RelativeToolTip": "FiscalFrontier.API\\Controllers\\ChartOfAccountController.cs",
-              "ViewState": "AgIAAOwAAAAAAAAAAAAwwBYBAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAO8AAAAAAAAAAADwvxABAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-13T02:02:26.181Z",
               "EditorCaption": ""
@@ -115,8 +112,7 @@
               "RelativeToolTip": "FiscalFrontier.API\\Models\\DTO\\UpdateChartOfAccountDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-13T01:37:52.08Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-13T01:37:52.08Z"
             }
           ]
         }
