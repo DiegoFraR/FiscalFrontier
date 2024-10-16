@@ -37,7 +37,7 @@ namespace FiscalFrontier.API.Controllers
             var chartOfAccountCreationRequest = new ChartOfAccount
             {
                 accountName = request.accountName,
-                accountNumber = accountNumberGenerator.GenerateAccountNumber(request.accountCategory),
+                accountNumber = await accountNumberGenerator.GenerateAccountNumber(request.accountCategory),
                 accountDescription = request.accountDescription,
                 accountNormalSide = setNormalSide(request.accountCategory),
                 accountCategory = request.accountCategory,
@@ -108,7 +108,7 @@ namespace FiscalFrontier.API.Controllers
                 var accountBalance = chartOfAccount.accountBalance;
 
                 //Changes
-                chartOfAccount.accountNumber = accountNumberGenerator.GenerateAccountNumber(request.accountCategory);
+                chartOfAccount.accountNumber = await accountNumberGenerator.GenerateAccountNumber(request.accountCategory);
                 chartOfAccount.accountCategory = request.accountCategory;
                 chartOfAccount.accountNormalSide = setNormalSide(request.accountCategory);
                 if(chartOfAccount.accountNormalSide != normalSide)

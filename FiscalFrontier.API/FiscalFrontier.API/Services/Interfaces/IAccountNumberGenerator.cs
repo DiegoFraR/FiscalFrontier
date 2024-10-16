@@ -3,6 +3,6 @@
     public interface IAccountNumberGenerator
     {
 
-        int GenerateAccountNumber(string accountCategory);
+        Task<int> GenerateAccountNumber(string accountCategory);
     }
 }
