@@ -29,7 +29,7 @@ namespace FiscalFrontier.API.Controllers
             
             if(await dbContext.ChartOfAccounts.AnyAsync(a => a.accountName == request.accountName))
             {
-                return new BadRequestObjectResult("An account with this name already exists!");
+                return BadRequest("An account with this name already exists!");
             }
 
             var normalSide = setNormalSide(request.accountCategory);
@@ -59,6 +59,7 @@ namespace FiscalFrontier.API.Controllers
             await dbContext.SaveChangesAsync();
 
             return Ok(new { Message = "Created Chart Of Account " + chartOfAccountCreationRequest.accountName});
+
         }
 
         //Update a Chart of Account
