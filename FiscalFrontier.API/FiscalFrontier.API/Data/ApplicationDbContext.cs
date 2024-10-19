@@ -13,6 +13,7 @@ namespace FiscalFrontier.API.Data
         public DbSet<ChartOfAccount> ChartOfAccounts { get; set; }
         public DbSet<AccountUpdateHistory> AccountUpdatesHistories { get; set; }
         public DbSet<AccountNumbers> AccountNumbers { get; set; }
+        public DbSet<FileRecord> FileRecords { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

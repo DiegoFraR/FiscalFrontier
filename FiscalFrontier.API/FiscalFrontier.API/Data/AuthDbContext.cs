@@ -62,21 +62,79 @@ namespace FiscalFrontier.API.Data
 
             //Seeding 3 Users (One Admin, One Manager, One Accountant)
             // Create Admin User
-            var admin = new User()
+            //Admin Users (Group Members)
+
+            //Diego
+            var diegoAdmin = new User()
             {
-                //Custom User Items
                 Id = Guid.NewGuid().ToString(),
-                UserName = "AAccount0924",
-                Email = "adminAccount@gmail.com",
-                NormalizedEmail = "adminAccount@gmail.com".ToUpper(),
-                firstName = "Admin",
-                lastName = "SAccount",
+                UserName = "DFrausto1024",
+                Email = "dfraust4@students.kennesaw.edu",
+                NormalizedEmail = "dfraust4@students.kennesaw.edu".ToUpper(),
+                firstName = "Diego",
+                lastName = "Frausto",
                 address = "1100 South Marietta Pkwy SE, Marietta, GA 30060",
                 createdDate = DateTime.UtcNow,
-                dateOfBirth = new DateTime(2003, 8, 30),
+                dateOfBirth = new DateTime(2003, 08, 30),
                 passwordExpirationDate = DateTime.UtcNow.AddMonths(3),
-                isActive = true,
+                isActive = true
             };
+
+            diegoAdmin.PasswordHash = new PasswordHasher<User>().HashPassword(diegoAdmin, "Diego@123");
+
+            //Chris 
+            var chrisAdmin = new User()
+            {
+                Id = Guid.NewGuid().ToString(),
+                UserName = "CKirkwood1024",
+                Email = "ckirkwoo@students.kennesaw.edu",
+                NormalizedEmail = "ckirkwoo@students.kennesaw.edu".ToUpper(),
+                firstName = "Chris",
+                lastName = "Kirkwood",
+                address = "1100 South Marietta Pkwy SE, Marietta, GA 30060",
+                createdDate = DateTime.UtcNow,
+                dateOfBirth = new DateTime(2002, 04, 24),
+                passwordExpirationDate = DateTime.UtcNow.AddMonths(3),
+                isActive = true
+            };
+
+            chrisAdmin.PasswordHash = new PasswordHasher<User>().HashPassword(chrisAdmin, "Chris@123");
+
+            //Riley
+            var rileyAdmin = new User()
+            {
+                Id = Guid.NewGuid().ToString(),
+                UserName = "RPowell1024",
+                Email = "rpowel57@students.kennesaw.edu",
+                NormalizedEmail = "rpowel57@students.kennesaw.edu".ToUpper(),
+                firstName = "Riley",
+                lastName = "Powell",
+                address = "1100 South Marietta Pkwy SE, Marietta, GA 30060",
+                createdDate = DateTime.UtcNow,
+                dateOfBirth = new DateTime(2002, 07, 21),
+                passwordExpirationDate = DateTime.UtcNow.AddMonths(3),
+                isActive = true
+            };
+
+            rileyAdmin.PasswordHash = new PasswordHasher<User>().HashPassword(rileyAdmin, "Riley@123");
+
+            //Hong
+            var hongAdmin = new User()
+            {
+                Id = Guid.NewGuid().ToString(),
+                UserName = "HNguyen1024",
+                Email = "hnguy126@students.kennesaw.edu",
+                NormalizedEmail = "hnguy126@students.kennesaw.edu".ToUpper(),
+                firstName = "Hong",
+                lastName = "Nguyen",
+                address = "1100 South Marietta Pkwy SE, Marietta, GA 30060",
+                createdDate = DateTime.UtcNow,
+                dateOfBirth = new DateTime(2003, 01, 30),
+                passwordExpirationDate = DateTime.UtcNow.AddMonths(3),
+                isActive = true
+            };
+
+            hongAdmin.PasswordHash = new PasswordHasher<User>().HashPassword(hongAdmin, "Hong@123");
 
             //Create Manager User
             var manager = new User()
@@ -110,30 +168,81 @@ namespace FiscalFrontier.API.Data
                 isActive = true,
             };
 
-            admin.PasswordHash = new PasswordHasher<User>().HashPassword(admin, "Admin@123");
             manager.PasswordHash = new PasswordHasher<User>().HashPassword(manager, "Manager@123");
             accountant.PasswordHash = new PasswordHasher<User>().HashPassword(accountant, "Accountant@123");
 
-            builder.Entity<User>().HasData(admin);
+            builder.Entity<User>().HasData(diegoAdmin);
+            builder.Entity<User>().HasData(chrisAdmin);
+            builder.Entity<User>().HasData(rileyAdmin);
+            builder.Entity<User>().HasData(hongAdmin);
             builder.Entity<User>().HasData(manager);
             builder.Entity<User>().HasData(accountant);
 
-            // Give Roles To Admin
+            // Give Roles To Admins
             var adminRoles = new List<IdentityUserRole<string>>()
             {
+                //Diego's Roles
                 new()
                 {
-                    UserId = admin.Id,
+                    UserId = diegoAdmin.Id,
                     RoleId = adminRoleId
                 },
                 new()
                 {
-                    UserId = admin.Id,
+                    UserId = diegoAdmin.Id,
                     RoleId = managerRoleId
                 },
                 new()
                 {
-                    UserId = admin.Id,
+                    UserId = diegoAdmin.Id,
+                    RoleId = accountantRoleId
+                },
+                //Chris's Roles
+                new()
+                {
+                    UserId = chrisAdmin.Id,
+                    RoleId = adminRoleId
+                },
+                new()
+                {
+                    UserId = chrisAdmin.Id,
+                    RoleId = managerRoleId
+                },
+                new()
+                {
+                    UserId = chrisAdmin.Id,
+                    RoleId = accountantRoleId
+                },
+                //Riley's Roles
+                new()
+                {
+                    UserId = rileyAdmin.Id,
+                    RoleId = adminRoleId
+                },
+                new()
+                {
+                    UserId = rileyAdmin.Id,
+                    RoleId = managerRoleId
+                },
+                new()
+                {
+                    UserId = rileyAdmin.Id,
+                    RoleId = accountantRoleId
+                },
+                //Hong's Roles
+                new()
+                {
+                    UserId = hongAdmin.Id,
+                    RoleId = adminRoleId
+                },
+                new()
+                {
+                    UserId = hongAdmin.Id,
+                    RoleId = managerRoleId
+                },
+                new()
+                {
+                    UserId = hongAdmin.Id,
                     RoleId = accountantRoleId
                 }
             };
@@ -169,45 +278,93 @@ namespace FiscalFrontier.API.Data
             builder.Entity<IdentityUserRole<string>>().HasData(accountantRole);
 
             builder.Entity<UserSecurityQuestion>().HasData(
+                //Diego's Security Questions
                 new UserSecurityQuestion
                 {
                     userSecurityQuestionId = 1,
-                    userId = admin.Id,
+                    userId = diegoAdmin.Id,
                     securityQuestionId = 1,
                     answer = "Accounting 101"
                 },
                 new UserSecurityQuestion
                 {
                     userSecurityQuestionId = 2,
-                    userId = admin.Id,
+                    userId = diegoAdmin.Id,
                     securityQuestionId = 2,
                     answer = "Porsche"
                 },
+                //Chris's Security Questions
                 new UserSecurityQuestion
                 {
                     userSecurityQuestionId = 3,
+                    userId = chrisAdmin.Id,
+                    securityQuestionId = 1,
+                    answer = "Accounting 101"
+                },
+                new UserSecurityQuestion
+                {
+                    userSecurityQuestionId = 4,
+                    userId = chrisAdmin.Id,
+                    securityQuestionId = 2,
+                    answer = "Porsche"
+                },
+                //Riley's Security Questions
+                new UserSecurityQuestion
+                {
+                    userSecurityQuestionId = 5,
+                    userId = rileyAdmin.Id,
+                    securityQuestionId = 1,
+                    answer = "Accounting 101"
+                },
+                new UserSecurityQuestion
+                {
+                    userSecurityQuestionId = 6,
+                    userId = rileyAdmin.Id,
+                    securityQuestionId = 2,
+                    answer = "Porsche"
+                },
+                //Hong's Security Questions
+                new UserSecurityQuestion
+                {
+                    userSecurityQuestionId = 7,
+                    userId = hongAdmin.Id,
+                    securityQuestionId = 1,
+                    answer = "Accounting 101"
+                },
+                new UserSecurityQuestion
+                {
+                    userSecurityQuestionId = 8,
+                    userId = hongAdmin.Id,
+                    securityQuestionId = 2,
+                    answer = "Porsche"
+                },
+                //Manager Account Security Questions
+                new UserSecurityQuestion
+                {
+                    userSecurityQuestionId = 9,
                     userId = manager.Id,
                     securityQuestionId = 3,
                     answer = "Clifford the Big Red Dog"
                 },
                 new UserSecurityQuestion
                 {
-                    userSecurityQuestionId = 4,
+                    userSecurityQuestionId = 10,
                     userId = manager.Id,
                     securityQuestionId = 4,
                     answer = "Marietta, Georgia"
                 },
+                //Accountant Account Security Questions
                 new UserSecurityQuestion
                 {
-                    userSecurityQuestionId = 5,
+                    userSecurityQuestionId = 11,
                     userId = accountant.Id,
                     securityQuestionId = 1,
                     answer = "Nissan"
                 },
                 new UserSecurityQuestion
                 {
-                    userSecurityQuestionId = 6,
-                    userId = admin.Id,
+                    userSecurityQuestionId = 12,
+                    userId = accountant.Id,
                     securityQuestionId = 4,
                     answer = "Atlanta, Georgia"
                 });
