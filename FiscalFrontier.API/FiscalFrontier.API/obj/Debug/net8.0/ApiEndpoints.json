@@ -126,6 +126,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FiscalFrontier.API.Controllers.EmailController",
+    "Method": "SendEmailAsync",
+    "RelativePath": "api/Email",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subject",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "message",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "emailRecepient",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FiscalFrontier.API.Controllers.FileController",
     "Method": "UploadFile",
     "RelativePath": "api/File/upload",
