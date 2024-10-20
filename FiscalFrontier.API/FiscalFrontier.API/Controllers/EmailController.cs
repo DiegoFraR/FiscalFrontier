@@ -1,4 +1,5 @@
-﻿using FiscalFrontier.API.Models.Domain;
+﻿using FiscalFrontier.API.Data;
+using FiscalFrontier.API.Models.Domain;
 using FiscalFrontier.API.Models.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -20,23 +21,37 @@ namespace FiscalFrontier.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SendEmailAsync(string subject, string message, string emailRecepient)
+        public async Task<IActionResult> SendEmailToGivenRole(string subject, string message, string role)
         {
-            var userTo = await userManager.FindByEmailAsync(emailRecepient);
 
-            if (userTo == null) 
+            if(role != "Manager" && role != "Accountant")
             {
-                ModelState.AddModelError("userEmail", $"User associated with {emailRecepient} not found!");
-                return BadRequest(ModelState);  
+                return BadRequest("Invalid Role Specified!");
             }
 
-            try
+
+            var users = userManager.Users.ToList();
+
+            var roleEmails = new List<string>();
+
+
+            foreach (var user in users) 
             {
-                var sendGridKey = "";
-                var client = new SendGridClient(sendGridKey);
+                var roles = await userManager.GetRolesAsync(user);
+                if(roles.Contains(role) && !roles.Contains("Administrator"))
+                {
+                    roleEmails.Add(user.Email);
+                }
+            }
+
+            foreach (var email in roleEmails)
+            {
+                var sendGridApiKey = "";
+                var client = new SendGridClient(sendGridApiKey);
                 var from = new EmailAddress("fiscalfrontier4713@gmail.com", "Fiscal Frontier");
-                var to = new EmailAddress(userTo.Email, userTo.firstName + " " + userTo.lastName);
-                var msg = MailHelper.CreateSingleEmail(from, to, subject, message, null);
+                var to = new EmailAddress(email);
+                var msg = MailHelper.CreateSingleEmail(from, to, subject, message, message);
+
                 var response = await client.SendEmailAsync(msg);
 
                 if (!response.IsSuccessStatusCode) 
@@ -45,13 +60,9 @@ namespace FiscalFrontier.API.Controllers
                     ModelState.AddModelError("sendGrid", $"Failed to send email: {responseBody}");
                     return BadRequest(ModelState);
                 }
-
-                return Ok(new { message = "Email sent successfully." });
-            } catch (Exception ex) 
-            { 
-                ModelState.AddModelError("ex", $"{ex.Message}");
-                return BadRequest(ModelState);
             }
+
+            return Ok(new { message = "Emails sent successfully." });
         }
     }
 }

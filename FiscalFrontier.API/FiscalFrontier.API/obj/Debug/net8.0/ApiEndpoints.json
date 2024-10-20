@@ -127,7 +127,7 @@
   },
   {
     "ContainingType": "FiscalFrontier.API.Controllers.EmailController",
-    "Method": "SendEmailAsync",
+    "Method": "SendEmailToGivenRole",
     "RelativePath": "api/Email",
     "HttpMethod": "POST",
     "IsController": true,
@@ -144,7 +144,7 @@
         "IsRequired": false
       },
       {
-        "Name": "emailRecepient",
+        "Name": "role",
         "Type": "System.String",
         "IsRequired": false
       }
