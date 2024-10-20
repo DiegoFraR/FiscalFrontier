@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FiscalFrontier.API.Models.Domain
 {
@@ -18,5 +19,9 @@ namespace FiscalFrontier.API.Models.Domain
 
         [Required]
         public string? FileUrl { get; set; }
+
+        // Navigation property back to the JournalEntry
+        [ForeignKey("JournalEntryId")]
+        public virtual JournalEntry JournalEntry { get; set; }
     }
 }
