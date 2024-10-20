@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FiscalFrontier.API.Models.Domain
 {
@@ -25,6 +26,13 @@ namespace FiscalFrontier.API.Models.Domain
         public string JournalEntryStatus { get; set; } = "Pending";
 
         public string? JournalEntryRejectionReasoning {  get; set; }
+
+        [Required]
+        public int ChartOfAccountId { get; set; }
+
+        [ForeignKey("ChartOfAccountId")]
+        public virtual ChartOfAccount Account { get; set; }
+
 
         //Credit & Debit
         public virtual ICollection<Debit> Debits { get; set; } = new List<Debit>();
