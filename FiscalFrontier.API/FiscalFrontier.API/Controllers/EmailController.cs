@@ -21,24 +21,16 @@ namespace FiscalFrontier.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SendEmailToGivenRole(string subject, string message, string role)
+        public async Task<IActionResult> SendEmailToGivenRole(SendEmailDto sendEmailDto)
         {
-
-            if(role != "Manager" && role != "Accountant")
-            {
-                return BadRequest("Invalid Role Specified!");
-            }
-
-
             var users = userManager.Users.ToList();
 
             var roleEmails = new List<string>();
 
-
             foreach (var user in users) 
             {
                 var roles = await userManager.GetRolesAsync(user);
-                if(roles.Contains(role) && !roles.Contains("Administrator"))
+                if(roles.Contains(sendEmailDto.Role))
                 {
                     roleEmails.Add(user.Email);
                 }
@@ -50,7 +42,7 @@ namespace FiscalFrontier.API.Controllers
                 var client = new SendGridClient(sendGridApiKey);
                 var from = new EmailAddress("fiscalfrontier4713@gmail.com", "Fiscal Frontier");
                 var to = new EmailAddress(email);
-                var msg = MailHelper.CreateSingleEmail(from, to, subject, message, message);
+                var msg = MailHelper.CreateSingleEmail(from, to, sendEmailDto.Subject, sendEmailDto.Message, sendEmailDto.Message);
 
                 var response = await client.SendEmailAsync(msg);
 

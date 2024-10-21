@@ -134,19 +134,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "subject",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "message",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "role",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "sendEmailDto",
+        "Type": "FiscalFrontier.API.Models.DTO.SendEmailDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
