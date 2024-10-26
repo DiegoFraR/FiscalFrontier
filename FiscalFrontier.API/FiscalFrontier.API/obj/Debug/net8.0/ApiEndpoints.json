@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "FiscalFrontier.API.Controllers.JournalEntryController",
+    "Method": "GetJournalEntryByJournalId",
+    "RelativePath": "{accountId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
     "Method": "GetAccountChangeHistories",
     "RelativePath": "AllChanges",
@@ -304,6 +320,38 @@
       {
         "Name": "request",
         "Type": "FiscalFrontier.API.Models.DTO.CreateChartOfAccountDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.JournalEntryController",
+    "Method": "CreateJournalEntry",
+    "RelativePath": "create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "FiscalFrontier.API.Models.DTO.CreateJournalEntryDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.JournalEntryController",
+    "Method": "ModifyJournalEntry",
+    "RelativePath": "modify",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "FiscalFrontier.API.Models.DTO.UpdateJournalEntryDTO",
         "IsRequired": true
       }
     ],
