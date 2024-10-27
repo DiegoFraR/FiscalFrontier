@@ -1,37 +1,5 @@
 [
   {
-    "ContainingType": "FiscalFrontier.API.Controllers.RandomController",
-    "Method": "GetJournalEntriesByAccountId",
-    "RelativePath": "{accountId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "accountId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FiscalFrontier.API.Controllers.RandomController",
-    "Method": "GetJournaEntryById",
-    "RelativePath": "account/{journalEntryId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "journalEntryId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
     "Method": "GetAccountChangeHistories",
     "RelativePath": "AllChanges",
@@ -175,6 +143,22 @@
   },
   {
     "ContainingType": "FiscalFrontier.API.Controllers.FileController",
+    "Method": "GetFilesByJournalEntryId",
+    "RelativePath": "api/File/{journalEntryId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "journalEntryId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.FileController",
     "Method": "UploadFile",
     "RelativePath": "api/File/upload",
     "HttpMethod": "POST",
@@ -182,12 +166,12 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "file",
+        "Name": "File",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
       },
       {
-        "Name": "journalEntryId",
+        "Name": "JournalEntryId",
         "Type": "System.Int32",
         "IsRequired": false
       }
@@ -195,9 +179,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FiscalFrontier.API.Controllers.RandomController",
+    "ContainingType": "FiscalFrontier.API.Controllers.JournalEntryController",
     "Method": "CreateJournalEntry",
-    "RelativePath": "api/Random",
+    "RelativePath": "api/JournalEntry",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -211,9 +195,83 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FiscalFrontier.API.Controllers.RandomController",
+    "ContainingType": "FiscalFrontier.API.Controllers.JournalEntryController",
     "Method": "GetAllJournalEntriesInSystem",
-    "RelativePath": "api/Random",
+    "RelativePath": "api/JournalEntry",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.JournalEntryController",
+    "Method": "GetJournalEntriesByAccountId",
+    "RelativePath": "api/JournalEntry/{accountId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.JournalEntryController",
+    "Method": "GetJournaEntryById",
+    "RelativePath": "api/JournalEntry/account/{journalEntryId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "journalEntryId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.JournalEntryController",
+    "Method": "ApproveJournalEntryRequest",
+    "RelativePath": "api/JournalEntry/approve",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "FiscalFrontier.API.Models.DTO.ApproveJournalEntryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.JournalEntryController",
+    "Method": "DenyJournalEntryRequest",
+    "RelativePath": "api/JournalEntry/deny",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "FiscalFrontier.API.Models.DTO.DenyJournalEntryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.JournalEntryController",
+    "Method": "GetAllJournalEntriesPendingApproval",
+    "RelativePath": "api/JournalEntry/pending",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -352,22 +410,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FiscalFrontier.API.Controllers.RandomController",
-    "Method": "ApproveJournalEntryRequest",
-    "RelativePath": "approve",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "journalEntryId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
     "Method": "CreateChartOfAccount",
     "RelativePath": "create",
@@ -381,32 +423,6 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FiscalFrontier.API.Controllers.RandomController",
-    "Method": "DenyJournalEntryRequest",
-    "RelativePath": "deny",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "FiscalFrontier.API.Models.DTO.DenyJournalEntryDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FiscalFrontier.API.Controllers.RandomController",
-    "Method": "GetAllJournalEntriesPendingApproval",
-    "RelativePath": "pending",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": []
   },
   {

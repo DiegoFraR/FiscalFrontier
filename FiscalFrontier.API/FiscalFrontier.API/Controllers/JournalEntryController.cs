@@ -136,7 +136,7 @@ namespace FiscalFrontier.API.Controllers
         //Modify Existing Entities (HTTP Put Calls)
 
         [HttpPut]
-        [Route("/approve")]
+        [Route("approve")]
         public async Task<IActionResult> ApproveJournalEntryRequest(ApproveJournalEntryDto request)
         {
             var journalEntry = await dbContext.JournalEntries.FindAsync(request.journalEntryId);
@@ -183,7 +183,7 @@ namespace FiscalFrontier.API.Controllers
         }
 
         [HttpPut]
-        [Route("/deny")]
+        [Route("deny")]
         public async Task<IActionResult> DenyJournalEntryRequest(DenyJournalEntryDto request)
         {
             var journalEntry = await dbContext.JournalEntries.FindAsync(request.journalEntryId);
@@ -215,7 +215,7 @@ namespace FiscalFrontier.API.Controllers
         //Get HTTP Calls
 
         [HttpGet]
-        [Route("/pending")]
+        [Route("pending")]
         public async Task<IActionResult> GetAllJournalEntriesPendingApproval()
         {
             var journalEntries = await dbContext.JournalEntries.
@@ -236,7 +236,7 @@ namespace FiscalFrontier.API.Controllers
         }
 
         [HttpGet]
-        [Route("/account/{journalEntryId}")]
+        [Route("account/{journalEntryId}")]
         public async Task<IActionResult> GetJournaEntryById(int journalEntryId)
         {
             var journalEntry = await dbContext.JournalEntries.FindAsync(journalEntryId);
@@ -251,7 +251,7 @@ namespace FiscalFrontier.API.Controllers
         }
 
         [HttpGet]
-        [Route("/{accountId}")]
+        [Route("{accountId}")]
         public async Task<IActionResult> GetJournalEntriesByAccountId(int accountId)
         {
             var journalEntries = await dbContext.JournalEntries

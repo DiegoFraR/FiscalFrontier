@@ -1,7 +1,9 @@
 ﻿using FiscalFrontier.API.Data;
 using FiscalFrontier.API.Models.Domain;
+using FiscalFrontier.API.Models.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FiscalFrontier.API.Controllers
 {
@@ -21,20 +23,20 @@ namespace FiscalFrontier.API.Controllers
         }
 
         [HttpPost("upload")]
-        public async Task<IActionResult> UploadFile(IFormFile file, int journalEntryId)
+        public async Task<IActionResult> UploadFile(UploadFileDto uploadRequest)
         {
-            validateFileUpload(file);
+            validateFileUpload(uploadRequest.File);
 
             if (ModelState.IsValid) 
             {
                 var fileRecord = new FileRecord
                 {
-                    FileName = Path.GetFileNameWithoutExtension(file.FileName).Trim(),
-                    FileExtension = Path.GetExtension(file.FileName).ToLower(),
-                    JournalEntryId = journalEntryId
+                    FileName = Path.GetFileNameWithoutExtension(uploadRequest.File.FileName).Trim(),
+                    FileExtension = Path.GetExtension(uploadRequest.File.FileName).ToLower(),
+                    JournalEntryId = uploadRequest.JournalEntryId
                 };
 
-                fileRecord = await SaveFile(file, fileRecord);
+                fileRecord = await SaveFile(uploadRequest.File, fileRecord);
 
                 await dbContext.SaveChangesAsync();
 
@@ -42,6 +44,22 @@ namespace FiscalFrontier.API.Controllers
             }
 
             return BadRequest(ModelState);
+        }
+
+        [HttpGet("{journalEntryId}")]
+        public async Task<IActionResult> GetFilesByJournalEntryId(int journalEntryId)
+        {
+            var files = await dbContext.FileRecords
+                .Where(fr => fr.JournalEntryId == journalEntryId)
+                .ToListAsync();
+
+            if(files == null || !files.Any())
+            {
+                ModelState.AddModelError("NoFiles", "No Files are associated with this Journal Entry");
+                return BadRequest(ModelState);
+            }
+
+            return Ok(files);
         }
 
 
