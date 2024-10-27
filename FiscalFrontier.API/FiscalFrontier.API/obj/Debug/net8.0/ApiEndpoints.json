@@ -1,5 +1,37 @@
 [
   {
+    "ContainingType": "FiscalFrontier.API.Controllers.RandomController",
+    "Method": "GetJournalEntriesByAccountId",
+    "RelativePath": "{accountId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.RandomController",
+    "Method": "GetJournaEntryById",
+    "RelativePath": "account/{journalEntryId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "journalEntryId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
     "Method": "GetAccountChangeHistories",
     "RelativePath": "AllChanges",
@@ -163,6 +195,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FiscalFrontier.API.Controllers.RandomController",
+    "Method": "CreateJournalEntry",
+    "RelativePath": "api/Random",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "FiscalFrontier.API.Models.DTO.CreateJournalEntryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.RandomController",
+    "Method": "GetAllJournalEntriesInSystem",
+    "RelativePath": "api/Random",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FiscalFrontier.API.Controllers.UsersController",
     "Method": "GetUsers",
     "RelativePath": "api/Users",
@@ -294,6 +352,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FiscalFrontier.API.Controllers.RandomController",
+    "Method": "ApproveJournalEntryRequest",
+    "RelativePath": "approve",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "journalEntryId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FiscalFrontier.API.Controllers.ChartOfAccountController",
     "Method": "CreateChartOfAccount",
     "RelativePath": "create",
@@ -307,6 +381,32 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.RandomController",
+    "Method": "DenyJournalEntryRequest",
+    "RelativePath": "deny",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "FiscalFrontier.API.Models.DTO.DenyJournalEntryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.RandomController",
+    "Method": "GetAllJournalEntriesPendingApproval",
+    "RelativePath": "pending",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

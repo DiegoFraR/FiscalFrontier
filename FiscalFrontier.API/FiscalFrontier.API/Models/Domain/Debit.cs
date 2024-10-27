@@ -9,18 +9,18 @@ namespace FiscalFrontier.API.Models.Domain
         public int DebitId { get; set; }
 
         [Required]
-        public int ChartOfAccountId { get; set; }
+        public required int ChartOfAccountId { get; set; }
 
         [Required]
         [Range(0, double.MaxValue)]
-        public decimal DebitAmount { get; set; }
+        public required decimal DebitAmount { get; set; }
 
         [ForeignKey("ChartOfAccountId")]
         public virtual ChartOfAccount Account { get; set; }
 
         //Foreign Keys
         [Required]
-        public int JournalEntryId { get; set; }
+        public required int JournalEntryId { get; set; }
 
         [ForeignKey("JournalEntryId")]
         public virtual JournalEntry JournalEntry { get; set; }
