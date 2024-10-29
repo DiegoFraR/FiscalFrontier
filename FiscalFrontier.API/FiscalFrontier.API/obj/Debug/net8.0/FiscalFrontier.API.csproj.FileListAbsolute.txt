@@ -437,3 +437,8 @@ C:\Users\dfrau\OneDrive\Documents\GitHub\FiscalFrontier\FiscalFrontier.API\Fisca
 C:\Users\dfrau\OneDrive\Documents\GitHub\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\obj\Debug\net8.0\FiscalFrontier.API.pdb
 C:\Users\dfrau\OneDrive\Documents\GitHub\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\obj\Debug\net8.0\FiscalFrontier.API.genruntimeconfig.cache
 C:\Users\dfrau\OneDrive\Documents\GitHub\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\obj\Debug\net8.0\ref\FiscalFrontier.API.dll
+C:\Users\Rpowe\Documents\GitHub\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Rpowe\Documents\GitHub\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\bin\Debug\net8.0\Microsoft.Bcl.TimeProvider.dll
+C:\Users\Rpowe\Documents\GitHub\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Rpowe\Documents\GitHub\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\bin\Debug\net8.0\SendGrid.dll
+C:\Users\Rpowe\Documents\GitHub\FiscalFrontier\FiscalFrontier.API\FiscalFrontier.API\bin\Debug\net8.0\StarkbankEcdsa.dll

@@ -14,11 +14,12 @@ namespace FiscalFrontier.API.Controllers
     {
         private readonly ApplicationDbContext dbContext;
         private readonly UserManager<User> userManager;
-
+        
         public JournalEntryController(ApplicationDbContext dbContext, UserManager<User> userManager)
         {
             this.dbContext = dbContext;
             this.userManager = userManager;
+           
         }
 
         //Create HTTP Calls
@@ -98,7 +99,8 @@ namespace FiscalFrontier.API.Controllers
 
             await dbContext.SaveChangesAsync();
 
-            return Ok();
+         
+            return Ok(journalEntry.JournalEntryId);
         }
         //Creates Respective Credit Entries
         [HttpPost]
@@ -213,20 +215,18 @@ namespace FiscalFrontier.API.Controllers
 
 
         //Get HTTP Calls
-
+       
         [HttpGet]
         [Route("pending")]
-        public async Task<IActionResult> GetAllJournalEntriesPendingApproval()
+        public async Task<ActionResult<IEnumerable<JournalEntry>>> GetAllJournalEntriesPendingApproval()
+
         {
             var journalEntries = await dbContext.JournalEntries.
                 Where(j => j.JournalEntryStatus == "Pending")
-                .Include(j => j.Account)
-                .Include(j => j.Debits)
-                .Include(j => j.Credits)
-                .Include(j => j.Files)
+               
                 .ToListAsync();
 
-            if (journalEntries.Count == 0)
+            if (!journalEntries.Any())
             {
                 ModelState.AddModelError("NoPendingApproval", "There are no journal entries pending approval!");
                 return BadRequest(ModelState);
@@ -297,7 +297,7 @@ namespace FiscalFrontier.API.Controllers
                 chartOfAccount.accountDebit -= debitValue;
             }
 
-            chartOfAccount.accountBalance = chartOfAccount.accountDebit + chartOfAccount.accountCredit;
+            chartOfAccount.accountBalance = chartOfAccount.accountDebit + chartOfAccount.accountCredit + chartOfAccount.accountInitialBalance;
 
             return Ok();
         }
@@ -323,7 +323,7 @@ namespace FiscalFrontier.API.Controllers
                 chartOfAccount.accountCredit -= creditValue;
             }
 
-            chartOfAccount.accountBalance = chartOfAccount.accountDebit + chartOfAccount.accountCredit;
+            chartOfAccount.accountBalance = chartOfAccount.accountDebit + chartOfAccount.accountCredit + chartOfAccount.accountInitialBalance;
 
             return Ok();
         }

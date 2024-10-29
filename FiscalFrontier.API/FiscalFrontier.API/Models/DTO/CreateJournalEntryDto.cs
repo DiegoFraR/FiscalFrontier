@@ -17,6 +17,6 @@ namespace FiscalFrontier.API.Models.DTO
         public required int ChartOfAccountId { get; set; }
         public required List<decimal> CreditValues { get; set; }
         public required List<decimal> DebitValues { get; set; }
-
+       
     }
 }
