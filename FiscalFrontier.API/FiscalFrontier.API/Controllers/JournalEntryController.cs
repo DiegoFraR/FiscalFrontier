@@ -1,7 +1,6 @@
 ﻿using FiscalFrontier.API.Data;
 using FiscalFrontier.API.Models.Domain;
 using FiscalFrontier.API.Models.DTO;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,12 +13,12 @@ namespace FiscalFrontier.API.Controllers
     {
         private readonly ApplicationDbContext dbContext;
         private readonly UserManager<User> userManager;
-        
+
         public JournalEntryController(ApplicationDbContext dbContext, UserManager<User> userManager)
         {
             this.dbContext = dbContext;
             this.userManager = userManager;
-           
+
         }
 
         //Create HTTP Calls
@@ -99,7 +98,7 @@ namespace FiscalFrontier.API.Controllers
 
             await dbContext.SaveChangesAsync();
 
-         
+
             return Ok(journalEntry.JournalEntryId);
         }
         //Creates Respective Credit Entries
@@ -206,16 +205,8 @@ namespace FiscalFrontier.API.Controllers
         }
 
 
-        /*
-         * 
-         * Need to add a method here to modify journal entries before they are approved
-         * 
-         * 
-         */
-
-
         //Get HTTP Calls
-       
+
         [HttpGet]
         [Route("pending")]
         public async Task<ActionResult<IEnumerable<JournalEntry>>> GetAllJournalEntriesPendingApproval()
@@ -223,7 +214,7 @@ namespace FiscalFrontier.API.Controllers
         {
             var journalEntries = await dbContext.JournalEntries.
                 Where(j => j.JournalEntryStatus == "Pending")
-               
+
                 .ToListAsync();
 
             if (!journalEntries.Any())
@@ -239,7 +230,13 @@ namespace FiscalFrontier.API.Controllers
         [Route("account/{journalEntryId}")]
         public async Task<IActionResult> GetJournaEntryById(int journalEntryId)
         {
-            var journalEntry = await dbContext.JournalEntries.FindAsync(journalEntryId);
+            var journalEntry = await dbContext.JournalEntries
+                .Include(j => j.Credits)
+                .Include(j => j.Debits)
+                .Include(j => j.Account)
+                .Include(j => j.Files)
+                .FirstOrDefaultAsync(j => j.JournalEntryId == journalEntryId);
+
 
             if (journalEntry == null)
             {
@@ -247,35 +244,141 @@ namespace FiscalFrontier.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            return Ok(journalEntry);
+            var userIds = new List<string> { journalEntry.CreatedBy };
+            if (!string.IsNullOrEmpty(journalEntry.UpdatedBy))
+            {
+                userIds.Add(journalEntry.UpdatedBy);
+            }
+
+            var users = await userManager.Users
+                .Where(u => userIds.Contains(u.Id))
+                .ToListAsync();
+
+            var userDictionary = users.ToDictionary(u => u.Id, u => u.UserName);
+
+            var detailedJournalEntryDto = new DetailedJournalEntryDto
+            {
+                JournalEntryId = journalEntry.JournalEntryId,
+                JournalEntryType = journalEntry.JournalEntryType,
+                JournalEntryDescription = journalEntry.JournalEntryDescription,
+                CreatedBy = userDictionary.GetValueOrDefault(journalEntry.CreatedBy) ?? "Unknown User",
+                UpdatedBy = userDictionary.GetValueOrDefault(journalEntry.UpdatedBy) ?? "No Updates",
+                JournalEntryPostReference = journalEntry.JournalEntryPostReference,
+                JournalEntryStatus = journalEntry.JournalEntryStatus,
+                JournalEntryRejectionReasoning = journalEntry.JournalEntryRejectionReasoning ?? "No Rejection Reason",
+                ChartOfAccountId = journalEntry.ChartOfAccountId,
+                CreditValues = journalEntry.Credits.Select(c => c.CreditAmount).ToArray(),
+                DebitValues = journalEntry.Debits.Select(d => d.DebitAmount).ToArray(),
+                FileUrl = journalEntry.Files?.FirstOrDefault()?.FileUrl ?? "No File Associated with Journal Entry",
+                FileName = journalEntry.Files?.FirstOrDefault()?.FileName,
+                CreatedOn = journalEntry.JournalEntryCreated,
+                UpdatedOn = journalEntry.JournalEntryUpdated,
+            };
+
+            return Ok(detailedJournalEntryDto);
         }
 
         [HttpGet]
         [Route("{accountId}")]
-        public async Task<IActionResult> GetJournalEntriesByAccountId(int accountId)
+        public async Task<ActionResult<IEnumerable<BroadDetailJournalEntryDto>>> GetJournalEntriesByAccountId(int accountId)
         {
-            var journalEntries = await dbContext.JournalEntries
-                .Where(j => j.ChartOfAccountId == accountId && j.JournalEntryStatus == "Approved")
-                .ToListAsync();
-
-            if (journalEntries.Count == 0)
+            try
             {
-                ModelState.AddModelError("EntryNotFound", "This account does not contain any approved Journal Entries.");
-                return BadRequest(ModelState);
-            }
+                var journalEntries = await dbContext.JournalEntries
+                    .Where(j => j.ChartOfAccountId == accountId && j.JournalEntryStatus == "Approved")
+                    .Include(j => j.Credits)
+                    .Include(j => j.Debits)
+                    .Include(j => j.Account)
+                    .Include(j => j.Files)
+                    .ToListAsync();
 
-            return Ok(journalEntries);
+                if (!journalEntries.Any())
+                {
+                    ModelState.AddModelError("NoJournalEntries", $"No Journal Entries for {accountId}");
+                    return NotFound(ModelState);
+                }
+
+                var userIds = journalEntries
+                    .Select(j => j.CreatedBy)
+                    .Distinct()
+                    .ToList();
+
+                var users = await userManager.Users
+                    .Where(u => userIds.Contains(u.Id))
+                    .ToListAsync();
+
+                var userDictionary = users.ToDictionary(u => u.Id, u => u.UserName);
+
+                var journalEntryDtos = journalEntries.Select(j => new BroadDetailJournalEntryDto
+                {
+                    JournalEntryId = j.JournalEntryId,
+                    JournalEntryDescription = j.JournalEntryDescription,
+                    JournalEntryType = j.JournalEntryType,
+                    CreatedBy = userDictionary?.GetValueOrDefault(j.CreatedBy) ?? "Unknown User",
+                    CreditTotal = j.Credits.Sum(c => c.CreditAmount),
+                    DebitTotal = j.Debits.Sum(d => d.DebitAmount),
+                    ChartOfAccountId = j.ChartOfAccountId,
+                    ChartOfAccountName = j.Account.accountName,
+                    FileLink = j.Files?.FirstOrDefault()?.FileUrl ?? "No File associated with this Journal Entry",
+                    CreatedOn = j.JournalEntryCreated,
+                    UpdatedOn = j.JournalEntryUpdated
+                }).ToList();
+
+                return Ok(journalEntryDtos);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error Occured: {ex.Message}");
+            }
         }
 
-        //Must get Credit and Debit Values associated with entry. 
         [HttpGet]
         public async Task<IActionResult> GetAllJournalEntriesInSystem()
         {
-            var journalEntries = await dbContext.JournalEntries.ToListAsync();
+            try
+            {
+                var journalEntries = await dbContext.JournalEntries
+                .Include(j => j.Credits)
+                .Include(j => j.Debits)
+                .Include(j => j.Account)
+                .Include(j => j.Files)
+                .ToListAsync();
 
-            return Ok(journalEntries);
+                var userIds = journalEntries
+                    .Select(j => j.CreatedBy)
+                    .Distinct()
+                    .ToList();
+
+                var users = await userManager.Users
+                    .Where(u => userIds.Contains(u.Id))
+                    .ToListAsync();
+
+                var userDictionary = users.ToDictionary(u => u.Id, u => u.UserName);
+
+                var journalEntryDtos = journalEntries.Select(j => new BroadDetailJournalEntryDto
+                {
+                    JournalEntryId = j.JournalEntryId,
+                    JournalEntryDescription = j.JournalEntryDescription,
+                    JournalEntryType = j.JournalEntryType,
+                    CreatedBy = userDictionary.GetValueOrDefault(j.CreatedBy) ?? "Unknown User",
+                    CreditTotal = j.Credits.Sum(c => c.CreditAmount),
+                    DebitTotal = j.Debits.Sum(d => d.DebitAmount),
+                    ChartOfAccountId = j.ChartOfAccountId,
+                    ChartOfAccountName = j.Account.accountName,
+                    FileLink = j.Files?.FirstOrDefault()?.FileUrl,
+                    CreatedOn = j.JournalEntryCreated,
+                    UpdatedOn = j.JournalEntryUpdated
+                }).ToList();
+
+                return Ok(journalEntryDtos);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error Occured: {ex.Message}");
+            }
+
         }
-
         //Adds the values of debits from the journal entry to the chartOfAccount Debit Value.
         [HttpPost]
         private async Task<IActionResult> sumDebitValuestoChartOfAccount(decimal debitValue, int chartOfAccountId)
@@ -308,7 +411,7 @@ namespace FiscalFrontier.API.Controllers
         {
             var chartOfAccount = await dbContext.ChartOfAccounts.FindAsync(chartOfAccountId);
 
-            if(chartOfAccount == null)
+            if (chartOfAccount == null)
             {
                 ModelState.AddModelError("ChartOfAccount", "Chart Of Account doesn't exist!");
                 return BadRequest(ModelState);
