@@ -20,7 +20,7 @@ namespace FiscalFrontier.API.Controllers
         private readonly UserManager<User> userManager;
         private readonly IConfiguration configuration;
 
-        public UsersController(ApplicationDbContext dbContext, AuthDbContext authDbContext, UserManager<User> userManager, IConfiguration configuration) 
+        public UsersController(ApplicationDbContext dbContext, AuthDbContext authDbContext, UserManager<User> userManager, IConfiguration configuration)
         {
             this.dbContext = dbContext;
             this.authDbContext = authDbContext;
@@ -68,7 +68,7 @@ namespace FiscalFrontier.API.Controllers
                 return NotFound("Request For Registration Not Found!");
             }
 
-            
+
 
             var generatedUserName = generateUserName(request.firstName, request.lastName);
             //Create Identity User Object
@@ -86,7 +86,7 @@ namespace FiscalFrontier.API.Controllers
                 passwordExpirationDate = DateTime.Now.AddMonths(3),
             };
 
-            
+
 
             //Create User
             var identityResult = await userManager.CreateAsync(user, request.password);
@@ -112,7 +112,7 @@ namespace FiscalFrontier.API.Controllers
                     //sendUserEmailVerification(user.firstName, user.lastName, user.Email, true);
 
                     return Ok(userDto);
-                    
+
                 }
                 else
                 {
@@ -163,7 +163,7 @@ namespace FiscalFrontier.API.Controllers
                 return NotFound("User Request Not Found.");
             }
 
-            
+
             //sendUserEmailVerification(request.firstName, request.lastName,request.email, false);
             dbContext.UserCreationRequests.Remove(request);
             await dbContext.SaveChangesAsync();
@@ -205,7 +205,7 @@ namespace FiscalFrontier.API.Controllers
         //GET: {apibaseurl}/api/users/{id}
         [HttpGet]
         [Route("{id}")]
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
         public async Task<IActionResult> GetUserById(string id)
         {
             var user = await userManager.FindByIdAsync(id);
@@ -264,8 +264,8 @@ namespace FiscalFrontier.API.Controllers
             var result = await userManager.DeleteAsync(user);
 
             var userSecurityQuestions = await authDbContext.UserSecurityQuestions.FindAsync(id);
-            
-            if(userSecurityQuestions is not null)
+
+            if (userSecurityQuestions is not null)
             {
                 authDbContext.UserSecurityQuestions.RemoveRange(userSecurityQuestions);
                 await authDbContext.SaveChangesAsync();
@@ -291,7 +291,7 @@ namespace FiscalFrontier.API.Controllers
             return username;
         }
 
-        
+
         private async Task<IActionResult> CreateUserSecurityQuestions(IdentityUser user, UserCreationRequest request)
         {
             var userSecurityQuestions = new List<UserSecurityQuestion>
@@ -319,7 +319,7 @@ namespace FiscalFrontier.API.Controllers
             {
                 return StatusCode(500, ex.Message);
             }
-            
+
             return NoContent();
         }
 

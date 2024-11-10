@@ -17,6 +17,7 @@ namespace FiscalFrontier.API.Data
         public DbSet<JournalEntry> JournalEntries { get; set; }
         public DbSet<Debit> Debits { get; set; }
         public DbSet<Credit> Credits { get; set; }
+        public DbSet<ErrorMessages> ErrorMessages { get; set; }
 
 
 
