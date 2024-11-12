@@ -43,7 +43,7 @@ namespace FiscalFrontier.API.Migrations
                     { "You must enter a reason for rejecting the journal entry. Please provide a comment", "Journal Entries" },
                     { "The total debits must equal the total credits. Please correct the amounts and try again.", "Validation" },
                     { "Unable to generate financial statement. Please check the date range and try again.", "Financial Reporting" },
-                    { "Unable to attach source document. Please check the file format and size.", "Document Management" }
+                    { "Unable to attach source document. Please check the file format and size.", "Document Management" },
                 }
                 );
         }

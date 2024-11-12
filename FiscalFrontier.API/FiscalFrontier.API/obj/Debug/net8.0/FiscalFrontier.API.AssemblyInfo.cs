@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FiscalFrontier.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d3f820cb82cf164aa90dd979fc9fcf2d1be63fdd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+85940bb3f60dd0c4c0fd75f46073c4145ca514e7")]
 [assembly: System.Reflection.AssemblyProductAttribute("FiscalFrontier.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FiscalFrontier.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

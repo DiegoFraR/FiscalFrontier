@@ -299,6 +299,126 @@
     ]
   },
   {
+    "ContainingType": "FiscalFrontier.API.Controllers.Sprint4",
+    "Method": "GetBalanceSheet",
+    "RelativePath": "api/Sprint4/balance-sheet",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "FiscalFrontier.API.Models.DTO.BalanceSheetDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.Sprint4",
+    "Method": "ExportBalanceSheetToExcel",
+    "RelativePath": "api/Sprint4/export/balance-sheet/excel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.Sprint4",
+    "Method": "ExportIncomeStatementToExcel",
+    "RelativePath": "api/Sprint4/export/income-statement/excel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.Sprint4",
+    "Method": "ExportRetainedEarningsStatementToExcel",
+    "RelativePath": "api/Sprint4/export/retained-earnings/excel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.Sprint4",
+    "Method": "ExportTrialBalanceToExcel",
+    "RelativePath": "api/Sprint4/export/trial-balance/excel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.Sprint4",
+    "Method": "GetIncomeStatement",
+    "RelativePath": "api/Sprint4/income-statement",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "FiscalFrontier.API.Models.DTO.IncomeStatementDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.Sprint4",
+    "Method": "GetRetainedEarningsStatement",
+    "RelativePath": "api/Sprint4/retained-earnings",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "FiscalFrontier.API.Models.DTO.RetainedEarningsDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.Sprint4",
+    "Method": "GetTrialBalance",
+    "RelativePath": "api/Sprint4/trial-balance",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[FiscalFrontier.API.Models.DTO.TrialBalance, FiscalFrontier.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "FiscalFrontier.API.Controllers.UsersController",
     "Method": "GetUsers",
     "RelativePath": "api/Users",

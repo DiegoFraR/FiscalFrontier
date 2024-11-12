@@ -26,8 +26,8 @@ namespace FiscalFrontier.API.Controllers
         //[Authorize(Roles = "Administrator")]
         public async Task<IActionResult> CreateChartOfAccount([FromBody] CreateChartOfAccountDto request)
         {
-            
-            if(await dbContext.ChartOfAccounts.AnyAsync(a => a.accountName == request.accountName))
+
+            if (await dbContext.ChartOfAccounts.AnyAsync(a => a.accountName == request.accountName))
             {
                 return BadRequest("An account with this name already exists!");
             }
@@ -58,7 +58,7 @@ namespace FiscalFrontier.API.Controllers
 
             await dbContext.SaveChangesAsync();
 
-            return Ok(new { Message = "Created Chart Of Account " + chartOfAccountCreationRequest.accountName});
+            return Ok(new { Message = "Created Chart Of Account " + chartOfAccountCreationRequest.accountName });
 
         }
 
@@ -66,33 +66,34 @@ namespace FiscalFrontier.API.Controllers
         [HttpPut]
         [Route("modify")]
         //[Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> ModifyChartOfAccount( [FromBody] UpdateChartOfAccountDto request)
+        public async Task<IActionResult> ModifyChartOfAccount([FromBody] UpdateChartOfAccountDto request)
         {
             var chartOfAccount = await dbContext.ChartOfAccounts.FindAsync(request.accountId);
 
             var changes = new List<string>();
 
-            if (chartOfAccount == null) 
+            if (chartOfAccount == null)
             {
                 return NotFound($"Account with ID {request.accountId} not found.");
 
             }
 
-            if(request.accountName != null && !await dbContext.ChartOfAccounts.AnyAsync(a => a.accountName == request.accountName))
+            if (request.accountName != null && !await dbContext.ChartOfAccounts.AnyAsync(a => a.accountName == request.accountName))
             {
                 changes.Add($"Changed Account Name from \"{chartOfAccount.accountName}\" to \"{request.accountName}\".");
                 chartOfAccount.accountName = request.accountName.Trim();
-                
-            }
-            
 
-            if (request.accountDescription != null && (request.accountDescription != chartOfAccount.accountDescription)) 
+            }
+
+
+            if (request.accountDescription != null && (request.accountDescription != chartOfAccount.accountDescription))
             {
                 changes.Add($"Changed Account Description from \"{chartOfAccount.accountDescription}\" to \"{request.accountDescription}\".");
                 chartOfAccount.accountDescription = request.accountDescription.Trim();
             }
 
-            if(request.accountOrder != 0 && (request.accountOrder != chartOfAccount.accountOrder)){
+            if (request.accountOrder != 0 && (request.accountOrder != chartOfAccount.accountOrder))
+            {
 
                 changes.Add($"Changed Account Order from {chartOfAccount.accountOrder} to {request.accountOrder}.");
                 chartOfAccount.accountOrder = request.accountOrder;
@@ -112,10 +113,10 @@ namespace FiscalFrontier.API.Controllers
                 chartOfAccount.accountNumber = await accountNumberGenerator.GenerateAccountNumber(request.accountCategory);
                 chartOfAccount.accountCategory = request.accountCategory;
                 chartOfAccount.accountNormalSide = setNormalSide(request.accountCategory);
-                if(chartOfAccount.accountNormalSide != normalSide)
+                if (chartOfAccount.accountNormalSide != normalSide)
                 {
                     chartOfAccount.accountNormalSide = setNormalSide(request.accountCategory);
-                    chartOfAccount.accountCredit = setCreditValue(chartOfAccount.accountCredit ,chartOfAccount.accountNormalSide);
+                    chartOfAccount.accountCredit = setCreditValue(chartOfAccount.accountCredit, chartOfAccount.accountNormalSide);
                     chartOfAccount.accountDebit = setDebitValue(chartOfAccount.accountDebit, chartOfAccount.accountNormalSide);
                     chartOfAccount.accountBalance = chartOfAccount.accountDebit + chartOfAccount.accountCredit;
 
@@ -131,7 +132,7 @@ namespace FiscalFrontier.API.Controllers
                 changes.Add($"Changed Account Category from \"{chartOfAccount.accountCategory}\" to \"{request.accountCategory}\".");
             }
 
-            if (request.accountStatement != null && request.accountStatement != chartOfAccount.accountStatement) 
+            if (request.accountStatement != null && request.accountStatement != chartOfAccount.accountStatement)
             {
                 changes.Add($"Changed Account Statement from \"{chartOfAccount.accountStatement}\" to \"{request.accountStatement}\".");
                 chartOfAccount.accountStatement = request.accountStatement;
@@ -139,12 +140,12 @@ namespace FiscalFrontier.API.Controllers
 
             if (request.accountDebit != 0)
             {
-                switch(chartOfAccount.accountNormalSide)
+                switch (chartOfAccount.accountNormalSide)
                 {
                     case "Debit":
                         chartOfAccount.accountDebit += request.accountDebit;
                         break;
-                    case "Credit": 
+                    case "Credit":
                         chartOfAccount.accountDebit -= request.accountDebit;
                         break;
                 }
@@ -169,7 +170,7 @@ namespace FiscalFrontier.API.Controllers
                 changes.Add($"Added {request.accountCredit} to the Credit of {chartOfAccount.accountName} resulting in a Credit total of {chartOfAccount.accountCredit} & a Total Account Balance of {chartOfAccount.accountBalance}.");
             }
 
-            
+
 
             if (changes.Count > 0)
             {
@@ -213,7 +214,7 @@ namespace FiscalFrontier.API.Controllers
         {
             var chartOfAccount = await dbContext.ChartOfAccounts.FindAsync(accountId);
 
-            if (chartOfAccount == null) 
+            if (chartOfAccount == null)
             {
                 return NotFound("Account Not Found!");
             }
@@ -261,7 +262,7 @@ namespace FiscalFrontier.API.Controllers
                     }).FirstOrDefault()
                 })
                 .ToListAsync();
-            if(updates == null)
+            if (updates == null)
             {
                 return NotFound($"No Updates have been made to Account {accountId}");
             }
@@ -316,12 +317,12 @@ namespace FiscalFrontier.API.Controllers
         {
             var chartOfAccount = await dbContext.ChartOfAccounts.FindAsync(accountId);
 
-            if (chartOfAccount == null) 
+            if (chartOfAccount == null)
             {
                 return NotFound("Account Not Found!");
             }
 
-            if(chartOfAccount.accountBalance == 0)
+            if (chartOfAccount.accountBalance == 0)
             {
                 chartOfAccount.accountActive = false;
                 await dbContext.SaveChangesAsync();
@@ -354,7 +355,7 @@ namespace FiscalFrontier.API.Controllers
         //Sets the Normal Side based on the Account Category
         private string setNormalSide(string accountCategory)
         {
-            switch(accountCategory)
+            switch (accountCategory)
             {
                 case "Asset":
                     return "Debit";
@@ -375,7 +376,7 @@ namespace FiscalFrontier.API.Controllers
         {
             switch (accountNormalSide)
             {
-                case "Debit": 
+                case "Debit":
                     return Math.Abs(value);
                 case "Credit":
                     return value < 0 ? value : -value;
