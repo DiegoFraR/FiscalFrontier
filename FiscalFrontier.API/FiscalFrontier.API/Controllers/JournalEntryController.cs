@@ -419,6 +419,87 @@ namespace FiscalFrontier.API.Controllers
 
             return Ok(journalEntryDtos);
         }
+
+
+        [HttpGet("/AllRejectedJournalEntries")]
+        public async Task<ActionResult<IEnumerable<BroadDetailJournalEntryDto>>> GetAllRejectedJournalEntries()
+        {
+            var journalEntries = await dbContext.JournalEntries
+                    .Where(j => j.JournalEntryStatus == "Rejected")
+                    .Include(j => j.Credits)
+                    .Include(j => j.Debits)
+                    .Include(j => j.Account)
+                    .Include(j => j.Files)
+                    .ToListAsync();
+
+            var userIds = journalEntries
+                    .Select(j => j.CreatedBy)
+                    .Distinct()
+                    .ToList();
+
+            var users = await userManager.Users
+                .Where(u => userIds.Contains(u.Id))
+                .ToListAsync();
+
+            var userDictionary = users.ToDictionary(u => u.Id, u => u.UserName);
+
+            var journalEntryDtos = journalEntries.Select(j => new BroadDetailJournalEntryDto
+            {
+                JournalEntryId = j.JournalEntryId,
+                JournalEntryDescription = j.JournalEntryDescription,
+                JournalEntryType = j.JournalEntryType,
+                CreatedBy = userDictionary?.GetValueOrDefault(j.CreatedBy) ?? "Unknown User",
+                CreditTotal = j.Credits.Sum(c => c.CreditAmount),
+                DebitTotal = j.Debits.Sum(d => d.DebitAmount),
+                ChartOfAccountId = j.ChartOfAccountId,
+                ChartOfAccountName = j.Account.accountName,
+                FileLink = j.Files?.FirstOrDefault()?.FileUrl ?? "No File associated with this Journal Entry",
+                CreatedOn = j.JournalEntryCreated,
+                UpdatedOn = j.JournalEntryUpdated
+            }).ToList();
+
+            return Ok(journalEntryDtos);
+        }
+
+        [HttpGet("/AllPendingJournalEntries")]
+        public async Task<ActionResult<IEnumerable<BroadDetailJournalEntryDto>>> GetAllPendingJournalEntries()
+        {
+            var journalEntries = await dbContext.JournalEntries
+                    .Where(j => j.JournalEntryStatus == "Pending")
+                    .Include(j => j.Credits)
+                    .Include(j => j.Debits)
+                    .Include(j => j.Account)
+                    .Include(j => j.Files)
+                    .ToListAsync();
+
+            var userIds = journalEntries
+                    .Select(j => j.CreatedBy)
+                    .Distinct()
+                    .ToList();
+
+            var users = await userManager.Users
+                .Where(u => userIds.Contains(u.Id))
+                .ToListAsync();
+
+            var userDictionary = users.ToDictionary(u => u.Id, u => u.UserName);
+
+            var journalEntryDtos = journalEntries.Select(j => new BroadDetailJournalEntryDto
+            {
+                JournalEntryId = j.JournalEntryId,
+                JournalEntryDescription = j.JournalEntryDescription,
+                JournalEntryType = j.JournalEntryType,
+                CreatedBy = userDictionary?.GetValueOrDefault(j.CreatedBy) ?? "Unknown User",
+                CreditTotal = j.Credits.Sum(c => c.CreditAmount),
+                DebitTotal = j.Debits.Sum(d => d.DebitAmount),
+                ChartOfAccountId = j.ChartOfAccountId,
+                ChartOfAccountName = j.Account.accountName,
+                FileLink = j.Files?.FirstOrDefault()?.FileUrl ?? "No File associated with this Journal Entry",
+                CreatedOn = j.JournalEntryCreated,
+                UpdatedOn = j.JournalEntryUpdated
+            }).ToList();
+
+            return Ok(journalEntryDtos);
+        }
         //Adds the values of debits from the journal entry to the chartOfAccount Debit Value.
         [HttpPost]
         private async Task<IActionResult> sumDebitValuestoChartOfAccount(decimal debitValue, int chartOfAccountId)
