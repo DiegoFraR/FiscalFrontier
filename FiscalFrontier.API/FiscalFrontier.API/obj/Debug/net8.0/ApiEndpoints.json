@@ -30,6 +30,46 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FiscalFrontier.API.Controllers.JournalEntryController",
+    "Method": "GetAllPendingJournalEntries",
+    "RelativePath": "AllPendingJournalEntries",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[FiscalFrontier.API.Models.DTO.BroadDetailJournalEntryDto, FiscalFrontier.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.JournalEntryController",
+    "Method": "GetAllRejectedJournalEntries",
+    "RelativePath": "AllRejectedJournalEntries",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[FiscalFrontier.API.Models.DTO.BroadDetailJournalEntryDto, FiscalFrontier.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "FiscalFrontier.API.Controllers.AuthController",
     "Method": "GetSecurityQuestions",
     "RelativePath": "api/Auth",
@@ -240,7 +280,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[FiscalFrontier.API.Models.DTO.BroadDetailJournalEntryDto, FiscalFrontier.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[FiscalFrontier.API.Models.DTO.DetailedJournalEntryDto, FiscalFrontier.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

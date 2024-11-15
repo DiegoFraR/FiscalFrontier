@@ -280,7 +280,7 @@ namespace FiscalFrontier.API.Controllers
 
         [HttpGet]
         [Route("{accountId}")]
-        public async Task<ActionResult<IEnumerable<BroadDetailJournalEntryDto>>> GetJournalEntriesByAccountId(int accountId)
+        public async Task<ActionResult<IEnumerable<DetailedJournalEntryDto>>> GetJournalEntriesByAccountId(int accountId)
         {
             try
             {
@@ -356,19 +356,23 @@ namespace FiscalFrontier.API.Controllers
 
                 var userDictionary = users.ToDictionary(u => u.Id, u => u.UserName);
 
-                var journalEntryDtos = journalEntries.Select(j => new BroadDetailJournalEntryDto
+                var journalEntryDtos = journalEntries.Select(journalEntry => new DetailedJournalEntryDto
                 {
-                    JournalEntryId = j.JournalEntryId,
-                    JournalEntryDescription = j.JournalEntryDescription,
-                    JournalEntryType = j.JournalEntryType,
-                    CreatedBy = userDictionary.GetValueOrDefault(j.CreatedBy) ?? "Unknown User",
-                    CreditTotal = j.Credits.Sum(c => c.CreditAmount),
-                    DebitTotal = j.Debits.Sum(d => d.DebitAmount),
-                    ChartOfAccountId = j.ChartOfAccountId,
-                    ChartOfAccountName = j.Account.accountName,
-                    FileLink = j.Files?.FirstOrDefault()?.FileUrl,
-                    CreatedOn = j.JournalEntryCreated,
-                    UpdatedOn = j.JournalEntryUpdated
+                    JournalEntryId = journalEntry.JournalEntryId,
+                    JournalEntryType = journalEntry.JournalEntryType,
+                    JournalEntryDescription = journalEntry.JournalEntryDescription,
+                    CreatedBy = userDictionary.GetValueOrDefault(journalEntry.CreatedBy) ?? "Unknown User",
+                    UpdatedBy = userDictionary.GetValueOrDefault(journalEntry.UpdatedBy) ?? "No Updates",
+                    JournalEntryPostReference = journalEntry.JournalEntryPostReference,
+                    JournalEntryStatus = journalEntry.JournalEntryStatus,
+                    JournalEntryRejectionReasoning = journalEntry.JournalEntryRejectionReasoning ?? "No Rejection Reason",
+                    ChartOfAccountId = journalEntry.ChartOfAccountId,
+                    CreditValues = journalEntry.Credits.Select(c => c.CreditAmount).ToArray(),
+                    DebitValues = journalEntry.Debits.Select(d => d.DebitAmount).ToArray(),
+                    FileUrl = journalEntry.Files?.FirstOrDefault()?.FileUrl ?? "No File Associated with Journal Entry",
+                    FileName = journalEntry.Files?.FirstOrDefault()?.FileName,
+                    CreatedOn = journalEntry.JournalEntryCreated,
+                    UpdatedOn = journalEntry.JournalEntryUpdated,
                 }).ToList();
 
                 return Ok(journalEntryDtos);
