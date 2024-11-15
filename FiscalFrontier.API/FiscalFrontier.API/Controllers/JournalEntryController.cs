@@ -431,7 +431,7 @@ namespace FiscalFrontier.API.Controllers
         public async Task<ActionResult<IEnumerable<BroadDetailJournalEntryDto>>> GetAllRejectedJournalEntries()
         {
             var journalEntries = await dbContext.JournalEntries
-                    .Where(j => j.JournalEntryStatus == "Rejected")
+                    .Where(j => j.JournalEntryStatus == "Denied")
                     .Include(j => j.Credits)
                     .Include(j => j.Debits)
                     .Include(j => j.Account)
