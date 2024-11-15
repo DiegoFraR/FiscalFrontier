@@ -373,6 +373,8 @@ namespace FiscalFrontier.API.Controllers
                     FileName = journalEntry.Files?.FirstOrDefault()?.FileName,
                     CreatedOn = journalEntry.JournalEntryCreated,
                     UpdatedOn = journalEntry.JournalEntryUpdated,
+                    TotalDebitValue = journalEntry.Debits.Sum(d => d.DebitAmount),
+                    TotalCrebitValue = journalEntry.Credits.Sum(c => c.CreditAmount),
                 }).ToList();
 
                 return Ok(journalEntryDtos);
