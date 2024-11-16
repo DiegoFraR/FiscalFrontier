@@ -4,6 +4,7 @@ using FiscalFrontier.API.Models.DTO;
 using FiscalFrontier.API.Repositories.Interface;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 
 namespace FiscalFrontier.API.Controllers
@@ -57,9 +58,8 @@ namespace FiscalFrontier.API.Controllers
                     return Ok(response);
                 }
             }
-            ModelState.AddModelError("", "Email or Password is Incorrect.");
 
-            return ValidationProblem(ModelState);
+            return NotFound(dbContext.ErrorMessages.Find(16));
         }
 
         [HttpGet]
@@ -78,7 +78,7 @@ namespace FiscalFrontier.API.Controllers
 
             if (user is null)
             {
-                return NotFound("User Not Found!");
+                return NotFound(dbContext.ErrorMessages.Find(17));
             }
             
             var userId = user.Id;
@@ -94,7 +94,7 @@ namespace FiscalFrontier.API.Controllers
 
             if(userSecurityQuestions.Count == 0)
             {
-                return NotFound("User Security Questions not found. Please contact our support team @ fiscalfrontier4713@gmail.com");
+                return NotFound(dbContext.ErrorMessages.Find(20));
             }
 
             return Ok(userSecurityQuestions);

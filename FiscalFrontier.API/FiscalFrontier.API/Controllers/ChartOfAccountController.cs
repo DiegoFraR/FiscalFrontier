@@ -29,7 +29,7 @@ namespace FiscalFrontier.API.Controllers
 
             if (await dbContext.ChartOfAccounts.AnyAsync(a => a.accountName == request.accountName))
             {
-                return BadRequest("An account with this name already exists!");
+                return BadRequest(dbContext.ErrorMessages.Find(17));
             }
 
             var normalSide = setNormalSide(request.accountCategory);
@@ -216,7 +216,7 @@ namespace FiscalFrontier.API.Controllers
 
             if (chartOfAccount == null)
             {
-                return NotFound("Account Not Found!");
+                return NotFound(dbContext.ErrorMessages.Find(18));
             }
 
             var chartOfAccountDTO = new ShowChartOfAccountDetailedDTO
@@ -264,7 +264,8 @@ namespace FiscalFrontier.API.Controllers
                 .ToListAsync();
             if (updates == null)
             {
-                return NotFound($"No Updates have been made to Account {accountId}");
+                //old code: $"No Updates have been made to Account {accountId}"
+                return NotFound(dbContext.ErrorMessages.Find(21) + $"{accountId}");
             }
 
             var updatesDTO = updates.Select(u => new AccountUpdateHistoryDTO
@@ -319,7 +320,7 @@ namespace FiscalFrontier.API.Controllers
 
             if (chartOfAccount == null)
             {
-                return NotFound("Account Not Found!");
+                return NotFound(dbContext.ErrorMessages.Find(18));
             }
 
             if (chartOfAccount.accountBalance == 0)
@@ -329,7 +330,7 @@ namespace FiscalFrontier.API.Controllers
                 return Ok(new { message = "Account was DeActivated!" });
             }
 
-            return BadRequest("Account Balance must be 0 to DeActivate an Account!");
+            return BadRequest(dbContext.ErrorMessages.Find());
         }
 
         [HttpPut]
@@ -340,7 +341,7 @@ namespace FiscalFrontier.API.Controllers
 
             if (chartOfAccount == null)
             {
-                return NotFound("Account Not Found!");
+                return NotFound(dbContext.ErrorMessages.Find(18));
             }
 
             chartOfAccount.accountActive = true;
