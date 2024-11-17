@@ -5,6 +5,7 @@
         public int JournalEntryId { get; set; }
         public string? JournalEntryDescription { get; set; }
         public required string JournalEntryType { get; set; }
+        public required string JournalEntryPostReference { get; set; }
         public required string CreatedBy { get; set; }
         public decimal CreditTotal { get; set; }
         public decimal DebitTotal { get; set; }

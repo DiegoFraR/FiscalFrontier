@@ -13,6 +13,8 @@
         public required int ChartOfAccountId { get; set; }
         public required decimal[] CreditValues { get; set; }
         public required decimal[] DebitValues { get; set; }
+        public decimal? TotalDebitValue { get; set; }
+        public decimal? TotalCrebitValue { get; set; }
         public string? FileUrl { get; set; }
         public string? FileName { get; set; }
         public required DateTime CreatedOn { get; set; }
