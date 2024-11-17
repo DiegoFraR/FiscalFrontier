@@ -50,9 +50,9 @@ namespace FiscalFrontier.API.Migrations
                     /*19*/{ "User Not Found!", "Authentication" },
                     /*20*/{ "User Security Questions not found. Please contact our support team @ fiscalfrontier4713@gmail.com", "Authentication" },
                     /*21*/{ "No Updates have been made to Account", "Chart Of Accounts" },
-                    /*22*/{ "Account Not Found!", "Chart Of Accounts" },
+                    /*22*/{ "Journal Entry Not Found", "Journal Entry" },
                     /*23*/{ "Account Not Found!", "Chart Of Accounts" },
-                    /*24*/{ "Account Balance must be 0 to DeActivate an Account!", "Chart Of Accounts" },
+                    /*24*/{ "Account Balance must be 0 to DeActivate an Account!", "Chart Of Accounts" }
                 }
             );
         }

@@ -4,6 +4,7 @@ using FiscalFrontier.API.Models.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 
@@ -14,7 +15,7 @@ namespace FiscalFrontier.API.Controllers
     public class EmailController : ControllerBase
     {
         private readonly UserManager<User> userManager;
-
+        private readonly ApplicationDbContext dbContext;
         public EmailController(UserManager<User> userManager)
         {
             this.userManager = userManager;
@@ -48,9 +49,7 @@ namespace FiscalFrontier.API.Controllers
 
                 if (!response.IsSuccessStatusCode) 
                 {
-                    var responseBody = await response.Body.ReadAsStringAsync();
-                    ModelState.AddModelError("sendGrid", $"Failed to send email: {responseBody}");
-                    return BadRequest(ModelState);
+                    return BadRequest(dbContext.ErrorMessages.Find(25));
                 }
             }
 

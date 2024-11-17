@@ -65,7 +65,7 @@ namespace FiscalFrontier.API.Controllers
 
             if (request == null)
             {
-                return NotFound("Request For Registration Not Found!");
+                return NotFound(dbContext.ErrorMessages.Find(31));
             }
 
 
@@ -160,7 +160,7 @@ namespace FiscalFrontier.API.Controllers
 
             if (request == null)
             {
-                return NotFound("User Request Not Found.");
+                return NotFound(dbContext.ErrorMessages.Find(28));
             }
 
 
@@ -183,7 +183,7 @@ namespace FiscalFrontier.API.Controllers
 
             if (user == null)
             {
-                return NotFound("User Not Found");
+                return NotFound(dbContext.ErrorMessages.Find(29));
             }
 
             user.Email = request.email.Trim();
@@ -196,7 +196,7 @@ namespace FiscalFrontier.API.Controllers
 
             if (!result.Succeeded)
             {
-                return BadRequest("Error Occured");
+                return BadRequest(dbContext.ErrorMessages.Find(30));
             }
 
             return Ok(new { Message = "User has been Updated" });
@@ -258,7 +258,7 @@ namespace FiscalFrontier.API.Controllers
 
             if (user is null)
             {
-                return NotFound("User Not Found.");
+                return NotFound(dbContext.ErrorMessages.Find(29));
             }
 
             var result = await userManager.DeleteAsync(user);
