@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Diane\\Downloads\\FiscalFrontierFinal\\FiscalFrontier.API\\FiscalFrontier.API\\FiscalFrontier.API.csproj": {}
+    "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\FiscalFrontier.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Diane\\Downloads\\FiscalFrontierFinal\\FiscalFrontier.API\\FiscalFrontier.API\\FiscalFrontier.API.csproj": {
+    "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\FiscalFrontier.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Diane\\Downloads\\FiscalFrontierFinal\\FiscalFrontier.API\\FiscalFrontier.API\\FiscalFrontier.API.csproj",
+        "projectUniqueName": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\FiscalFrontier.API.csproj",
         "projectName": "FiscalFrontier.API",
-        "projectPath": "C:\\Users\\Diane\\Downloads\\FiscalFrontierFinal\\FiscalFrontier.API\\FiscalFrontier.API\\FiscalFrontier.API.csproj",
-        "packagesPath": "C:\\Users\\Diane\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Diane\\Downloads\\FiscalFrontierFinal\\FiscalFrontier.API\\FiscalFrontier.API\\obj\\",
+        "projectPath": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\FiscalFrontier.API.csproj",
+        "packagesPath": "C:\\Users\\dfrau\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dfrau\\Documents\\GitKraken\\FiscalFrontier\\FiscalFrontier.API\\FiscalFrontier.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Diane\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dfrau\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -112,7 +112,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

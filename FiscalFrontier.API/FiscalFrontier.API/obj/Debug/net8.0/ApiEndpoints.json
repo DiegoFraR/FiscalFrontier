@@ -627,6 +627,22 @@
   },
   {
     "ContainingType": "FiscalFrontier.API.Controllers.AuthController",
+    "Method": "ResetPassword",
+    "RelativePath": "resetPassword",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "resetPassword",
+        "Type": "FiscalFrontier.API.Models.DTO.ResetPasswordDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.AuthController",
     "Method": "GetUserSecurityQuestions",
     "RelativePath": "userSecurityQuestions/{email}",
     "HttpMethod": "GET",
@@ -650,5 +666,21 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.AuthController",
+    "Method": "CheckUserSecurityQuestionAnswers",
+    "RelativePath": "userSecurityQuestions/Validate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "answers",
+        "Type": "FiscalFrontier.API.Models.DTO.SecurityQuestionAnswerDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
