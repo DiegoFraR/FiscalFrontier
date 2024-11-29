@@ -479,6 +479,66 @@
     ]
   },
   {
+    "ContainingType": "FiscalFrontier.API.Controllers.Sprint5",
+    "Method": "GetAssetTurnover",
+    "RelativePath": "api/Sprint5/AssetTurnover",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.Sprint5",
+    "Method": "GetCurrentRatio",
+    "RelativePath": "api/Sprint5/CurrentRatio",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.Sprint5",
+    "Method": "GetNetProfit",
+    "RelativePath": "api/Sprint5/NetProfit",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.Sprint5",
+    "Method": "GetQuickRatio",
+    "RelativePath": "api/Sprint5/QuickRatio",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.Sprint5",
+    "Method": "GetReturnOnAssets",
+    "RelativePath": "api/Sprint5/ReturnOnAssets",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FiscalFrontier.API.Controllers.Sprint5",
+    "Method": "GetReturnOnEquity",
+    "RelativePath": "api/Sprint5/ReturnOnEquity",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FiscalFrontier.API.Controllers.UsersController",
     "Method": "GetUsers",
     "RelativePath": "api/Users",
