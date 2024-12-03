@@ -152,6 +152,8 @@ namespace FiscalFrontier.API.Controllers
 
             user.PasswordHash = new PasswordHasher<User>().HashPassword(user, resetPassword.NewPassword);
 
+            await userManager.UpdateAsync(user);
+
             return Ok();
 
 
