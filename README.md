@@ -20,7 +20,7 @@ Fiscal Frontiner is an accounting application designed to keep track of financia
 - [Hong Nguyen](https://github.com/hnguy126)
   - Frontend Developer
 - [Riley Powell](https://github.com/Rpowell57)
-  - Documentation, Video Recorder, PR Checks. 
+  - Documentation, Video Recorder, Frontend Developer. 
 
  ### Technology Stack
 - Backend
